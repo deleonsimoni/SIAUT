@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="bug_mail" id="0x7f020000" />
+    <public type="drawable" name="ic_exit" id="0x7f020001" />
+    <public type="drawable" name="ic_launcher" id="0x7f020002" />
+    <public type="drawable" name="ic_logo" id="0x7f020003" />
+    <public type="drawable" name="ic_refresh" id="0x7f020004" />
+    <public type="drawable" name="ic_retry" id="0x7f020005" />
+    <public type="drawable" name="undo" id="0x7f020006" />
+    <public type="layout" name="main" id="0x7f030000" />
+    <public type="layout" name="reportbug" id="0x7f030001" />
+    <public type="layout" name="scan" id="0x7f030002" />
+    <public type="style" name="CustomTheme" id="0x7f040000" />
+    <public type="string" name="app_holder" id="0x7f050000" />
+    <public type="string" name="app_platform" id="0x7f050001" />
+    <public type="string" name="app_properties" id="0x7f050002" />
+    <public type="string" name="device_info_fmt" id="0x7f050003" />
+    <public type="string" name="target_url_default2" id="0x7f050004" />
+    <public type="string" name="crash_toast_text" id="0x7f050005" />
+    <public type="string" name="crash_dialog_title" id="0x7f050006" />
+    <public type="string" name="crash_dialog_text" id="0x7f050007" />
+    <public type="string" name="crash_dialog_comment_prompt" id="0x7f050008" />
+    <public type="string" name="crash_dialog_ok_toast" id="0x7f050009" />
+    <public type="string" name="crash_mail_address" id="0x7f05000a" />
+    <public type="string" name="crash_url" id="0x7f05000b" />
+    <public type="menu" name="menu" id="0x7f060000" />
+    <public type="id" name="mainScreen" id="0x7f070000" />
+    <public type="id" name="webView" id="0x7f070001" />
+    <public type="id" name="splash" id="0x7f070002" />
+    <public type="id" name="imgLogo" id="0x7f070003" />
+    <public type="id" name="cmdRetry" id="0x7f070004" />
+    <public type="id" name="relativeLayout1" id="0x7f070005" />
+    <public type="id" name="textView1" id="0x7f070006" />
+    <public type="id" name="relativeLayout2" id="0x7f070007" />
+    <public type="id" name="cmdCancel" id="0x7f070008" />
+    <public type="id" name="cmdOk" id="0x7f070009" />
+    <public type="id" name="txtContent" id="0x7f07000a" />
+    <public type="id" name="preview_view" id="0x7f07000b" />
+    <public type="id" name="viewfinder_view" id="0x7f07000c" />
+    <public type="id" name="status_view" id="0x7f07000d" />
+    <public type="id" name="mnuUpdate" id="0x7f07000e" />
+    <public type="id" name="mnuExit" id="0x7f07000f" />
+</resources>

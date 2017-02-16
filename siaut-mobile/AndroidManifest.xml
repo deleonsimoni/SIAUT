@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.gov.caixa.sipro.viewer" platformBuildVersionCode="15" platformBuildVersionName="4.0.3-238992">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <application android:debuggable="true" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="SITES" android:logo="@drawable/ic_logo" android:name="br.gov.caixa.sipro.viewer.App" android:theme="@style/CustomTheme">
+        <activity android:configChanges="orientation" android:label="SITES" android:name="br.gov.caixa.sipro.viewer.MainActivity" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="br.gov.caixa.sipro.viewer.Preferences"/>
+        <activity android:name="br.gov.caixa.sipro.viewer.util.ReportBugActivityportBugActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="jim.h.common.android.zxinglib.CaptureActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:launchMode="singleInstance" android:name="org.acra.CrashReportDialog"/>
+				     <meta-data android:name="target_url_default" android:value="http://www.geradorprototipo.caixa.gov.br/siogp/router/5079/app/sites/"/>
+    </application>
+</manifest>

@@ -1,0 +1,237 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: assets/imgs/pinB.png
+SHA1-Digest: kcsGWuV1r+ss/QSVdKeEmTWniHw=
+
+Name: assets/lib/angular-animate.min.js
+SHA1-Digest: mgOMWCRaJG5V7YcYLI1ABfpbd2c=
+
+Name: assets/imgs/logosmall.png
+SHA1-Digest: e+kOvXIQ9BxrdMBaQ4r3nhD25Ho=
+
+Name: assets/fonts/fontawesome-webfont.eot
+SHA1-Digest: s8LwjnMyATW2nCOjkIuHoSBTovY=
+
+Name: assets/lib/jquery.min.js
+SHA1-Digest: YsQELp68aRpTctZTtCRRKlYdFnA=
+
+Name: assets/lib/angular-sanitize.min.js
+SHA1-Digest: 4z9TFDK8yeL/kbx7y0Lx3IcFUBU=
+
+Name: assets/imgs/Preloader_9.gif
+SHA1-Digest: Lx4C98zl6iFcZz2Q7j+L6ztwFwU=
+
+Name: assets/imgs/Preloader_2.gif
+SHA1-Digest: NdnPoJPPpT1kT+y1CRe5uUgN64w=
+
+Name: assets/imgs/titlesmallb.png
+SHA1-Digest: s1xwfcsh66flQRkkWNSBZS7cNQU=
+
+Name: assets/lib/base64.min.js
+SHA1-Digest: YQprB3O4FeOXGl4rrahjZPssgiU=
+
+Name: assets/imgs/sipro.png
+SHA1-Digest: kbwPmonH8lIb+5pu1sO8dci3IEU=
+
+Name: assets/lib/sha1.min.js
+SHA1-Digest: H+mOpvGxLYS4rhh0Fcih/dmpnec=
+
+Name: res/drawable-ldpi-v4/ic_launcher.png
+SHA1-Digest: Gsc2WWwsee/hs+3J7vm4hlk1ZOE=
+
+Name: res/drawable-ldpi-v4/ic_retry.png
+SHA1-Digest: Ym2I8y4eJT1OkiYbM6pcnLVeUss=
+
+Name: assets/imgs/pin.png
+SHA1-Digest: 4QGPefans/Efrp1/lNGLjPvZ+YA=
+
+Name: assets/imgs/pinSmall.png
+SHA1-Digest: 0J6xSreAbeAEwMJN1XvSg9f7oyY=
+
+Name: assets/css/daterangepicker-bs3.css
+SHA1-Digest: z3UYZ7SfuxjSi/SnP7A9f11cQmY=
+
+Name: assets/imgs/generated.vm
+SHA1-Digest: QXgkeJjD4df2hdcCBBPrHZVBPV4=
+
+Name: assets/app.properties
+SHA1-Digest: tcF9SyVvFw2vf5ZYcKRqGO9ieco=
+
+Name: assets/imgs/Preloader_2.png
+SHA1-Digest: a6X6/VnAdvldLkJCOq39qNJxOUU=
+
+Name: assets/fonts/glyphicons-halflings-regular.woff
+SHA1-Digest: J45JqG5jTabyoC87R92dKo8mIQ8=
+
+Name: assets/fonts/glyphicons-halflings-regular.woff2
+SHA1-Digest: yjW2l9mcrk0bYPLWD803dxmH6wc=
+
+Name: assets/fonts/FontAwesome.otf
+SHA1-Digest: ARLpbzJ9QTk403wWk4BvRo/9us4=
+
+Name: res/layout/scan.xml
+SHA1-Digest: GaMsf13811KCqahdI+B7cbsLg1k=
+
+Name: resources.arsc
+SHA1-Digest: k+BiaeM7uktb+T2JloYOx58MhFs=
+
+Name: assets/imgs/titlefullc.png
+SHA1-Digest: Mo6wX42huLxPAhQgm5pOgNxhRj4=
+
+Name: res/drawable-hdpi-v4/ic_logo.png
+SHA1-Digest: 3pv+6rWLvJBicPu/s9udmXZw0ZY=
+
+Name: assets/fonts/futura/FTN45__W.woff
+SHA1-Digest: XAQ6ASlqf8ol9qNBT84DNIiPD0Q=
+
+Name: assets/imgs/gears-anim.gif
+SHA1-Digest: OvmoPZ+jr0e/iL3vKzCFr0EKGKU=
+
+Name: res/menu/menu.xml
+SHA1-Digest: QAPPAEEIXyXvebXpj8c2VEh9mns=
+
+Name: res/drawable-ldpi-v4/undo.png
+SHA1-Digest: DmUcFC8UeLf6ujFRnJ4SjbtrDK0=
+
+Name: res/drawable-hdpi-v4/ic_retry.png
+SHA1-Digest: jv2tSm46g9TO7Wgw+FeorGbLLAA=
+
+Name: assets/fonts/futura/FTN85__W.woff
+SHA1-Digest: 8Lrswy3/sNxx7ebaSIfsfsetXSc=
+
+Name: AndroidManifest.xml
+SHA1-Digest: vmyhIIqJ1/EgCSkCoDm1DBSkI2A=
+
+Name: assets/imgs/logo-athie-sub.svg
+SHA1-Digest: n7r3SeTlwOi3fQTPlK9n23WD+8g=
+
+Name: assets/fonts/futura/FTN45__W.eot
+SHA1-Digest: DDhU2WxXcO6RDO8SHWG+YTlG6Yw=
+
+Name: res/drawable-ldpi-v4/ic_logo.png
+SHA1-Digest: iaiUQlJ0BiswgwLr2OGeTjZPLQ0=
+
+Name: assets/imgs/Preloader_5.gif
+SHA1-Digest: Zs/K38unq8x2JykqF6STtSnXVKE=
+
+Name: assets/imgs/gears.png
+SHA1-Digest: ZjkoNAHHdPK7YQ2iQjrz5caNiDk=
+
+Name: assets/lib/smart-table.min.js
+SHA1-Digest: c7XX6Ik52CwahXPxKQJRXChvNrM=
+
+Name: res/drawable-hdpi-v4/ic_launcher.png
+SHA1-Digest: Keu+nU3Xl3+4Du4SHPCN7mDxbbU=
+
+Name: res/drawable-hdpi-v4/ic_refresh.png
+SHA1-Digest: 8nJ1ZUQuCpFb/jD90uCUhk38yS0=
+
+Name: assets/fonts/fontawesome-webfont.woff
+SHA1-Digest: UHlwQC4yiyuusFvec7+d7U4sOi0=
+
+Name: assets/lib/angular.min.js
+SHA1-Digest: trVtDglu/CbgnWzyzTeqxhI8w0Y=
+
+Name: res/drawable-hdpi-v4/ic_exit.png
+SHA1-Digest: 7ShuPjOaCDjFC3bJwCBA94AX7nQ=
+
+Name: assets/imgs/controlesmall.png
+SHA1-Digest: wfRgU6YOVLVp8OjtqVEhntElUvE=
+
+Name: res/drawable-hdpi-v4/bug_mail.png
+SHA1-Digest: nhm0skMInvoklsnA4zyJnOBWj5c=
+
+Name: assets/imgs/splash.png
+SHA1-Digest: kbwPmonH8lIb+5pu1sO8dci3IEU=
+
+Name: assets/lib/bootstrap.min.js
+SHA1-Digest: JTcRxtgl3lWoNgVSVzvpUNoYBhQ=
+
+Name: res/drawable-ldpi-v4/ic_refresh.png
+SHA1-Digest: SKXEgbR69HvsYuwJJ2j3yJhGy4k=
+
+Name: assets/css/bootstrap.css.map
+SHA1-Digest: Lh0IqWlM1aaU6rynRs+tlfuZZT4=
+
+Name: assets/fonts/futura/FTN85__W.eot
+SHA1-Digest: K6MgVWsoytVMMFxVGt+7sfZZjrc=
+
+Name: assets/lib/angular-ui-router.min.js
+SHA1-Digest: BdfFEaAKvRxs53ACINfxmG0yQnw=
+
+Name: assets/lib/jquery.min.map
+SHA1-Digest: fw7f2hBlSmzvSHOMH3KbLVUv1+E=
+
+Name: assets/fonts/glyphicons-halflings-regular.eot
+SHA1-Digest: hrb2K3hT5n0+Y19lEqWl78WOo8M=
+
+Name: res/layout/reportbug.xml
+SHA1-Digest: HNGrgSQy0bjhCaWRQ4bz/8IGwa8=
+
+Name: assets/imgs/app.png
+SHA1-Digest: +bm3d1257SBxZbUQv8VRZTUg4vQ=
+
+Name: res/layout/main.xml
+SHA1-Digest: eYXgJ/Zc+lBh+eB5INASBR435rw=
+
+Name: assets/lib/moment.min.js
+SHA1-Digest: hR4t8qzV8LxO8Q/PL1DBf3qgnB8=
+
+Name: assets/fonts/fontawesome-webfont.ttf
+SHA1-Digest: J88fLsWa7OaTjHuy/rDih+p3j/k=
+
+Name: assets/fonts/fontawesome-webfont.svg
+SHA1-Digest: KzyLpwCMwBTY+zerxvn0mu2oOCQ=
+
+Name: assets/fonts/futura/FTN45__W.svg
+SHA1-Digest: QfroBPb4eqfyo775HOisdvX3F1U=
+
+Name: assets/fonts/futura/FTN45__W.ttf
+SHA1-Digest: qlp36BZvNN46lvBgDVNK1t2UomU=
+
+Name: assets/css/bootstrap-nav-wizard.min.css
+SHA1-Digest: Jy7ly+lNIaWNcDFyYmBZLKlk/Fg=
+
+Name: assets/fonts/futura/FTN85__W.ttf
+SHA1-Digest: BCARcLxz+yerbaDKqBWvXUPg2YE=
+
+Name: assets/fonts/glyphicons-halflings-regular.svg
+SHA1-Digest: 3lGoSUGAptsHSvLe4jg/CjY8Wwg=
+
+Name: assets/css/font-awesome.min.css
+SHA1-Digest: BeolvJs6xImT4f7jItO8lLSabiI=
+
+Name: res/drawable-ldpi-v4/bug_mail.png
+SHA1-Digest: YCnUKmSxYrpkdW6urvh67aaSmRY=
+
+Name: assets/fonts/futura/FTN85__W.svg
+SHA1-Digest: xmouCoD4XNT6ccY7wDaoqyvx5v0=
+
+Name: assets/lib/ui-bootstrap-0.14.3.min.js
+SHA1-Digest: Qt1eYepTu7G81uaerCwuFpK1Jac=
+
+Name: res/drawable-hdpi-v4/undo.png
+SHA1-Digest: DVTVHfYpVSxfl93/kM7hstBgakY=
+
+Name: assets/imgs/gears-anim2.gif
+SHA1-Digest: Uz5Pat301iuNNLytlAD12xNbVtY=
+
+Name: assets/imgs/titlefull.png
+SHA1-Digest: s1xwfcsh66flQRkkWNSBZS7cNQU=
+
+Name: res/drawable-ldpi-v4/ic_exit.png
+SHA1-Digest: eWuclIHzugjAk2bQapi3iJ1aERo=
+
+Name: classes.dex
+SHA1-Digest: SNiWAB1hYYmHnUDLZjKTWl/Am7A=
+
+Name: assets/fonts/fontawesome-webfont.woff2
+SHA1-Digest: V06iaYwDrpR32y6juvRg7jLxp+o=
+
+Name: assets/css/bootstrap.min.css
+SHA1-Digest: 7SkxXg/7PxQ4JDHyckI1v2f0TrM=
+
+Name: assets/fonts/glyphicons-halflings-regular.ttf
+SHA1-Digest: RLwYUPVwlyJnsWmuGPHLBrYR/6I=
+

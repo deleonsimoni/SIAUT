@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/relativeLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceLarge" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="Reportar ocorrência" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/relativeLayout2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+        <ImageButton android:id="@id/cmdCancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:src="@drawable/undo" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageButton android:id="@id/cmdOk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:src="@drawable/bug_mail" android:layout_toLeftOf="@id/cmdCancel" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <EditText android:typeface="serif" android:textStyle="italic" android:gravity="top" android:id="@id/txtContent" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:hint="informe aqui a ocorrência a ser reportada (max 30 linhas)" android:maxLines="30" android:ems="10" android:layout_above="@id/relativeLayout2" android:layout_below="@id/relativeLayout1" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:inputType="textMultiLine">
+        <requestFocus />
+    </EditText>
+    <requestFocus android:layout_marginLeft="40.0dip" android:layout_marginTop="165.0dip" android:layout_alignLeft="@id/txtContent" android:layout_alignTop="@id/txtContent" />
+</RelativeLayout>

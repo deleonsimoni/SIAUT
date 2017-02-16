@@ -1,0 +1,88 @@
+	{  
+   "id": "SITES",
+  "name": "teste",
+  "owner": "Caixa Econômica Federal",
+  "description": "teste",
+  "version": "1.0",
+  "type": "ANGULAR003v200",
+  "user": "5079",
+  "contact": "andre.lourdes@caixa.gov.br",  
+  "builderid": "5079",
+  "buildername": "andre.lourdes@caixa.gov.br",
+  "builderfullname": "Andre Marcelo de Lourdes",
+  "code": "329",
+  "funcionalidades": [  
+		"splash",
+		"principal",
+		"sobre",
+		"teste"
+   ],     
+  "webservices": [  	
+		"/app/sites/ws/Splash",
+		"/app/sites/ws/Principal",
+		"/app/sites/ws/Sobre",
+		"/app/sites/ws/Cadastroteste",
+		"/app/sites/ws/Formularioteste"
+   ],
+  "resources": [  
+		{"splash":[
+			"br.gov.caixa.sites.rs.resource.splash.SplashResource"
+		]},	
+		{"principal":[
+			"br.gov.caixa.sites.rs.resource.principal.PrincipalResource"
+		]},	
+		{"sobre":[
+			"br.gov.caixa.sites.rs.resource.sobre.SobreResource"
+		]},	
+		{"teste":[
+			"br.gov.caixa.sites.rs.resource.teste.CadastrotesteResource",
+			"br.gov.caixa.sites.rs.resource.teste.FormulariotesteResource"
+		]}	
+   ],   
+  "entities": [  
+		{"splash":[
+			"br.gov.caixa.sites.rs.entity.splash.SplashEntity"
+		]},	
+		{"principal":[
+			"br.gov.caixa.sites.rs.entity.principal.PrincipalEntity"
+		]},	
+		{"sobre":[
+			"br.gov.caixa.sites.rs.entity.sobre.SobreEntity"
+		]},	
+		{"teste":[
+			"br.gov.caixa.sites.rs.entity.teste.CadastrotesteEntity",
+			"br.gov.caixa.sites.rs.entity.teste.FormulariotesteEntity"
+		]}	
+   ],     
+  "requisicao": [  
+		{"splash":[
+			"br.gov.caixa.sites.rs.requisicao.splash.SplashRequisicao"
+		]},	
+		{"principal":[
+			"br.gov.caixa.sites.rs.requisicao.principal.PrincipalRequisicao"
+		]},	
+		{"sobre":[
+			"br.gov.caixa.sites.rs.requisicao.sobre.SobreRequisicao"
+		]},	
+		{"teste":[
+			"br.gov.caixa.sites.rs.requisicao.teste.CadastrotesteRequisicao",
+			"br.gov.caixa.sites.rs.requisicao.teste.FormulariotesteRequisicao"
+		]}	
+   ],    
+  "retorno": [  
+		{"splash":[
+			"br.gov.caixa.sites.rs.retorno.splash.SplashRetorno"
+		]},	
+		{"principal":[
+			"br.gov.caixa.sites.rs.retorno.principal.PrincipalRetorno"
+		]},	
+		{"sobre":[
+			"br.gov.caixa.sites.rs.retorno.sobre.SobreRetorno"
+		]},	
+		{"teste":[
+			"br.gov.caixa.sites.rs.retorno.teste.CadastrotesteRetorno",
+			"br.gov.caixa.sites.rs.retorno.teste.FormulariotesteRetorno"
+		]}	
+   ]   
+}
+

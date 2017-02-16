@@ -1,0 +1,10 @@
+ClearCase CopyAreaDB|4
+SIPCT\03-Implementacao\Fontes\AmbienteSIPCT\workspace\sipct\sipct-web\src\test\java\br\gov\caixa\sipct\generic
+2
+6
+13:ResultadoTeste.java|1|15231e4e027|234|c7bcb640|3a34016941d94df7be21b8e73ff53d62|0
+17:GeradorDoRelatorio.java|1|15231e4e036|48ed|3426652a|86892391afef417f99d0b5fab95a4d34|0
+10:GenericTest.java|1|15231e4db25|216a|ee59ade0|af3aba68902e447781157a17d601e4fb|0
+11:Criptografia.java|1|15231e4db25|1921|2b9e6302|09693f3d37f648f89d4e9bca54bdd8a6|0
+9:Util.java|1|15231e4db16|1cdf|dbb2269b|6ce811ba941244558da1ce37d0207631|0
+b:Helper.java|1|15231e4e027|b79|89d89df7|ea036d356cd2468eaf9ef6c4ddc6c3fd|0

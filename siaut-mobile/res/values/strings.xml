@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_holder">SIPRO</string>
+    <string name="app_platform">android</string>
+    <string name="app_properties">app.properties</string>
+    <string name="device_info_fmt" formatted="false">"Application version: %s
+ Package name: %s
+ Package date: %s
+ Device model: %s
+ Firmware version: %s
+ Kernel version: %s
+ Build number: %s
+"</string>
+    <string name="target_url_default2">http://www.caixario.com.br/siproservice/sigen/</string>
+    <string name="crash_toast_text">Ocorreu um erro. Um relatório está sendo gerado...</string>
+    <string name="crash_dialog_title">O aplicativo parou...</string>
+    <string name="crash_dialog_text">Um erro inesperado ocorreu e paralisou esta aplicação. Por favor ajude a identificar o problema nos enviando este relatório de erro.</string>
+    <string name="crash_dialog_comment_prompt">Você pode adicionar alguns comentários sobre esta ocorrência:</string>
+    <string name="crash_dialog_ok_toast">Muito obrigado!</string>
+    <string name="crash_mail_address">crash@report.com.br</string>
+    <string name="crash_url">http://www.caixario.com.br/siproservice/crashreport</string>
+</resources>
