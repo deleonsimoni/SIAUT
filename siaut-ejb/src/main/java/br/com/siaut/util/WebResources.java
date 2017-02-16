@@ -17,7 +17,7 @@ public final class WebResources implements Serializable {
 	 */
 	private static final long serialVersionUID = 8068593558115881143L;
 	
-	//public static final String IP_ARDUINO = "192.168.1.7";
+	//public static final String IP_ARDUINO = "192.168.1.7 ";
 	//public static final int PORTA_ARDUINO = 80;
 	public static final String IP_ARDUINO = "192.168.25.23";
 	public static final int PORTA_ARDUINO = 8888;
