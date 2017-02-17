@@ -5,14 +5,14 @@
 		<dependencies>
 		    <module name="org.json" />
 		    <module name="javax.ws.rs" />
-		    <module name="br.gov.caixa.analytics" />
+		    <!-- <module name="br.gov.caixa.analytics" /> -->
 		</dependencies>
 	</sub-deployment>	
 	<sub-deployment name="siaut-web.war">
 		<dependencies>
 			<module name="org.json" />
 			<module name="javax.ws.rs" />
-			<module name="br.gov.caixa.analytics" />
+			<!-- <module name="br.gov.caixa.analytics" /> -->
 		</dependencies>
 	</sub-deployment>
 </jboss-deployment-structure>
