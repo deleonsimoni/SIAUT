@@ -20,7 +20,7 @@ import javax.inject.Named;
 @Named
 public class SocketCliente {
     
-    public StringBuilder Conexao(final String serverIP, final int serverPort, final int intNuMensagem) throws IOException{
+    public StringBuilder conexao(final String serverIP, final int serverPort, final int intNuMensagem) throws IOException{
     	/*criando uma conecxao para o servidor localizado
     	* em 192.169.1.201 porta 80
     	*/

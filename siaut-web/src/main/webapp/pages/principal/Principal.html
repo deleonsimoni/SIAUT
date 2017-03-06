@@ -1,36 +1,60 @@
 
-<div class="col-sm-8 text-left">
+<div class="col-sm-8 text-left" ng-controller="PrincipalController" >
 
 	<h1>Cozinha</h1>
 	<div class="row content">
-		<div class="padding text-center col-xs-12 col-sm-12 col-md-12 col-lg-12 theme-main-img" align="center">
-            <img id="imagem" ng-src="./imgs/gif/cozinha.jpg" style="height:500px" class="img-responsive">
-        </div>
+		<div
+			class="padding text-center col-xs-12 col-sm-12 col-md-12 col-lg-12 theme-main-img"
+			align="center">
+			<img id="imagem" ng-src="./imgs/gif/cozinha.jpg"
+				style="height: 500px" class="img-responsive">
+		</div>
 	</div>
-	
+
 	<div class="row content">
-		<div class="padding text-center col-xs-6 col-sm-6 col-md-6 col-lg-6 theme-main-img" align="center">
-            <img id="imagem" ng-src="./imgs/gif/gif1.gif" class="img-responsive">
-        </div>
-		<div class="padding text-center col-xs-6 col-sm-6 col-md-6 col-lg-6 theme-main-img" align="center">
-            <img id="imagem" ng-src="./imgs/gif/gif2.gif" class="img-responsive">
-        </div>
+		<div
+			class="padding text-center col-xs-6 col-sm-6 col-md-6 col-lg-6 theme-main-img"
+			align="center">
+			<img id="imagem" ng-src="./imgs/gif/gif1.gif" class="img-responsive">
+		</div>
+		<div
+			class="padding text-center col-xs-6 col-sm-6 col-md-6 col-lg-6 theme-main-img"
+			align="center">
+			<img id="imagem" ng-src="./imgs/gif/gif2.gif" class="img-responsive">
+		</div>
 	</div>
 
+	<div class="">
+		<div class="well">
+			 <button id="Fogao" ng-click="ligarBotao(1)" loading="Processando..." placeholder="Clique para incluir" class="btn btn-sm btn-success" >
+                 <i class="fa fa-bolt">&nbsp;</i>
+                     <span>Fogão</span>
+             </button>
 		
-
-
-		<h1>Sua Casa</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-			eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-			ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-			aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat
-			non proident, sunt in culpa qui officia deserunt mollit anim id est
-			laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt
-			ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-			nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat.</p>
-		<hr>
-		<h3>Test</h3>
-		<p>Lorem ipsum...</p>
+			 <button id="Lampada" ng-click="ligarBotao(2)" loading="Processando..." placeholder="Clique para incluir" class="btn btn-sm btn-danger" >
+                 <i class="fa fa-bolt">&nbsp;</i>
+                     <span>Lampada</span>
+             </button>
+             
+             <button id="Lampada" ng-click="ligarBotao(3)" loading="Processando..." placeholder="Clique para incluir" class="btn btn-sm btn-danger" >
+                 <i class="fa fa-bolt">&nbsp;</i>
+                     <span>Lampada 2</span>
+             </button>
+		</div>
 	</div>
+
+
+	<h1>Sua Casa</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+		eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+		minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+		aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est
+		laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt
+		ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+		nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat.</p>
+	<hr>
+	<h3>Test</h3>
+	<p>Lorem ipsum...</p>
+</div>

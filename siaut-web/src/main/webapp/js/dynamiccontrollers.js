@@ -16,7 +16,7 @@ angular.module('webApp').controller('SplashController', function ($scope, $rootS
         $rootScope.currentview.menu = false;
         $rootScope.currentview.description = 'Tela de Splash';        
     });
-angular.module('webApp').controller('PrincipalController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils) {
+angular.module('webApp').controller('PrincipalController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert) {
         Log.debug("PrincipalController()");
         
         //IMPLEMENTAR OS BOTOES
@@ -27,14 +27,16 @@ angular.module('webApp').controller('PrincipalController', function ($scope, $ro
         $rootScope.currentview.icon = 'fa-home';
         $rootScope.currentview.locked = true;
 		$rootScope.currentview.menu = true;
-        $rootScope.currentview.description = 'Tela Principal';        
+        $rootScope.currentview.description = 'Tela Principal';       
         
-        $scope.ligar = function() {
-        	WebServiceX.create("ws/automacao/ligar", JSON.stringify($scope.container), $rootScope.headers)
+        
+        $scope.ligarBotao = function(id) {
+        	WebServiceX.read("ws/automacao/ligar/"+id, $rootScope.headers)
         	.then(function(res) {
         		if(!res.temErro) {
         			//Funcionou
-        			$scope.listar();
+        			Alert.showMessage("Seu serviço é uma ordem", res.msgsErro[0]);
+        			$scope.$apply();
         		} else if(res.temErro) {
         			//Erro esperado
         			console.info(res.msgsErro[0]);
@@ -42,7 +44,7 @@ angular.module('webApp').controller('PrincipalController', function ($scope, $ro
         		}
         	}, function(xhr, status, err) {
         		//Erro Inesperado
-      				var message = "Falha ao incluir sobreController";
+      				var message = "Falha ao executar ação";
       				if (xhr && xhr.responseText) {
         				try {
         					var response = JSON.parse(xhr.responseText);

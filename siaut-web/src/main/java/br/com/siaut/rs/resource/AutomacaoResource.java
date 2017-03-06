@@ -6,22 +6,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import br.com.siaut.Authentication;
-import br.com.siaut.comunicacao.SocketCliente;
 import br.com.siaut.rs.requisicao.teste.CadastrotesteRequisicao;
 import br.com.siaut.rs.retorno.Retorno;
-import br.com.siaut.rs.service.EletricoService;
 /**
  * 
  * @author SIOGP
@@ -33,6 +32,23 @@ import br.com.siaut.rs.service.EletricoService;
 @Produces({ MediaType.APPLICATION_JSON })
 public class AutomacaoResource extends Resource {
 	private Authentication auth = Authentication.getInstance();
+	
+	@GET @Path("/ligar/{id}")
+	public Response ligarBotao(@HeaderParam("authCode") int authCode, @PathParam("id") int botao) {
+		Response response = null;
+		Retorno retorno = null;
+		
+		//ATENCAAAAAAAAAAO
+		//Chamar ARDUINOOOOOOOOOOOOOOOOOOOOOOOOOO
+		
+		retorno = new Retorno();
+		final List<String> msgsErro = new ArrayList<String>();
+		msgsErro.add("Automação Realizada! Id: " + botao);			
+		retorno.setMsgsErro(msgsErro);	
+        Status status = Status.OK;    
+        response = build(status, retorno);
+		return response;
+	}
 	
 	@POST @Path("/ligar")
 	public Response createCadastroteste(@HeaderParam("authCode") int authCode, CadastrotesteRequisicao requisicao) {
@@ -51,9 +67,6 @@ public class AutomacaoResource extends Resource {
     		return response;
         }            
 	    //retorno = service.createCadastroteste(requisicao);
-        if(retorno!=null && retorno.isTemErro()) {
-        	status = Status.NOT_FOUND;
-        }
         response = build(status, retorno);
 		return response;
 	}
