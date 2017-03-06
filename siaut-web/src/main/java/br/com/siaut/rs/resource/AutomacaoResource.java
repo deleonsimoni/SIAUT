@@ -6,6 +6,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,6 +22,7 @@ import javax.ws.rs.core.Response.Status;
 import br.com.siaut.Authentication;
 import br.com.siaut.rs.requisicao.teste.CadastrotesteRequisicao;
 import br.com.siaut.rs.retorno.Retorno;
+import br.com.siaut.rs.service.EletricoService;
 /**
  * 
  * @author SIOGP
@@ -33,17 +35,31 @@ import br.com.siaut.rs.retorno.Retorno;
 public class AutomacaoResource extends Resource {
 	private Authentication auth = Authentication.getInstance();
 	
+	@EJB
+	private EletricoService serviceEletricidade;
+	
 	@GET @Path("/ligar/{id}")
-	public Response ligarBotao(@HeaderParam("authCode") int authCode, @PathParam("id") int botao) {
+	public Response ligarBotao(@HeaderParam("authCode") int authCode, @PathParam("id") int rele) {
 		Response response = null;
 		Retorno retorno = null;
+		retorno = new Retorno();
+		final List<String> msgsErro = new ArrayList<String>();
 		
 		//ATENCAAAAAAAAAAO
 		//Chamar ARDUINOOOOOOOOOOOOOOOOOOOOOOOOOO
+		//DESCOMENTAR
+		/*try {
+			serviceEletricidade.acionarRele(rele);
+		} catch (IOException e) {
+			e.printStackTrace();
+			msgsErro.add("Erro: Code 007");			
+			retorno.setMsgsErro(msgsErro);	
+	        Status status = Status.OK;    
+	        response = build(status, retorno);
+			return response;
+		}*/
 		
-		retorno = new Retorno();
-		final List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Automação Realizada! Id: " + botao);			
+		msgsErro.add("Automação Realizada! Id: " + rele);			
 		retorno.setMsgsErro(msgsErro);	
         Status status = Status.OK;    
         response = build(status, retorno);
