@@ -25,7 +25,7 @@ import br.com.siaut.rs.retorno.Retorno;
 import br.com.siaut.rs.service.EletricoService;
 /**
  * 
- * @author SIOGP
+ * @author 
  *
  */
 @RequestScoped
