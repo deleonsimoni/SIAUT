@@ -48,34 +48,34 @@ public class EletricoService implements Serializable{
 	
 	public void ligarLuzArduino() throws IOException{
 		setStatusLuz("Ligada!");
-		serviceSocket.Conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_LUZ);
+		serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_LUZ);
 	}
 	
 	public void desligarLuzArduino() throws IOException{
 		setStatusLuz("Desligada!");
-		serviceSocket.Conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_LUZ);
+		serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_LUZ);
 
 	}
 	
 	public void ligarPrimeiroReleArduino() throws IOException{
 		setStatusLuz("Primeiro Rel� Ligardo!");
-		serviceSocket.Conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_PRIMEIRO_RELE);
+		serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_PRIMEIRO_RELE);
 	}
 	
 	public void desligarPrimeiroReleArduino() throws IOException{
 		setStatusLuz("Primeiro Rel� Desligado!");
-		serviceSocket.Conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_PRIMEIRO_RELE);
+		serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_PRIMEIRO_RELE);
 
 	}
 
 	public void ligarArArduino() throws IOException{
 		setStatusLuz("Ligar Aro!");
-		serviceSocket.Conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_AR);
+		serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_AR);
 	}
 	
 	public void desligarArArduino() throws IOException{
 		setStatusLuz("Desligar Ar!");
-		serviceSocket.Conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_AR);
+		serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_AR);
 
 	}
 	
