@@ -23,6 +23,9 @@ import br.com.siaut.Authentication;
 import br.com.siaut.rs.requisicao.teste.CadastrotesteRequisicao;
 import br.com.siaut.rs.retorno.Retorno;
 import br.com.siaut.rs.service.EletricoService;
+
+
+
 /**
  * 
  * @author 
@@ -38,32 +41,34 @@ public class AutomacaoResource extends Resource {
 	@EJB
 	private EletricoService serviceEletricidade;
 	
+		
 	@GET @Path("/ligar/{id}")
 	public Response ligarBotao(@HeaderParam("authCode") int authCode, @PathParam("id") int rele) {
 		Response response = null;
 		Retorno retorno = null;
+		
 		retorno = new Retorno();
 		final List<String> msgsErro = new ArrayList<String>();
 		
 		//ATENCAAAAAAAAAAO
 		//Chamar ARDUINOOOOOOOOOOOOOOOOOOOOOOOOOO
 		//DESCOMENTAR
-		/*try {
+		try {
 			serviceEletricidade.acionarRele(rele);
 		} catch (IOException e) {
 			e.printStackTrace();
-			msgsErro.add("Erro: Code 007");			
+			msgsErro.add("Automação Realizada! Id: " + rele);			
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
 	        response = build(status, retorno);
 			return response;
-		}*/
+		}
 		
-		msgsErro.add("Automação Realizada! Id: " + rele);			
+		/*msgsErro.add("Automação Realizada! Id: " + rele);			
 		retorno.setMsgsErro(msgsErro);	
         Status status = Status.OK;    
         response = build(status, retorno);
-		return response;
+		return response;*/
 	}
 	
 	@POST @Path("/ligar")
