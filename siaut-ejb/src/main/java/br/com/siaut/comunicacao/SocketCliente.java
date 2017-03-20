@@ -47,24 +47,46 @@ public class SocketCliente {
 	    		//out.flush();
 		    	break;
 	    	case 3:
-	    		out.writeBytes("r1=on\n");       //enviando uma string
+	    		out.writeBytes("r1=on\n");       //enviando uma string para ligar lâmpada.
 	    		//out.writeUTF("Parar");
-	    		out.write(12);
+	    		out.write(3);
 		    	break;
 	    	case 4:
-	    		out.writeBytes("r1=off\n");       //enviando uma string
+	    		out.writeBytes("r1=off\n");       //enviando uma string para desligar.
+	    		out.write(5);
+		    	break;
+	    	case 5:
+	    		out.writeBytes("r2=on\n");       //enviando uma string para ligar lâmpada
 	    		//out.writeUTF("Virar");
-	    		out.write(12);
+	    		out.write(5);
+		    	break;
+	    	case 7:
+	    		out.writeBytes("r3=on\n");       //enviando uma string para ligar lâmpada
+	    		out.write(7);
+		    	break;
+	    	case 9:
+	    		out.writeBytes("r4=on\n");       //enviando uma string para ligar lâmpada
+	    		out.write(9);
+		    	break;
+	    	case 11:
+	    		out.writeBytes("r5=on\n");       //enviando uma string para ligar lâmpada
+	    		out.write(11);
+		    	break;
+	    	case 13:
+	    		out.writeBytes("r6=on\n");       //enviando uma string para ligar lâmpada
+	    		out.write(13);
 		    	break;
 	    	case 15:
-	    		out.writeBytes("rar=on\n");       //enviando uma string
-	    		//out.writeUTF("Girar");
-	    		out.write(12);
+	    		out.writeBytes("r7=on\n");       //enviando uma string para ligar lâmpada
+	    		out.write(15);
 		    	break;
-	    	case 16:
-	    		out.writeBytes("rar=off\n");       //enviando uma string
-	    		//out.writeUTF("Gravar");
-	    		out.write(12);
+	    	case 17:
+	    		out.writeBytes("r8=on\n");       //enviando uma string para ligar lâmpada
+	    		out.write(17);
+		    	break;
+	    	case 19:
+	    		out.writeBytes("piscar=on\n");       //enviando uma string para piscar lâmpadas.
+	    		out.write(17);
 		    	break;
 	        default:
 	        	System.out.println("Este n�o � um n�mero v�lido!");

@@ -1,4 +1,5 @@
 	package br.com.siaut.rs.resource;
+import java.io.IOException;
 /*
 	Nesta classe � definido o Webservice do seu projeto. 	
 	Para este template cada funcionalidade possui seu proprio Webservice que � compartilhado por suas telas
@@ -61,8 +62,9 @@ public class AutomacaoResource extends Resource {
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
 	        response = build(status, retorno);
-			return response;
+			//return response;
 		}
+		return response;
 		
 		/*msgsErro.add("Automação Realizada! Id: " + rele);			
 		retorno.setMsgsErro(msgsErro);	

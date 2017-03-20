@@ -43,22 +43,34 @@ public class EletricoService implements Serializable {
 		switch (rele) {
 		case 1:
 			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_LUZ);
-			return "Rele 1 Ativado";
+			return "Todas lâmpadas ativadas.";
 		case 2:
-			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_AR);
-			return "Rele 2 Ativado";
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_LUZ);
+			return "Todas lâmpadas desativadas.";
 		case 3:
 			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_PRIMEIRO_RELE);
-			return "Rele 3 Ativado";
-		case 4:
-			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_AR);
-			return "Rele 4 Ativado";
+			return "Primeira lâmpada ativada.";
 		case 5:
-			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_LUZ);
-			return "Rele 5 Ativado";
-		case 6:
-			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.DESLIGAR_PRIMEIRO_RELE);
-			return "Rele 6 Ativado";
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_SEGUNDO_RELE);
+			return "Segunda lâmpada ativada.";
+		case 7:
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_TERCEIRO_RELE);
+			return "Terceira lâmpada ativada.";
+		case 9:
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_QUARTO_RELE);
+			return "Quarta lâmpada ativada.";
+		case 11:
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_QUINTO_RELE);
+			return "Quinta lâmpada ativada.";
+		case 13:
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_SEXTO_RELE);
+			return "Sexta lâmpada ativada.";
+		case 15:
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_SETIMO_RELE);
+			return "Sétima lâmpada ativada.";
+		case 17:
+			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_OITAVO_RELE);
+			return "Oitava lâmpada ativada.";
 		default:
 			return "Nenhum rele encontrado";
 		}
