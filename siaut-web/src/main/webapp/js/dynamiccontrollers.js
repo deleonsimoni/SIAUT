@@ -28,21 +28,24 @@ angular.module('webApp').controller('PrincipalController', function ($scope, $ro
         $rootScope.currentview.locked = true;
 		$rootScope.currentview.menu = true;
         $rootScope.currentview.description = 'Tela Principal';       
+        $scope.lampadaCozinhaLigado = false;
         
-        
-        $scope.ligarBotao = function(id) {
-        	WebServiceX.read("ws/automacao/ligar/"+id, $rootScope.headers)
+        $scope.ligarBotao = function(id, status) {
+        	WebServiceX.read("ws/automacao/ligar/"+id+"/"+status, $rootScope.headers)
         	.then(function(res) {
         		if(!res.temErro) {
+        			$scope.lampadaCozinhaLigado = true;
         			//Funcionou
         			Alert.showMessage("Seu serviço é uma ordem", res.msgsErro[0]);
         			$scope.$apply();
         		} else if(res.temErro) {
         			//Erro esperado
+        			Alert.showMessage("Canal fechado", res.msgsErro[0]);
         			console.info(res.msgsErro[0]);
         			$scope.$apply();
         		}
         	}, function(xhr, status, err) {
+        		
         		//Erro Inesperado
       				var message = "Falha ao executar ação";
       				if (xhr && xhr.responseText) {
