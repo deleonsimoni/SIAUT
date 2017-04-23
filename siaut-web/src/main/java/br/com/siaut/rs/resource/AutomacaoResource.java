@@ -51,10 +51,7 @@ public class AutomacaoResource extends Resource {
 		ComponentesRetorno retorno = new ComponentesRetorno();
 		
 		final List<String> msgsErro = new ArrayList<String>();
-		
-		//ATENCAAAAAAAAAAO
-		//Chamar ARDUINOOOOOOOOOOOOOOOOOOOOOOOOOO
-		//DESCOMENTAR
+
 		try {
 			retorno.setObjComponentesDTO(serviceEletricidade.acionarRele(rele, situacao));
 			msgsErro.add("Automação Realizada! Id: " + rele);			
