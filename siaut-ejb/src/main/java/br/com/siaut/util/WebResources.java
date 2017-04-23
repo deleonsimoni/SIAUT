@@ -20,9 +20,11 @@ public final class WebResources implements Serializable {
 	//public static final String IP_ARDUINO = "192.168.1.7 ";
 	//public static final int PORTA_ARDUINO = 80;
 	public static final String IP_ARDUINO = "192.168.25.41";
-	public static final int PORTA_ARDUINO = 7077;
-	public static final int LIGAR_LUZ = 1;
-	public static final int DESLIGAR_LUZ = 2;
+	public static final String PORTA_ARDUINO = "7077";
+	public static final String DESLIGADA = "0";
+	public static final String LIGADA = "1";		
+	public static final String LIGAR_LUZ = "ligado";
+	public static final String DESLIGAR_LUZ = "desligado";
 	public static final int LIGAR_PRIMEIRO_RELE = 3;
 	public static final int DESLIGAR_PRIMEIRO_RELE = 4;
 	

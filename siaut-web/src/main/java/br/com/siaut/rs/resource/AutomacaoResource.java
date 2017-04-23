@@ -21,7 +21,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import br.com.siaut.Authentication;
+import br.com.siaut.rs.DTO.ComponentesDTO;
 import br.com.siaut.rs.requisicao.teste.CadastrotesteRequisicao;
+import br.com.siaut.rs.resource.retorno.ComponentesRetorno;
 import br.com.siaut.rs.retorno.Retorno;
 import br.com.siaut.rs.service.EletricoService;
 
@@ -43,19 +45,22 @@ public class AutomacaoResource extends Resource {
 	private EletricoService serviceEletricidade;
 	
 		
-	@GET @Path("/ligar/{id}")
-	public Response ligarBotao(@HeaderParam("authCode") int authCode, @PathParam("id") int rele) {
+	@GET @Path("/ligar/{id}/{status}")
+	public Response ligarBotao(@HeaderParam("authCode") int authCode, @PathParam("id") Integer rele, @PathParam("status") Integer situacao) {
 		Response response = null;
-		Retorno retorno = null;
+		ComponentesRetorno retorno = new ComponentesRetorno();
 		
-		retorno = new Retorno();
 		final List<String> msgsErro = new ArrayList<String>();
 		
 		//ATENCAAAAAAAAAAO
 		//Chamar ARDUINOOOOOOOOOOOOOOOOOOOOOOOOOO
 		//DESCOMENTAR
 		try {
-			serviceEletricidade.acionarRele(rele);
+			retorno.setObjComponentesDTO(serviceEletricidade.acionarRele(rele, situacao));
+			msgsErro.add("Automação Realizada! Id: " + rele);			
+			retorno.setMsgsErro(msgsErro);	
+	        Status status = Status.OK;    
+	        response = build(status, retorno);
 		} catch (IOException e) {
 			e.printStackTrace();
 			msgsErro.add("Automação Realizada! Id: " + rele);			

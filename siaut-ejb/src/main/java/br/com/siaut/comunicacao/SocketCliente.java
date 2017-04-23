@@ -10,6 +10,8 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 
+import br.com.siaut.util.WebResources;
+
 
 /**
  *
@@ -20,7 +22,7 @@ import javax.inject.Named;
 @Named
 public class SocketCliente {
     
-    public StringBuilder conexao(final String serverIP, final int serverPort, final int intNuMensagem) throws IOException{
+    public StringBuilder conexao(final String serverIP, final Integer serverPort, final Integer intRele, final String strSituacao) throws IOException{
     	/*criando uma conecxao para o servidor localizado
     	* em 192.169.1.201 porta 80
     	*/
@@ -31,8 +33,21 @@ public class SocketCliente {
     	DataOutputStream out=new DataOutputStream(client.getOutputStream());
     	StringBuilder stbLista = new StringBuilder();
     	String strAux = "";
+    	Integer intTeste = 20;
     	
-    	switch (intNuMensagem) {
+    	if (strSituacao.equals(WebResources.LIGAR_LUZ)){
+    	  //enviando uma string para ligar lâmpada.
+    	  out.writeBytes("r"+intRele+"=on\n"); 
+    	}
+    	else if (strSituacao.equals(WebResources.DESLIGAR_LUZ)){
+    		   //enviando uma string para ligar lâmpada.
+      	       out.writeBytes("r"+intRele+"=off\n"); 
+    	}
+		out.write(3);
+    	
+    	
+    	
+    	switch (intTeste) {
 	    	case 1:
 	    		out.writeBytes("Ligar Tudo\n");       //enviando uma string
 	    		//out.writeChars("ggg"); 
@@ -47,7 +62,7 @@ public class SocketCliente {
 	    		//out.flush();
 		    	break;
 	    	case 3:
-	    		out.writeBytes("r1=on\n");       //enviando uma string para ligar lâmpada.
+	    		out.writeBytes("r1=" + String.valueOf(strSituacao) +"\n");       //enviando uma string para ligar lâmpada.
 	    		//out.writeUTF("Parar");
 	    		out.write(3);
 		    	break;
