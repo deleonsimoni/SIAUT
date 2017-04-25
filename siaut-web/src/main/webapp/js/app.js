@@ -17,8 +17,7 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProviderRef = $stateProvider;
-
-        
+  
 
           $stateProvider.state(STATE_INIT,{
                 url: '/',
@@ -61,10 +60,8 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
                     }
                 }
             });            
-            
-			
-			
-						var state = {
+            			
+			var state = {
                 url: '/splash',
                 views: {
                     'page-container': {
@@ -73,19 +70,10 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
                 }                
             };
             
-            
-					  
-					  			
-            $stateProvider.state('splash',state);
-            
-            
-            
-            
-
-
-			
-			
-						var state = {
+            					  			
+            $stateProvider.state('splash',state);       
+            		
+			var state = {
                 url: '/principal',
                 views: {
                     'header-container': {
@@ -106,20 +94,10 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
                     }
                 }                
             };
-            
-            
-					  
 					  			
             $stateProvider.state('principal',state);
-            
-            
-            
-            
 
-
-			
-			
-						var state = {
+			var state = {
                 url: '/sobre',
                 views: {
                     'header-container': {
@@ -139,20 +117,11 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
                     }
                 }                
             };
-            
-            
-					  
+            		  
 					  			
             $stateProvider.state('sobre',state);
-            
-            
-            
-            
-
-
-			
-			
-						var state = {
+            		
+			var state = {
                 url: '/cadastroteste',
                 views: {
                     'header-container': {
@@ -172,20 +141,11 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
                     }
                 }                
             };
-            
-            
-					  
+            		  
 					  			
             $stateProvider.state('cadastroteste',state);
             
-            
-            
-            
-
-
-			
-			
-						var state = {
+            var state = {
                 url: '/formularioteste',
                 views: {
                     'header-container': {
@@ -205,19 +165,10 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
                     }
                 }                
             };
-            
-            
-					  
+            		  
 					  			
             $stateProvider.state('formularioteste',state);
             
-            
-            
-            
-
-
-
-
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/');
     });
