@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.siaut.comunicacao.SocketCliente;
 import br.com.siaut.rs.DTO.ComponentesDTO;
-import br.com.siaut.util.PoolString;
+import br.com.siaut.util.MensagensAplicacao;
 import br.com.siaut.util.WebResources;
 
 /**
@@ -48,16 +48,16 @@ public class EletricoService implements Serializable {
 			LOGGER.info("#SIAUT Tentando Liga-lo: " + rele);
 			serviceSocket.conexao(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), rele, WebResources.LIGAR_LUZ);
 			objComponentesDTO.setLngSituacao(1L);
-			objComponentesDTO.setStrNmCampo(PoolString.DESLIGAR_LAMPADA);
-			objComponentesDTO.setStrDeMensagem(PoolString.LIGAR_LAMPADA_SUCESSO);	
+			objComponentesDTO.setStrNmCampo(MensagensAplicacao.DESLIGAR_LAMPADA);
+			objComponentesDTO.setStrDeMensagem(MensagensAplicacao.LIGAR_LAMPADA_SUCESSO);	
 			
 		}
 		else if (situacao == WebResources.LIGADA) {
 			LOGGER.info("#SIAUT Tentando Desliga-lo: " + rele);
 			serviceSocket.conexao(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), rele, WebResources.DESLIGAR_LUZ);
 			objComponentesDTO.setLngSituacao(0L);
-			objComponentesDTO.setStrNmCampo(PoolString.LIGAR_LAMPADA);
-			objComponentesDTO.setStrDeMensagem(PoolString.DESLIGAR_LAMPADA_SUCESSO);				
+			objComponentesDTO.setStrNmCampo(MensagensAplicacao.LIGAR_LAMPADA);
+			objComponentesDTO.setStrDeMensagem(MensagensAplicacao.DESLIGAR_LAMPADA_SUCESSO);				
 		}
 		
 		return objComponentesDTO;

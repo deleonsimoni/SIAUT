@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response.Status;
 
 import br.com.siaut.rs.resource.retorno.ComponentesRetorno;
 import br.com.siaut.rs.service.ComponentesService;
+import br.com.siaut.util.MensagensAplicacao;
 
 @RequestScoped
 @Path("/componentesresource")
@@ -35,7 +36,7 @@ public class ComponentesResource extends Resource {
 
 		try {
 			retorno.setLstComponentesEntity(srvComponentesService.configuracoes());
-			msgsErro.add("Configurações carregadas ");			
+			msgsErro.add(MensagensAplicacao.SUCESSO_CONFIGURACOES);			
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
 	        retorno.setTemErro(Boolean.FALSE);
@@ -43,7 +44,7 @@ public class ComponentesResource extends Resource {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-			msgsErro.add("Problemas no carregamento das configurações. ");			
+			msgsErro.add(MensagensAplicacao.CARREGADAS_NAO_SUCESSO);			
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
 	        retorno.setTemErro(Boolean.TRUE);

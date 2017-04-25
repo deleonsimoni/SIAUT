@@ -21,11 +21,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import br.com.siaut.Authentication;
-import br.com.siaut.rs.DTO.ComponentesDTO;
 import br.com.siaut.rs.requisicao.teste.CadastrotesteRequisicao;
 import br.com.siaut.rs.resource.retorno.ComponentesRetorno;
 import br.com.siaut.rs.retorno.Retorno;
 import br.com.siaut.rs.service.EletricoService;
+import br.com.siaut.util.MensagensAplicacao;
 
 
 
@@ -54,13 +54,14 @@ public class AutomacaoResource extends Resource {
 
 		try {
 			retorno.setObjComponentesDTO(serviceEletricidade.acionarRele(rele, situacao));
-			msgsErro.add("Automação Realizada! Id: " + rele);			
+			msgsErro.add(MensagensAplicacao.SUCESSO_AUTOMACAO + rele);			
+
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
 	        response = build(status, retorno);
 		} catch (IOException e) {
 			e.printStackTrace();
-			msgsErro.add("Automação Realizada! Id: " + rele);			
+			msgsErro.add(MensagensAplicacao.SUCESSO_AUTOMACAO + rele);			
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
 	        response = build(status, retorno);
@@ -85,7 +86,7 @@ public class AutomacaoResource extends Resource {
 			retorno = new Retorno();
 			retorno.setTemErro(true);
 			final List<String> msgsErro = new ArrayList<String>();
-			msgsErro.add("Código de acesso " + Integer.toString(authCode) + " não autorizado");			
+			msgsErro.add(MensagensAplicacao.CODIGO_NAO_AUTORIZADO + Integer.toString(authCode));			
 			retorno.setMsgsErro(msgsErro);			
         	status = Status.UNAUTHORIZED;
             response = build(status, retorno);            

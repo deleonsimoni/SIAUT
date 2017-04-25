@@ -7,15 +7,6 @@
 var DEFAULT_VIEW = "splash";
 angular.module('webApp').controller('SplashController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils) {
         Log.debug("SplashController()");
-        $scope.container = {};     
-        $rootScope.currentview.id = 'splash';
-        $rootScope.currentview.group = 'Splash';
-        $rootScope.currentview.title = 'Splash';
-        $rootScope.currentview.icon = 'fa-picture-o';
-        $rootScope.currentview.locked = false;
-        $rootScope.currentview.menu = false;
-        $rootScope.currentview.description = 'Tela de Splash';        
-        
     });
 
 angular.module('webApp').controller('PrincipalController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert) {

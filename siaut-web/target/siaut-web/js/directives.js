@@ -9,6 +9,21 @@
             }
         };
     })
+    
+    .directive('botaoPersonalizado', function(){
+    var ddo = {};
+
+    ddo.restrict = 'AE';
+
+    ddo.scope = {
+        codigo: '@'
+    };
+
+    ddo.templateUrl = 'diretivas/Principal.html';
+
+    return ddo;
+    })
+    
     .directive('scrollOnClick', function() {
         return {
             restrict: 'A',
@@ -176,3 +191,5 @@
             }
         }
     });//Analytics.1.0.7
+
+
