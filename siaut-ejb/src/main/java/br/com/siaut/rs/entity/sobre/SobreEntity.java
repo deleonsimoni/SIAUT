@@ -2,7 +2,7 @@
 import br.com.siaut.rs.entity.BaseEntity;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class SobreEntity implements BaseEntity {

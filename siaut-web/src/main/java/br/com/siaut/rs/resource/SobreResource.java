@@ -25,9 +25,10 @@ import br.com.siaut.Authentication;
 import br.com.siaut.rs.requisicao.sobre.SobreRequisicao;
 import br.com.siaut.rs.retorno.Retorno;
 import br.com.siaut.rs.service.SobreService;
+import br.com.siaut.util.MensagensAplicacao;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @RequestScoped
@@ -53,7 +54,7 @@ public class SobreResource extends Resource {
 			retorno = new Retorno();
 			retorno.setTemErro(true);
 			final List<String> msgsErro = new ArrayList<String>();
-			msgsErro.add("Código de acesso " + Integer.toString(authCode) + " não autorizado");			
+			msgsErro.add(MensagensAplicacao.CODIGO_NAO_AUTORIZADO + Integer.toString(authCode));			
 			retorno.setMsgsErro(msgsErro);			
         	status = Status.UNAUTHORIZED;
             response = build(status, retorno);            
@@ -77,7 +78,7 @@ public class SobreResource extends Resource {
 			retorno = new Retorno();
 			retorno.setTemErro(true);
 			final List<String> msgsErro = new ArrayList<String>();
-			msgsErro.add("Código de acesso " + Integer.toString(authCode) + " não autorizado");			
+			msgsErro.add(MensagensAplicacao.CODIGO_NAO_AUTORIZADO + Integer.toString(authCode));			
 			retorno.setMsgsErro(msgsErro);			
         	status = Status.UNAUTHORIZED;
             response = build(status, retorno);            
@@ -101,7 +102,7 @@ public class SobreResource extends Resource {
 			retorno = new Retorno();
 			retorno.setTemErro(true);
 			final List<String> msgsErro = new ArrayList<String>();
-			msgsErro.add("Código de acesso " + Integer.toString(authCode) + " não autorizado");			
+			msgsErro.add(MensagensAplicacao.CODIGO_NAO_AUTORIZADO + Integer.toString(authCode));			
 			retorno.setMsgsErro(msgsErro);			
         	status = Status.UNAUTHORIZED;
             response = build(status, retorno);            
@@ -125,7 +126,7 @@ public class SobreResource extends Resource {
 			retorno = new Retorno();
 			retorno.setTemErro(true);
 			final List<String> msgsErro = new ArrayList<String>();
-			msgsErro.add("Código de acesso " + Integer.toString(authCode) + " não autorizado");			
+			msgsErro.add(MensagensAplicacao.CODIGO_NAO_AUTORIZADO + Integer.toString(authCode));			
 			retorno.setMsgsErro(msgsErro);			
         	status = Status.UNAUTHORIZED;
             response = build(status, retorno);            
@@ -149,7 +150,7 @@ public class SobreResource extends Resource {
 			retorno = new Retorno();
 			retorno.setTemErro(true);
 			final List<String> msgsErro = new ArrayList<String>();
-			msgsErro.add("Código de acesso " + Integer.toString(authCode) + " não autorizado");			
+			msgsErro.add(MensagensAplicacao.CODIGO_NAO_AUTORIZADO + Integer.toString(authCode));			
 			retorno.setMsgsErro(msgsErro);			
         	status = Status.UNAUTHORIZED;
             response = build(status, retorno);            

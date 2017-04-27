@@ -19,7 +19,7 @@ import java.util.Random;
 
 *//**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  *//*
 public final class Metrics{

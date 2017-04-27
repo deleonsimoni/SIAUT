@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public interface BaseEntity extends Serializable {

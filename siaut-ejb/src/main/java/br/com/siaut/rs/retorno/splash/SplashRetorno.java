@@ -11,7 +11,7 @@ import br.com.siaut.rs.entity.splash.SplashEntity;
 import br.com.siaut.rs.retorno.Retorno;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @XmlRootElement

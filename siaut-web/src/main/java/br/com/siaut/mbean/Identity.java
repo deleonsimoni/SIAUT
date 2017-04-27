@@ -31,7 +31,7 @@ import br.com.siaut.Authentication;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
   
@@ -39,8 +39,13 @@ import br.com.siaut.Authentication;
 @Startup
 public class Identity implements IdentityMBean {
 	
+	private static Date data = new Date();
+
 	private static final Logger LOG = Logger.getLogger(Identity.class);
 	
+	private static final SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+	private static final SimpleDateFormat hr = new SimpleDateFormat("HH:mm:ss.SSS");
+
 	private static final String BEAN_ID = "br.com.app:deployment=siaut-ear.ear";
 	private static final int CODE = 001;
 	private static final String ID = "SIAUT";
@@ -49,7 +54,7 @@ public class Identity implements IdentityMBean {
 	private static final String VERSION = "1.0";
 	private static final String CONTEXT = "/siaut";
 	private static final String ICON = "fa-ils";
-	private static final String EXTRA_INFO = "lastchange:'15/02/2017 15:07:20',menu:true,contact:''";
+	private static final String EXTRA_INFO = "Data e hora da última atualização:'"+dt.format(data) +" "+hr.format(data)+" ',menu:true,contact:''";
 	private static final String DATE =  "15-02-2017 15:07";
 	private static final String FRAMEWORK = "ANGULARJS - JAVA";
 	private static final String USER = "ARDUINO";
@@ -170,7 +175,7 @@ public class Identity implements IdentityMBean {
 	@Override
 	public Date getDate() {
 		Date result = null;
-		DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ssss");
 		try {
 			result = df.parse(DATE);
 		} catch (ParseException e) {

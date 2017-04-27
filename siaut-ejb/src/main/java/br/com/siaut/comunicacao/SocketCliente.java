@@ -16,7 +16,7 @@ import br.com.siaut.util.WebResources;
 
 /**
  *
- * @author Touca
+ * @author SIAUT
  */
 @Stateless
 @LocalBean

@@ -15,9 +15,10 @@ import org.apache.log4j.Logger;
 import br.com.siaut.rs.entity.principal.PrincipalEntity;
 import br.com.siaut.rs.requisicao.principal.PrincipalRequisicao;
 import br.com.siaut.rs.retorno.principal.PrincipalRetorno;
+import br.com.siaut.util.MensagensAplicacao;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @Stateless
@@ -52,7 +53,7 @@ public class PrincipalService {
 	   principal.setImagem(requisicao.getImagem());
 		elementosPrincipal.put(principal.getId(), principal);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Inclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.INCLUSAO_SUCESSO);
 		PrincipalRetorno retorno = new PrincipalRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -81,7 +82,7 @@ public class PrincipalService {
 		LOGGER.info("Chamando o metodo: read("+id+")");
 		PrincipalEntity principal = (PrincipalEntity) elementosPrincipal.get(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura por \"id\" feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO + id);
 		PrincipalRetorno retorno = new PrincipalRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -98,7 +99,7 @@ public class PrincipalService {
 		elementosPrincipal.remove(id);
 		elementosPrincipal.put(id, principal);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Atualização feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.ALTERACAO_SUCESSO + id);
 		PrincipalRetorno retorno = new PrincipalRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -112,7 +113,7 @@ public class PrincipalService {
 		LOGGER.info("Chamando o metodo: delete("+id+")");
 		elementosPrincipal.remove(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Exclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.EXCLUSAO_SUCESSO + id);
 		PrincipalRetorno retorno = new PrincipalRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);

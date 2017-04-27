@@ -21,7 +21,7 @@ import br.com.siaut.util.MensagensAplicacao;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @RequestScoped

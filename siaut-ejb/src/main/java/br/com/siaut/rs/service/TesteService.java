@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Named;
+
 import org.apache.log4j.Logger;
 
 import br.com.siaut.rs.entity.teste.CadastrotesteEntity;
@@ -18,9 +20,10 @@ import br.com.siaut.rs.requisicao.teste.CadastrotesteRequisicao;
 import br.com.siaut.rs.requisicao.teste.FormulariotesteRequisicao;
 import br.com.siaut.rs.retorno.teste.CadastrotesteRetorno;
 import br.com.siaut.rs.retorno.teste.FormulariotesteRetorno;
+import br.com.siaut.util.MensagensAplicacao;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @Stateless
@@ -66,7 +69,7 @@ public class TesteService {
 	   cadastroteste.setRetornar(requisicao.getRetornar());
 		elementosCadastroteste.put(cadastroteste.getId(), cadastroteste);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Inclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.INCLUSAO_SUCESSO);
 		CadastrotesteRetorno retorno = new CadastrotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -79,7 +82,7 @@ public class TesteService {
 	public CadastrotesteRetorno readAllCadastroteste() {
 		LOGGER.info("Chamando o metodo: readAll()");
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.LISTAGEM_SUCESSO);
 		CadastrotesteRetorno retorno = new CadastrotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -95,7 +98,7 @@ public class TesteService {
 		LOGGER.info("Chamando o metodo: read("+id+")");
 		CadastrotesteEntity cadastroteste = (CadastrotesteEntity) elementosCadastroteste.get(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura por \"id\" feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO + id);
 		CadastrotesteRetorno retorno = new CadastrotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -117,7 +120,7 @@ public class TesteService {
 		elementosCadastroteste.remove(id);
 		elementosCadastroteste.put(id, cadastroteste);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Atualização feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO + id);
 		CadastrotesteRetorno retorno = new CadastrotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -131,7 +134,7 @@ public class TesteService {
 		LOGGER.info("Chamando o metodo: delete("+id+")");
 		elementosCadastroteste.remove(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Exclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.EXCLUSAO_SUCESSO + id);
 		CadastrotesteRetorno retorno = new CadastrotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -152,7 +155,7 @@ public class TesteService {
 	   formularioteste.setCancelar(requisicao.getCancelar());
 		elementosFormularioteste.put(formularioteste.getId(), formularioteste);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Inclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.INCLUSAO_SUCESSO);
 		FormulariotesteRetorno retorno = new FormulariotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -165,7 +168,7 @@ public class TesteService {
 	public FormulariotesteRetorno readAllFormularioteste() {
 		LOGGER.info("Chamando o metodo: readAll()");
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.LISTAGEM_SUCESSO);
 		FormulariotesteRetorno retorno = new FormulariotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -181,7 +184,7 @@ public class TesteService {
 		LOGGER.info("Chamando o metodo: read("+id+")");
 		FormulariotesteEntity formularioteste = (FormulariotesteEntity) elementosFormularioteste.get(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura por \"id\" feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO + id);
 		FormulariotesteRetorno retorno = new FormulariotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -203,7 +206,7 @@ public class TesteService {
 		elementosFormularioteste.remove(id);
 		elementosFormularioteste.put(id, formularioteste);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Atualização feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.ALTERACAO_SUCESSO + id);
 		FormulariotesteRetorno retorno = new FormulariotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -217,7 +220,7 @@ public class TesteService {
 		LOGGER.info("Chamando o metodo: delete("+id+")");
 		elementosFormularioteste.remove(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Exclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.EXCLUSAO_SUCESSO + id);
 		FormulariotesteRetorno retorno = new FormulariotesteRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);

@@ -5,7 +5,7 @@ import javax.ws.rs.core.Response.Status;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class Resource {

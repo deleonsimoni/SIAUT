@@ -2,7 +2,7 @@ package br.com.siaut.exception;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class AuthenticationException extends GeneralException {
@@ -20,16 +20,16 @@ public class AuthenticationException extends GeneralException {
 	private static final int ERRO_511 = 511;
 	private static final int ERRO_510 = 510;
 	
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_NOT_FOUND = new GeneralException(ERRO_510,"Usu?rio %s n?o foi localizado");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_PASS_INVALID = new GeneralException(ERRO_511,"A senha informada n?o ? v?lida");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_DISABLED = new GeneralException(ERRO_512,"Este usu?rio ainda n?o foi habilitado, contate o administrador");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_REGISTER_ERROR = new GeneralException(ERRO_513,"Falha ao verificar usu?rio");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_ALREADY_EXISTS = new GeneralException(ERRO_514,"Us?rio %s j? foi registrado");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_NOT_PRIVILEGED = new GeneralException(ERRO_515,"O usu?rio n?o possui acesso a esta informa??o");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_UPDATE_ERROR = new GeneralException(ERRO_516,"Falha ao atualizar usu?rio");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_REMOVE_ERROR = new GeneralException(ERRO_517,"Falha ao remover usu?rio %s");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_NEWPASS_ERROR = new GeneralException(ERRO_518,"Falha ao processar nova senha");
-	public static final GeneralException RESPONSE_CODE_ERROR_USER_PASS_NOT_DEFINED = new GeneralException(ERRO_519,"O usu?rio n?o possui senha de acesso definida");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_NOT_FOUND = new GeneralException(ERRO_510,"Usuário não foi localizado.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_PASS_INVALID = new GeneralException(ERRO_511,"A senha informada não é válida.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_DISABLED = new GeneralException(ERRO_512,"Este usuário ainda não foi habilitado, contate o administrador.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_REGISTER_ERROR = new GeneralException(ERRO_513,"Falha ao verificar usuário.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_ALREADY_EXISTS = new GeneralException(ERRO_514,"Usário já foi cadastrado.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_NOT_PRIVILEGED = new GeneralException(ERRO_515,"O usuário não possui acesso a esta informação.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_UPDATE_ERROR = new GeneralException(ERRO_516,"Falha ao atualizar usuário.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_REMOVE_ERROR = new GeneralException(ERRO_517,"Falha ao remover usuário.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_NEWPASS_ERROR = new GeneralException(ERRO_518,"Falha ao processar nova senha.");
+	public static final GeneralException RESPONSE_CODE_ERROR_USER_PASS_NOT_DEFINED = new GeneralException(ERRO_519,"O usuário não possui senha de acesso definida.");
 	
 	
 	public AuthenticationException(int code, String message) {

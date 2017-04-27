@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class Requisicao implements Serializable {

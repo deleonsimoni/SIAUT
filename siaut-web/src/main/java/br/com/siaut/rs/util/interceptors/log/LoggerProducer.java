@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class LoggerProducer {

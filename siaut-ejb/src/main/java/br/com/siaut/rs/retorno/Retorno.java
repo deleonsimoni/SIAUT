@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)

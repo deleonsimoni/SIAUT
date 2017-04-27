@@ -2,7 +2,7 @@ package br.com.siaut.exception;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class GeneralException extends Exception {

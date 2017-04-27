@@ -2,13 +2,13 @@ package br.com.siaut.exception;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class DatabaseException extends GeneralException {
 
-	private static final String MSG_ERRO_FALHA_REQUISICAO = "Falha ao processar requisi??o: %s";
-	private static final String MSG_ERRO_SERVIDOR_INOPERANTE = "Servidor momentaneamente inoperante";
+	private static final String MSG_ERRO_FALHA_REQUISICAO = "Falha ao processar requisição: ";
+	private static final String MSG_ERRO_SERVIDOR_INOPERANTE = "Servidor momentaneamente inoperante.";
 	private static final int ERRO_DATABASE_700 = 700;
 	/**
 	 * 

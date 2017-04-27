@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class CadastrotesteEntity implements BaseEntity {

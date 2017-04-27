@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public interface IdentityMBean {

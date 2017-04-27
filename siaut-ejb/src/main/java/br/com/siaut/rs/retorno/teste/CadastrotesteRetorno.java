@@ -11,7 +11,7 @@ import br.com.siaut.rs.entity.teste.CadastrotesteEntity;
 import br.com.siaut.rs.retorno.Retorno;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @XmlRootElement

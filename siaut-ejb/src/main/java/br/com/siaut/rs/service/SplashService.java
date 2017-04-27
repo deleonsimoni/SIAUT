@@ -15,9 +15,10 @@ import org.apache.log4j.Logger;
 import br.com.siaut.rs.entity.splash.SplashEntity;
 import br.com.siaut.rs.requisicao.splash.SplashRequisicao;
 import br.com.siaut.rs.retorno.splash.SplashRetorno;
+import br.com.siaut.util.MensagensAplicacao;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @Stateless
@@ -59,7 +60,7 @@ public class SplashService {
 	   splash.setLink(requisicao.getLink());
 		elementosSplash.put(splash.getId(), splash);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Inclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.INCLUSAO_SUCESSO);
 		SplashRetorno retorno = new SplashRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -72,7 +73,7 @@ public class SplashService {
 	public SplashRetorno readAllSplash() {
 		LOGGER.info("Chamando o metodo: readAll()");
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.LISTAGEM_SUCESSO);
 		SplashRetorno retorno = new SplashRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -88,7 +89,7 @@ public class SplashService {
 		LOGGER.info("Chamando o metodo: read("+id+")");
 		SplashEntity splash = (SplashEntity) elementosSplash.get(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura por \"id\" feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO + id);
 		SplashRetorno retorno = new SplashRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -112,7 +113,7 @@ public class SplashService {
 		elementosSplash.remove(id);
 		elementosSplash.put(id, splash);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Atualização feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.ALTERACAO_SUCESSO + id);
 		SplashRetorno retorno = new SplashRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -126,7 +127,7 @@ public class SplashService {
 		LOGGER.info("Chamando o metodo: delete("+id+")");
 		elementosSplash.remove(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Exclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.EXCLUSAO_SUCESSO + id);
 		SplashRetorno retorno = new SplashRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);

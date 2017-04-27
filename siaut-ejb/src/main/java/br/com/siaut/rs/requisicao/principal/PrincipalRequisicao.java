@@ -2,7 +2,7 @@
 import br.com.siaut.rs.requisicao.Requisicao;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class PrincipalRequisicao extends Requisicao {

@@ -9,7 +9,7 @@ import br.com.siaut.rs.requisicao.Requisicao;
 import java.util.ArrayList;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class FormulariotesteRequisicao extends Requisicao {

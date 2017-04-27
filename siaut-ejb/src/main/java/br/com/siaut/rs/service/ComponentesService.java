@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 
 import br.com.siaut.rs.entity.setup.ComponentesEntity;
+import br.com.siaut.util.MensagensAplicacao;
 
 @Stateless
 @LocalBean
@@ -27,7 +28,7 @@ public class ComponentesService  implements Serializable{
 		  ComponentesEntity objComponentesEntity = new ComponentesEntity();
 		  objComponentesEntity.setLngId(Long.parseLong(String.valueOf(intContador)));
 		  objComponentesEntity.setLngSituacao(0L);
-		  objComponentesEntity.setStrNmBotao("Ligar Botão "+intContador);
+		  objComponentesEntity.setStrNmBotao(MensagensAplicacao.LIGAR_BOTAO+intContador);
 		  aryComponentes.add(objComponentesEntity);
 	  }
 	  

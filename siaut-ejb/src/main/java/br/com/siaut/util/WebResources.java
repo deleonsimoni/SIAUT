@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**.
  * Objetivo: Classe com metodos acessarios e atribubos staticos somente para camada web
  * Nome: WebResources
- * @author c112460
+ * @author SIAUT
  * @since 06/08/2013
  * @version 1.0
  *

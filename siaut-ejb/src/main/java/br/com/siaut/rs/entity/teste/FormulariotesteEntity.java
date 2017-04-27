@@ -10,7 +10,7 @@ import br.com.siaut.rs.entity.BaseEntity;
 import java.util.ArrayList;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class FormulariotesteEntity implements BaseEntity {

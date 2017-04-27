@@ -2,7 +2,7 @@ package br.com.siaut.exception;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class CryptoException extends GeneralException {
@@ -12,13 +12,13 @@ public class CryptoException extends GeneralException {
 	 */
 	private static final long serialVersionUID = -8243773990636806396L;
 	
-	public static final CryptoException RESPONSE_CODE_ERROR_GENERAL = new CryptoException(800,"Falha ao processar criptografia");
-	public static final CryptoException RESPONSE_CODE_ERROR_NOSUCH_ALG = new CryptoException(801,"Algoritimo de criptografia n?o encontrado");
-	public static final CryptoException RESPONSE_CODE_ERROR_NOSUCH_PAD = new CryptoException(802,"Dimensionador de criptografia n?o encontrado");
-	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_KEY = new CryptoException(803,"Chave de criptografia inv?lida");
-	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_BLOCK = new CryptoException(804,"Tamanho de bloco de criptografia inv?lido");
-	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_PAD = new CryptoException(805,"Dimensionador de criptografia inv?lido");
-	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_PASS = new CryptoException(806,"C?digo de criptografia inv?lido");
+	public static final CryptoException RESPONSE_CODE_ERROR_GENERAL = new CryptoException(800,"Falha ao processar criptografia.");
+	public static final CryptoException RESPONSE_CODE_ERROR_NOSUCH_ALG = new CryptoException(801,"Algoritimo de criptografia não encontrado.");
+	public static final CryptoException RESPONSE_CODE_ERROR_NOSUCH_PAD = new CryptoException(802,"Dimensionador de criptografia n?o encontrado.");
+	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_KEY = new CryptoException(803,"Chave de criptografia inválida.");
+	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_BLOCK = new CryptoException(804,"Tamanho de bloco de criptografia inválido.");
+	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_PAD = new CryptoException(805,"Dimensionador de criptografia inválido.");
+	public static final CryptoException RESPONSE_CODE_ERROR_INVALID_PASS = new CryptoException(806,"Código de criptografia inválido.");
 	
 	
 	public CryptoException(int code, String message) {

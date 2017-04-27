@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 public class JSONObjectWrapper extends JSONObject {

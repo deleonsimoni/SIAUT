@@ -15,9 +15,10 @@ import org.apache.log4j.Logger;
 import br.com.siaut.rs.entity.sobre.SobreEntity;
 import br.com.siaut.rs.requisicao.sobre.SobreRequisicao;
 import br.com.siaut.rs.retorno.sobre.SobreRetorno;
+import br.com.siaut.util.MensagensAplicacao;
 /**
  * 
- * @author SIOGP
+ * @author SIAUT
  *
  */
 @Stateless
@@ -58,7 +59,7 @@ public class SobreService {
 	   sobre.setTexto2(requisicao.getTexto2());
 		elementosSobre.put(sobre.getId(), sobre);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Inclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.INCLUSAO_SUCESSO);
 		SobreRetorno retorno = new SobreRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -71,7 +72,7 @@ public class SobreService {
 	public SobreRetorno readAllSobre() {
 		LOGGER.info("Chamando o metodo: readAll()");
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.LISTAGEM_SUCESSO);
 		SobreRetorno retorno = new SobreRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -87,7 +88,7 @@ public class SobreService {
 		LOGGER.info("Chamando o metodo: read("+id+")");
 		SobreEntity sobre = (SobreEntity) elementosSobre.get(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Leitura por \"id\" feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO + id);
 		SobreRetorno retorno = new SobreRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -110,7 +111,7 @@ public class SobreService {
 		elementosSobre.remove(id);
 		elementosSobre.put(id, sobre);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Atualização feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.ALTERACAO_SUCESSO + id);
 		SobreRetorno retorno = new SobreRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
@@ -124,7 +125,7 @@ public class SobreService {
 		LOGGER.info("Chamando o metodo: delete("+id+")");
 		elementosSobre.remove(id);
 		List<String> msgsErro = new ArrayList<String>();
-		msgsErro.add("Exclusão feita com sucesso.");
+		msgsErro.add(MensagensAplicacao.EXCLUSAO_SUCESSO + id);
 		SobreRetorno retorno = new SobreRetorno();
 		retorno.setTemErro(Boolean.FALSE);
 		retorno.setMsgsErro(msgsErro);
