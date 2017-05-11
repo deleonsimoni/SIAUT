@@ -1,4 +1,4 @@
-/*
+	/*
 	Aqui são definidos todos os controllers a serem utilizados pelos estados de sua aplicação.
 	Cada estado � composto por um controller (js) e uma tela (html)
 	Os estados são definidos no App.js
@@ -93,7 +93,7 @@ angular.module('webApp').controller('LoginController', function ($scope, $rootSc
     
     $scope.logar = function() {
     	if($scope.user.login && $scope.user.pwd){
-    		
+    		$scope.user.pwd = sha1($scope.user.pwd);
     		WebServiceX.create("ws/usuario/logar", JSON.stringify($scope.user))
         	.then(function(res) {
           		if(!res.temErro) {

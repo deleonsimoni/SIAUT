@@ -1,10 +1,10 @@
-﻿angular.module("starter.controllers", ["ngAnimate", "highcharts-ng", "smart-table", "ui.bootstrap","ui.uploader","angular.qrcode"])
+﻿﻿angular.module("starter.controllers", ["ngAnimate", "highcharts-ng", "smart-table", "ui.bootstrap","ui.uploader","angular.qrcode"])
     .run(function ($rootScope, $state, $location, $filter, Utils, Error, Log, Analytics, Alert) {
         Log.info("controller.run()");
 
         try {
             Analytics.init(ANALYTICS_ID,APP_NAME);
-
+            
             $rootScope.home = DEFAULT_VIEW;
             $rootScope.contextEditable = false;
             $rootScope.user = null;
@@ -207,12 +207,6 @@
 
             $rootScope.go = function(state) {
                 Analytics.trackEvent('root','go(' + state + ')');
-
-                if (!$rootScope.headers) {
-                    //$rootScope.goAuth();
-                    $rootScope.goSetup();
-                    return;
-                }
 
                 $rootScope.checkState(state);
 
