@@ -5,7 +5,7 @@
 					Os estados são definidos no App.js
 					As páginas são armazenadas na pasta pages										
 				-->
-<div class="theme-main" ng-controller="SplashController" analytics-page="Página Splash">
+<div class="theme-main" >
 		<form name="formMain">
    			<div class="row">
                         <!-- id:img-button - name:Botão Imagem -->
@@ -44,7 +44,7 @@
                             			alinhamento: text-center col-xs-12 col-sm-12 col-md-12 col-lg-12                 		
                             		-->
                                 <div class="padding text-center col-xs-12 col-sm-12 col-md-12 col-lg-12 theme-main-img" align="center">
-                                    <img id="imagem" ng-src="./imgs/teste.png">
+                                    <img id="imagem" ng-src="./imgs/splash.gif">
                                 </div>
                         </div>
                         <!-- id:h4 - name:Título -->
@@ -66,7 +66,7 @@
                             		-->
                                 <h6 class="padding text-primary bold sizeAuto theme-main-h6" align="center">
                                         <i class="fa ">&nbsp;</i>
-                                    <span>v2.0</span>
+                                    <span>01.01.05</span>
                                 </h6>
                         </div>
                         <!-- id:label - name:Texto -->
@@ -96,7 +96,7 @@
                             			tempo de espera: 5
                             			OBS: este elemento permite aguardar alguns segundos antes de iniciar uma navegacao. E normalmente utilizado nas telas de splash                            		
                             		-->
-                                <div ng-init="openViewDelayed('principal',1)" class="theme-main-timer">
+                                <div ng-init="openViewDelayed('login',5)" class="theme-main-timer">
                                     <!-- i class="fa fa-clock-o floating-top-left padding-5x" title="ir para principal em 5 segundos" ng-click="dismissOpenDelayed()"></i -->
                                 </div>
                         </div>
@@ -107,7 +107,7 @@
                             			tempo de espera: 10
                             			OBS: este elemento permite aguardar alguns segundos antes de iniciar uma navegacao. E normalmente utilizado nas telas de splash                            		
                             		-->
-                                <div ng-init="openViewDelayed('principal',1)" class="theme-main-timer">
+                                <div ng-init="openViewDelayed('login',5)" class="theme-main-timer">
                                     <!-- i class="fa fa-clock-o floating-top-left padding-5x" title="ir para principal em 10 segundos" ng-click="dismissOpenDelayed()"></i -->
                                 </div>
                         </div>

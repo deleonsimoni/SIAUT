@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.siaut.comunicacao.SocketCliente;
-import br.com.siaut.rs.DTO.ComponentesDTO;
+import br.com.siaut.rs.dto.Componentesdto;
 import br.com.siaut.util.MensagensAplicacao;
 import br.com.siaut.util.WebResources;
 
@@ -41,26 +41,26 @@ public class EletricoService implements Serializable {
 
 	private String statusLuz = "Desligada!";
 
-	public ComponentesDTO acionarRele(Integer rele, Integer situacao) throws IOException {
-		ComponentesDTO objComponentesDTO = new ComponentesDTO();
+	public Componentesdto acionarRele(Integer rele, Integer situacao) throws IOException {
+		Componentesdto objComponentesdto = new Componentesdto();
 		LOGGER.info("#SIAUT Acionando Relé: " + rele);
 		if (situacao == WebResources.DESLIGADA) {
 			LOGGER.info("#SIAUT Tentando Liga-lo: " + rele);
 			serviceSocket.conexao(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), rele, WebResources.LIGAR_LUZ);
-			objComponentesDTO.setLngSituacao(1L);
-			objComponentesDTO.setStrNmCampo(MensagensAplicacao.DESLIGAR_LAMPADA);
-			objComponentesDTO.setStrDeMensagem(MensagensAplicacao.LIGAR_LAMPADA_SUCESSO);	
+			objComponentesdto.setLngSituacao(1L);
+			objComponentesdto.setStrNmCampo(MensagensAplicacao.DESLIGAR_LAMPADA);
+			objComponentesdto.setStrDeMensagem(MensagensAplicacao.LIGAR_LAMPADA_SUCESSO);	
 			
 		}
 		else if (situacao == WebResources.LIGADA) {
 			LOGGER.info("#SIAUT Tentando Desliga-lo: " + rele);
 			serviceSocket.conexao(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), rele, WebResources.DESLIGAR_LUZ);
-			objComponentesDTO.setLngSituacao(0L);
-			objComponentesDTO.setStrNmCampo(MensagensAplicacao.LIGAR_LAMPADA);
-			objComponentesDTO.setStrDeMensagem(MensagensAplicacao.DESLIGAR_LAMPADA_SUCESSO);				
+			objComponentesdto.setLngSituacao(0L);
+			objComponentesdto.setStrNmCampo(MensagensAplicacao.LIGAR_LAMPADA);
+			objComponentesdto.setStrDeMensagem(MensagensAplicacao.DESLIGAR_LAMPADA_SUCESSO);				
 		}
 		
-		return objComponentesDTO;
+		return objComponentesdto;
 //		switch (rele) {
 //		case 1:
 //			serviceSocket.conexao(WebResources.IP_ARDUINO, WebResources.PORTA_ARDUINO, WebResources.LIGAR_LUZ);

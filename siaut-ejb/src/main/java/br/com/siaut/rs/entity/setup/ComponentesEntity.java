@@ -5,7 +5,7 @@ public class ComponentesEntity {
 	private Long lngId;
 	private Long lngSituacao;
 	private String strNmBotao;
-
+	
 	public Long getLngId() {
 		return lngId;
 	}
@@ -24,7 +24,6 @@ public class ComponentesEntity {
 	public void setStrNmBotao(String strNmBotao) {
 		this.strNmBotao = strNmBotao;
 	}
-	
 	
 	
 }

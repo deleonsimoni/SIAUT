@@ -53,7 +53,7 @@ public class AutomacaoResource extends Resource {
 		final List<String> msgsErro = new ArrayList<String>();
 
 		try {
-			retorno.setObjComponentesDTO(serviceEletricidade.acionarRele(rele, situacao));
+			retorno.setObjComponentesdto(serviceEletricidade.acionarRele(rele, situacao));
 			msgsErro.add(MensagensAplicacao.SUCESSO_AUTOMACAO + rele);			
 
 			retorno.setMsgsErro(msgsErro);	

@@ -1,5 +1,7 @@
 package br.com.siaut.util;
 
+
+
 import java.io.Serializable;
 
 /**.
@@ -46,3 +48,4 @@ public final class WebResources implements Serializable {
 	public static final int LIGAR_AR =15;
 	public static final int DESLIGAR_AR = 16;
 }
+
