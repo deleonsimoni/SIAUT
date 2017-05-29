@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-web>
-	<context-root>/app/sites</context-root>
+	<context-root>/siaut</context-root>
 </jboss-web>

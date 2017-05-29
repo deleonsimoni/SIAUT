@@ -6,58 +6,6 @@
 */
 var DEFAULT_VIEW = "splash";
 
-
-angular.module('webApp').controller('CountdownController', function($scope, $timeout,$rootScope, Log, WebServiceX, Analytics, Error, Utils) {
-	$scope.count = 0;
-	
-	
-//	$scope.incremento = function() {
-//	      $scope.count++;
-//	      if ($scope.count < 100) {
-//	        $timeout($scope.incremento, 1000);
-//	      }
-//	    };
-//	$scope.incremento();
-	 
-	 
-    $scope.carregarTemperatura = function() {
-     	WebServiceX.readAll("ws/temperaturaresource/temperatura")
-    	.then(function(res) {
-    		$scope.count++;
-    		if ($scope.count < 100) {
-//    			if (res.temErro){
-//        			Alert.showMessage("Atenção",res.msgsErro[0]);
-//        		} else {
-//        			Alert.showMessage("Sucessoo",res.msgsErro[0]);
-//        		}
-    			$scope.sensoresresource = res.data;
-    			$timeout($scope.carregarTemperatura, 1000);
-    			$scope.$apply();
-    		}
-    		
-    	  		
-    	}, function(xhr, status, err) {
-    		//Erro Inesperado
-  				var message = "Falha ao executar ação";
-  				if (xhr && xhr.responseText) {
-    				try {
-    					var response = JSON.parse(xhr.responseText);
-	      					if (response && response.msgsErro && response.msgsErro.length > 0) {
-	      						message = response.msgsErro[0];
-	      					}	        					        					
-    				} catch(ignore) {
-    				}
-  				}
-  				Error.handler(message, err);
-	        		if (err == UNAUTH) {
-	        				$rootScope.goAuth();
-	        		}
-    	});
-     	
-     }; 
-    $scope.carregarTemperatura();
-});
-
 angular.module('webApp').controller('PrincipalController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert) {
         Log.debug("PrincipalController()");
         

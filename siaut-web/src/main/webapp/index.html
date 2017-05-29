@@ -33,6 +33,11 @@
 
     <!-- Custom CSS -->
     <link href="./css/custom.css" rel="stylesheet">
+        <!-- Custom CSS -->
+    <link href="./lib/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="./lib/css/plugins/morris.css" rel="stylesheet">
     	<link href="./css/theme-padrao.css" rel="stylesheet" type="text/css">
 
     <!-- Custom Fonts -->
@@ -41,6 +46,7 @@
     <!-- jQuery -->
     <script src="./lib/js/jquery.min.js"></script>
     <script src="./lib/js/jquery.maskMoney.js"></script>
+        <script src="./lib/js/particle.js"></script>
     
     <!-- Angular JS -->
     <script src="./lib/js/angular.min.js"></script>
@@ -102,7 +108,7 @@
     <script src="./js/webservice.js"></script>
 
     <!-- Validacao de campos -->
-    <script src="./js/validadorCaixa.js"></script>
+    <script src="./js/validador.js"></script>
 
     <!-- Upload -->
     <script src="./lib/js/uploader.js"></script>
@@ -113,23 +119,18 @@
 
 </head>
 
-<body class="theme-app" ng-class="(project.menu && currentview.menu != false?'menu':'') + ' ' + (project.menu==false && currentview.menu!=false?'tabbed':'') + ' ' + platforms + ' ' + (project.footer?'footer':'')" analytics-page="Página index">
-    <div ng-if="!project" class="preloader"></div>
+<body class="theme-app" >
 
     <div ng-if="project" class="wrapper">
 
 		<!-- div ui-view="header-container" class="theme-header-container"></div -->
         <div ui-view="header-container"></div>
-		
-		<div class="row content">
-        	<div ui-view="menu-container" role="navigation"></div>
-
-        	<div ui-view="page-container" class="page-wrapper theme-main-container"></div>
-        
-       		 <div ui-view="menuleft-container" role="navigation"></div>
-       	</div>
-        
-        <div ui-view="footer-container" class="theme-footer-container"></div>
+		 <div id="wrapper">
+	       	<div ui-view="menu-container" ></div>
+	
+	       	<div id="page-wrapper" ui-view="page-container" ></div>
+        </div>
+        <div ui-view="footer-container" ></div>
 
     </div>
 
