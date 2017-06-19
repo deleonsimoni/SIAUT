@@ -31,5 +31,8 @@ public final class MensagensAplicacao implements Serializable{
 	public static final String EXCLUSAO_SUCESSO = "Exclusão feita com sucesso. ";
 	public static final String LIGAR_BOTAO = "Ligar Botão ";
 	public static final String DESLIGAR_BOTAO = "Desligar Botão ";
+	//Mensagens de acesso
+	public static final String ACESSO_SUCESSO = "Acesso realizado com sucesso.";
+	public static final String ACESSO_ERRO = "Usuário ou senha inválidos.";
 }
 

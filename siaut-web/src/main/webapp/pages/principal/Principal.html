@@ -1,3 +1,16 @@
+<div class="count" ng-controller="CountdownController">
+  <h1 ng-show="count < 100">{{count}}</h1>
+  <ul>
+	 <li ng-repeat="objsensoresresource in sensoresresource" ng-bind-html-unsafe="objsensoresresource.lngNuId">
+	   {{objsensoresresource.strNuTemperatura}} + ' '+
+	   {{objsensoresresource.strNuUmidade}} + ' '+
+	   {{objsensoresresource.strNuChuva}} + ' '+
+	   {{objsensoresresource.strNuLuz}}
+	   
+	 </li>
+  </ul>
+</div>
+
             <div class="container-fluid" ng-controller="PrincipalController" >
 
                 <!-- Page Heading -->

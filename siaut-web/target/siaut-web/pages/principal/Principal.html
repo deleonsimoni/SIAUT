@@ -1,16 +1,16 @@
-           <div class="count" ng-controller="CountdownController">
-  			 <h1 ng-show="count < 100">{{count}}</h1>
-  				<ul>
-	 				<li ng-repeat="objsensoresresource in sensoresresource" ng-bind-html-unsafe="objsensoresresource.lngNuId">
-		   				{{objsensoresresource.strNuTemperatura}} + ' '+
-		  				{{objsensoresresource.strNuUmidade}} + ' '+
-		   				{{objsensoresresource.strNuChuva}} + ' '+
-		   				{{objsensoresresource.strNuLuz}}
-	 				</li>
-  				</ul>
-			</div>
-           
-           
+<div class="count" ng-controller="CountdownController">
+  <h1 ng-show="count < 100">{{count}}</h1>
+  <ul>
+	 <li ng-repeat="objsensoresresource in sensoresresource" ng-bind-html-unsafe="objsensoresresource.lngNuId">
+	   {{objsensoresresource.strNuTemperatura}} + ' '+
+	   {{objsensoresresource.strNuUmidade}} + ' '+
+	   {{objsensoresresource.strNuChuva}} + ' '+
+	   {{objsensoresresource.strNuLuz}}
+	   
+	 </li>
+  </ul>
+</div>
+
             <div class="container-fluid" ng-controller="PrincipalController" >
 
                 <!-- Page Heading -->
@@ -21,24 +21,8 @@
                         </h1>
                     </div>
                 </div>
-                
-                <div>
-					<div>
-						<button  id="procurar" ng-click="getUserInfo()" loading="Processando..." placeholder="Clique aqui para procurar os objetos."  ng-class="componentes.lngSituacao == 0 ? 'btn btn-sm  btn-success' : 'btn btn-sm  btn-danger'">
-			                 <i class="fa fa-bolt">&nbsp;</i>
-			                     <span>{{ Objeto }}</span>
-			             </button>
-					</div>
-					<div>      			
-		      			<ul>
-			    			<li ng-repeat="obj in Objeto" ng-bind-html-unsafe="obj.id">
-			        			{{ obj.id }} - {{ obj.eletro }} - {{obj.lugar}}
-			    			</li>
-		    			</ul>
-		      		</div>
-        		</div>
                 <!-- /.row -->
-				
+
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">

@@ -23,9 +23,6 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
                 url: '/',
                 abstract: false,
                 views: {
-                    'header-container': {
-                        templateUrl: 'pages/header.html'
-                    },
                     'menu-container': {
                         templateUrl: 'pages/menu.html'
                     },
@@ -96,6 +93,18 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
             };
 					  			
             $stateProvider.state('principal',state);
+            
+            var state = {
+                    url: '/login',
+                    views: {
+                        'page-container': {
+                            templateUrl: 'pages/login.html'
+                        }
+                        
+                    }                
+                };
+    					  			
+                $stateProvider.state('login',state);
 
 			var state = {
                 url: '/sobre',
