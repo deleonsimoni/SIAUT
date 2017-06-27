@@ -1,0 +1,6 @@
+[
+ {"id": 1, "eletro": "geladeira",  "lugar": "cozinha"},
+ {"id": 2, "eletro": "televisão",  "lugar": "sala"},
+ {"id": 3, "eletro": "Xbox One ",  "lugar": "Quarto 1"},
+ {"id": 4, "eletro": "Freezer  ",  "lugar": "Quintal"}
+]

@@ -36,15 +36,15 @@ public class SocketCliente {
 			LOGGER.info("#SIAUT Preparar para chamar do Arduino");
 			LOGGER.info("#SIAUT Tentando estabelecer conexão com arduino em IP: " + serverIP + " PORTA: " + serverPort);
 
-			Socket client = new Socket(serverIP, serverPort);
+//@			Socket client = new Socket(serverIP, serverPort);
 			LOGGER.info("#SIAUT Sucesso na conexão");
 
 			// Cria um canal para receber dados.
-			DataInputStream in = new DataInputStream(client.getInputStream());
+//@			DataInputStream in = new DataInputStream(client.getInputStream());
 			LOGGER.info("#SIAUT Sucesso ao criar canal para receber dados");
 
 			// Cria um canal para enviar dados.
-			DataOutputStream out = new DataOutputStream(client.getOutputStream());
+//@			DataOutputStream out = new DataOutputStream(client.getOutputStream());
 			LOGGER.info("#SIAUT Sucesso ao criar canal para enviar dados");
 
 			String strAux = "";
@@ -54,110 +54,110 @@ public class SocketCliente {
 
 			if (strSituacao.equals(WebResources.LIGAR_LUZ)) {
 				// enviando uma string para ligar lâmpada.
-				out.writeBytes("r" + intRele + "=on\n");
+//@				out.writeBytes("r" + intRele + "=on\n");
 				LOGGER.info("#SIAUT Comando: r" + intRele + "=on\n");
 
 			} else if (strSituacao.equals(WebResources.DESLIGAR_LUZ)) {
 				// enviando uma string para ligar lâmpada.
-				out.writeBytes("r" + intRele + "=off\n");
+//@				out.writeBytes("r" + intRele + "=off\n");
 				LOGGER.info("#SIAUT Comando: r" + intRele + "=off\n");
 
 			}
-			out.write(3);
+//@			out.write(3);
 			LOGGER.info("#SIAUT Comando: " + 3);
 
-			switch (intTeste) {
-			case 1:
-				out.writeBytes("Ligar Tudo\n"); // enviando uma string
-				// out.writeChars("ggg");
-				// out.writeUTF("Ligar");
-				out.write(12);
-				LOGGER.info("#SIAUT Comando: LIGAR TUDO " + 12);
-				// out.flush();
-				break;
-			case 2:
-				out.writeBytes("Desligar Tudo\n"); // enviando uma string
-				// out.writeUTF("Desligar");
-				out.write(12);
-				// out.flush();
-				LOGGER.info("#SIAUT Comando: DESLIGAR TUDO " + 12);
-				break;
-			case 3:
-				out.writeBytes("r1=" + String.valueOf(strSituacao) + "\n"); // enviando
-																			// uma
-																			// string
-																			// para
-																			// ligar
-																			// lâmpada.
-				// out.writeUTF("Parar");
-				out.write(3);
-				LOGGER.info("#SIAUT Comando: r1=" + String.valueOf(strSituacao) + "" + 3);
-
-				break;
-			case 4:
-				out.writeBytes("r1=off\n"); // enviando uma string para
-											// desligar.
-				out.write(5);
-				LOGGER.info("#SIAUT Comando: r1=off " + 5);
-
-				break;
-			case 5:
-				out.writeBytes("r2=on\n"); // enviando uma string para ligar
-											// lâmpada
-				// out.writeUTF("Virar");
-				out.write(5);
-				LOGGER.info("#SIAUT Comando: r2=on " + 5);
-
-				break;
-			case 7:
-				out.writeBytes("r3=on\n"); // enviando uma string para ligar
-											// lâmpada
-				out.write(7);
-				LOGGER.info("#SIAUT Comando: r2=on " + 7);
-				break;
-			case 9:
-				out.writeBytes("r4=on\n"); // enviando uma string para ligar
-											// lâmpada
-				out.write(9);
-				LOGGER.info("#SIAUT Comando: r4=on " + 9);
-				break;
-			case 11:
-				out.writeBytes("r5=on\n"); // enviando uma string para ligar
-											// lâmpada
-				out.write(11);
-				LOGGER.info("#SIAUT Comando: r5=on " + 11);
-
-				break;
-			case 13:
-				out.writeBytes("r6=on\n"); // enviando uma string para ligar
-											// lâmpada
-				out.write(13);
-				LOGGER.info("#SIAUT Comando: r6=on " + 13);
-
-				break;
-			case 15:
-				out.writeBytes("r7=on\n"); // enviando uma string para ligar
-											// lâmpada
-				out.write(15);
-				LOGGER.info("#SIAUT Comando: r7=on " + 15);
-
-				break;
-			case 17:
-				out.writeBytes("r8=on\n"); // enviando uma string para ligar
-											// lâmpada
-				out.write(17);
-				LOGGER.info("#SIAUT Comando: r8=on " + 17);
-				break;
-			case 19:
-				out.writeBytes("piscar=on\n"); // enviando uma string para
-												// piscar lâmpadas.
-				out.write(17);
-				LOGGER.info("#SIAUT Comando: piscar=on " + 17);
-				break;
-			default:
-				LOGGER.info("#SIAUT Comando INVÁLIDO, número recebido desconhecido");
-
-			}
+//			switch (intTeste) {
+//			case 1:
+//				out.writeBytes("Ligar Tudo\n"); // enviando uma string
+//				// out.writeChars("ggg");
+//				// out.writeUTF("Ligar");
+//				out.write(12);
+//				LOGGER.info("#SIAUT Comando: LIGAR TUDO " + 12);
+//				// out.flush();
+//				break;
+//			case 2:
+//				out.writeBytes("Desligar Tudo\n"); // enviando uma string
+//				// out.writeUTF("Desligar");
+//				out.write(12);
+//				// out.flush();
+//				LOGGER.info("#SIAUT Comando: DESLIGAR TUDO " + 12);
+//				break;
+//			case 3:
+//				out.writeBytes("r1=" + String.valueOf(strSituacao) + "\n"); // enviando
+//																			// uma
+//																			// string
+//																			// para
+//																			// ligar
+//																			// lâmpada.
+//				// out.writeUTF("Parar");
+//				out.write(3);
+//				LOGGER.info("#SIAUT Comando: r1=" + String.valueOf(strSituacao) + "" + 3);
+//
+//				break;
+//			case 4:
+//				out.writeBytes("r1=off\n"); // enviando uma string para
+//											// desligar.
+//				out.write(5);
+//				LOGGER.info("#SIAUT Comando: r1=off " + 5);
+//
+//				break;
+//			case 5:
+//				out.writeBytes("r2=on\n"); // enviando uma string para ligar
+//											// lâmpada
+//				// out.writeUTF("Virar");
+//				out.write(5);
+//				LOGGER.info("#SIAUT Comando: r2=on " + 5);
+//
+//				break;
+//			case 7:
+//				out.writeBytes("r3=on\n"); // enviando uma string para ligar
+//											// lâmpada
+//				out.write(7);
+//				LOGGER.info("#SIAUT Comando: r2=on " + 7);
+//				break;
+//			case 9:
+//				out.writeBytes("r4=on\n"); // enviando uma string para ligar
+//											// lâmpada
+//				out.write(9);
+//				LOGGER.info("#SIAUT Comando: r4=on " + 9);
+//				break;
+//			case 11:
+//				out.writeBytes("r5=on\n"); // enviando uma string para ligar
+//											// lâmpada
+//				out.write(11);
+//				LOGGER.info("#SIAUT Comando: r5=on " + 11);
+//
+//				break;
+//			case 13:
+//				out.writeBytes("r6=on\n"); // enviando uma string para ligar
+//											// lâmpada
+//				out.write(13);
+//				LOGGER.info("#SIAUT Comando: r6=on " + 13);
+//
+//				break;
+//			case 15:
+//				out.writeBytes("r7=on\n"); // enviando uma string para ligar
+//											// lâmpada
+//				out.write(15);
+//				LOGGER.info("#SIAUT Comando: r7=on " + 15);
+//
+//				break;
+//			case 17:
+//				out.writeBytes("r8=on\n"); // enviando uma string para ligar
+//											// lâmpada
+//				out.write(17);
+//				LOGGER.info("#SIAUT Comando: r8=on " + 17);
+//				break;
+//			case 19:
+//				out.writeBytes("piscar=on\n"); // enviando uma string para
+//												// piscar lâmpadas.
+//				out.write(17);
+//				LOGGER.info("#SIAUT Comando: piscar=on " + 17);
+//				break;
+//			default:
+//				LOGGER.info("#SIAUT Comando INVÁLIDO, número recebido desconhecido");
+//
+//			}
 
 			// int read = 0;
 			// byte[] b = new byte[1024];
@@ -168,10 +168,10 @@ public class SocketCliente {
 			// System.out.println(" ==> "+ read);
 			// }
 
-			while ((strAux = extracted(in)) != null) {
-				LOGGER.info("#SIAUT RESPOSTA DO ARDUINO: " + strAux);
-				stbLista.append(strAux);
-			}
+//@			while ((strAux = extracted(in)) != null) {
+//@				LOGGER.info("#SIAUT RESPOSTA DO ARDUINO: " + strAux);
+//@				stbLista.append(strAux);
+//@			}
 
 			// available stream to be read
 			// while(in.available()>0) {
@@ -187,15 +187,15 @@ public class SocketCliente {
 			// int s = in.read();
 			// String str = in.readLine();
 			// String str1 = in.readUTF();
-			out.writeBytes("Obrigado!"); // enviando uma string
+//@			out.writeBytes("Obrigado!"); // enviando uma string
 			// System.out.println(i);
 			// System.out.println(ch); //imprimendo a string recebida
 			// Fecha os canais de entrada e sa�da.
-			in.close();
-			out.close();
+//@			in.close();
+//@			out.close();
 			LOGGER.info("#SIAUT CANAIS FECHADOS COM SUCESSO");
 			// Fecha o socket.
-			client.close();
+//@			client.close();
 		} catch (Exception e) {
 			LOGGER.info("#SIAUT ERRO NA COMUNICAÇÃO COM O ARDUINO!!!!!!");
 			LOGGER.error("#SIAUT ERRO: " + e);

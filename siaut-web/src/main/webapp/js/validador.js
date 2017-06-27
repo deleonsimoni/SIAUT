@@ -10,8 +10,6 @@ var REGEX_TELEFONE = "^\\([1-9]{2}\\)[2-9][0-9]{3,4}\\-[0-9]{4}$";
 var REGEX_MOEDA_BRASIL = "^R\$(\d{1,3}(\.\d{3})*|\d+)(\,\d{2})?$";
 var REGEX_MOEDA_EUA = "/^((?:\d{1,3}\,?)+)(\.\d{1,2})/";
 
-
-
 //Dispara função para verificar o CPF
 function disparaCPF(strCPF){
 
@@ -533,3 +531,5 @@ function validaMoedaEua(strMoeda){
 function mascaraMoeda(strMoeda){
 	$('#'+strMoeda.id+'').maskMoney();
 }
+
+

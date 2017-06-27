@@ -115,7 +115,7 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
 
         
         $scope.carregarConfiguracoes = function() {
-        	WebServiceX.readAll("ws/componentesresource/setup")
+        	WebServiceX.create("ws/componentesresource/setup", JSON.stringify($rootScope.headers))
         	.then(function(res) {
         		//webstorm
         		if (res.temErro){

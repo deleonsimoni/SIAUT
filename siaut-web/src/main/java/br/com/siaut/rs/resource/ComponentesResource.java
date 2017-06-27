@@ -5,14 +5,15 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import br.com.siaut.rs.resource.retorno.ComponentesRetorno;
+import br.com.siaut.rs.requisicao.usuario.UsuarioRequisicao;
+import br.com.siaut.rs.retorno.componentes.ComponentesRetorno;
 import br.com.siaut.rs.service.ComponentesService;
 import br.com.siaut.util.MensagensAplicacao;
 
@@ -24,8 +25,8 @@ public class ComponentesResource extends Resource {
 	@EJB 
 	private ComponentesService srvComponentesService;
 	
-	@GET @Path("/setup")
-	public Response setup() {
+	@POST @Path("/setup")
+	public Response setup(UsuarioRequisicao requisicao) {
 		Response response = null;
 		ComponentesRetorno retorno = null;
 		
@@ -33,7 +34,7 @@ public class ComponentesResource extends Resource {
 		final List<String> msgsErro = new ArrayList<String>();
 
 		try {
-			retorno.setLstComponentesEntity(srvComponentesService.configuracoes());
+			retorno  = srvComponentesService.configuracoes(requisicao);
 			msgsErro.add(MensagensAplicacao.SUCESSO_CONFIGURACOES);			
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    

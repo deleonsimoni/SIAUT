@@ -1,5 +1,4 @@
 package br.com.siaut.rs.resource;
-import java.io.IOException;
 /*
 	Nesta classe � definido o Webservice do seu projeto. 	
 	Para este template cada funcionalidade possui seu proprio Webservice que � compartilhado por suas telas
@@ -20,7 +19,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import br.com.siaut.rs.requisicao.teste.CadastrotesteRequisicao;
-import br.com.siaut.rs.resource.retorno.ComponentesRetorno;
 import br.com.siaut.rs.retorno.Retorno;
 import br.com.siaut.rs.service.EletricoService;
 import br.com.siaut.util.MensagensAplicacao;
@@ -43,23 +41,26 @@ public class AutomacaoResource extends Resource {
 	@GET @Path("/ligar/{id}/{status}")
 	public Response ligarBotao(@HeaderParam("authCode") int authCode, @PathParam("id") Integer rele, @PathParam("status") Integer situacao) {
 		Response response = null;
-		ComponentesRetorno retorno = new ComponentesRetorno();
+		///ComponentesRetorno retorno = new ComponentesRetorno();
 		
 		final List<String> msgsErro = new ArrayList<String>();
 
 		try {
-			retorno.setObjComponentesdto(serviceEletricidade.acionarRele(rele, situacao));
+			///	retorno.setObjComponentesdto(serviceEletricidade.acionarRele(rele, situacao));
 			msgsErro.add(MensagensAplicacao.SUCESSO_AUTOMACAO + rele);			
 
-			retorno.setMsgsErro(msgsErro);	
+			///	retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
-	        response = build(status, retorno);
-		} catch (IOException e) {
+	      ///   response = build(status, retorno);
+		//} catch (IOException e) {
+		} catch (Exception e) {
+
 			e.printStackTrace();
 			msgsErro.add(MensagensAplicacao.SUCESSO_AUTOMACAO + rele);			
-			retorno.setMsgsErro(msgsErro);	
-	        Status status = Status.OK;    
-	        response = build(status, retorno);
+			///	retorno.setMsgsErro(msgsErro);	
+	        Status status = Status.OK;  
+	        
+	      ///   response = build(status, retorno);
 			//return response;
 		}
 		return response;
@@ -77,7 +78,7 @@ public class AutomacaoResource extends Resource {
 		Retorno retorno = null;
         Status status = Status.OK;    
 	    //retorno = service.createCadastroteste(requisicao);
-        response = build(status, retorno);
+        ///response = build(status, retorno);
 		return response;
 	}
 }
