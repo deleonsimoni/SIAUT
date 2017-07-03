@@ -121,7 +121,8 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
         		if (res.temErro){
         			Alert.showMessage("Atenção",res.msgsErro[0]);
         		} else {
-        			$scope.componentesresource = res.lstComponentesEntity;
+        			$scope.componentesresource = res.data;    
+        			$scope.consolidadoresource = res.total;
         		}
         		$scope.$apply();
         		

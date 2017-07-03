@@ -115,13 +115,14 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
 
         
         $scope.carregarConfiguracoes = function() {
-        	WebServiceX.readAll("ws/componentesresource/setup")
+        	WebServiceX.create("ws/componentesresource/setup", JSON.stringify($rootScope.headers))
         	.then(function(res) {
         		//webstorm
         		if (res.temErro){
         			Alert.showMessage("Atenção",res.msgsErro[0]);
         		} else {
-        			$scope.componentesresource = res.lstComponentesEntity;
+        			$scope.componentesresource = res.data;    
+        			$scope.consolidadoresource = res.total;
         		}
         		$scope.$apply();
         		

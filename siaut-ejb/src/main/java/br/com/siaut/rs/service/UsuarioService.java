@@ -60,7 +60,7 @@ public class UsuarioService {
 			
 			 usuario = (LoginEntity)query.getSingleResult();
 					    
-		      msgsErro.add(MensagensAplicacao.ACESSO_SUCESSO);
+		      msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
 			  retorno.setTemErro(Boolean.FALSE);
 			  retorno.setMsgsErro(msgsErro);
 			  retorno.setUsuario(usuario.getNoUser().toString());

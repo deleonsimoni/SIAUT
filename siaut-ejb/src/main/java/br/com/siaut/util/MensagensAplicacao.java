@@ -27,12 +27,13 @@ public final class MensagensAplicacao implements Serializable{
 	public static final String INCLUSAO_SUCESSO = "Inclusão realizada com sucesso. ";
 	public static final String LISTAGEM_SUCESSO = "Listagem realizada com sucesso. ";
 	public static final String CONSULTA_SUCESSO =  "Consulta realizada com sucesso. ";
+	public static final String CONSULTA_ERRO = "Não foram encotrado registros para esta consulta";
 	public static final String ALTERACAO_SUCESSO =  "Alteração feita com sucesso. ";
 	public static final String EXCLUSAO_SUCESSO = "Exclusão feita com sucesso. ";
 	public static final String LIGAR_BOTAO = "Ligar Botão ";
 	public static final String DESLIGAR_BOTAO = "Desligar Botão ";
+	public static final String PROBLEMA_ACESSO = "Encontramos um problema, já estamos realizando os ajustes. Tente de novo.";
 	//Mensagens de acesso
-	public static final String ACESSO_SUCESSO = "Acesso realizado com sucesso.";
 	public static final String ACESSO_ERRO = "Usuário ou senha inválidos.";
 }
 

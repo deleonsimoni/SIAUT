@@ -35,6 +35,8 @@ public class ComponentesResource extends Resource {
 
 		try {
 			retorno  = srvComponentesService.configuracoes(requisicao);
+			retorno.setLngNuId(1L);
+			//<div class="panel panel-primary">
 			msgsErro.add(MensagensAplicacao.SUCESSO_CONFIGURACOES);			
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    

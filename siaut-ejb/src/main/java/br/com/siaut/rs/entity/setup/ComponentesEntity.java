@@ -7,9 +7,10 @@ import javax.persistence.Id;
 @Entity
 public class ComponentesEntity {
 
-//	private Long lngId;
-//	private Long lngSituacao;
 	@Id
+	@Column(name="nu_aut003")
+	private Long lngNuAut003;
+	
 	@Column(name="nu_aut001")
 	private Long lngNuAut001;
 	
@@ -26,6 +27,12 @@ public class ComponentesEntity {
 	private String strIcLigado;
 	
 	
+	public Long getLngNuAut003() {
+		return lngNuAut003;
+	}
+	public void setLngNuAut003(Long lngNuAut003) {
+		this.lngNuAut003 = lngNuAut003;
+	}
 	public Long getLngNuAut001() {
 		return lngNuAut001;
 	}

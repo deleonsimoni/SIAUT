@@ -13,9 +13,13 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
+import br.com.siaut.comunicacao.SocketCliente;
 import br.com.siaut.rs.entity.setup.ComponentesEntity;
+import br.com.siaut.rs.entity.setup.ConsolidadoEntity;
 import br.com.siaut.rs.requisicao.usuario.UsuarioRequisicao;
 import br.com.siaut.rs.retorno.componentes.ComponentesRetorno;
+import br.com.siaut.util.MensagensAplicacao;
+import br.com.siaut.util.WebResources;
 
 @Stateless
 @LocalBean
@@ -32,30 +36,65 @@ public class ComponentesService  implements Serializable{
 	public ComponentesRetorno configuracoes(UsuarioRequisicao requisicao){
 		//Integer intNuTeste = 1;		
 		List<ComponentesEntity> aryComponentes;
+		ArrayList<ConsolidadoEntity> aryConsolidado = new ArrayList<ConsolidadoEntity>();
 		List<String> msgsErro = new ArrayList<String>();
 		ComponentesRetorno retorno = new ComponentesRetorno();
+		SocketCliente socketCliente = new SocketCliente();
+		Long lngNuTotalItensComodos = 0L;
+		Long lngNuTotalRegistro = 1L;
+		String strNoComodo = "";
 		try{
-			Query query  = em.createNativeQuery("SELECT b.nu_aut001, b.no_comodo, c.nu_aut002, c.no_dispositivo, "+
-						"c.ic_ligado "+
-						" FROM auttb004_usuario_token a, auttb002_comodo b, auttb003_dispositivo c "+ 
-						"WHERE "+ 
-						"a.no_token = :token AND " +
-						"b.nu_aut001 = a.nu_aut001 AND b.nu_aut002 = c.nu_aut002 ", ComponentesEntity.class)
+			Query query  = em.createNativeQuery(
+					        " SELECT c.nu_aut003, b.nu_aut001, b.no_comodo, c.nu_aut002, c.no_dispositivo, c.ic_ligado "+ 
+							" FROM auttb004_usuario_token a "+
+							" INNER JOIN auttb002_comodo b " +
+							" ON a.nu_aut001 = b.nu_aut001 " +
+							" INNER JOIN auttb003_dispositivo c " +
+							" ON  b.nu_aut002 = c.nu_aut002 " +
+							" WHERE a.no_token = :token ", ComponentesEntity.class)
 						.setParameter("token", requisicao.getToken());
 					//.setParameter("email", requisicao.getLogin())
 					//.setParameter("senha", requisicao.getPwd());
-						
+		
+			
 			aryComponentes = query.getResultList();
 			
 			if (!aryComponentes.isEmpty()){
 				//
+				socketCliente.listarComponentes(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), aryComponentes);
+				
+				for (ComponentesEntity componentes  : aryComponentes) {
+					ConsolidadoEntity objConsolidadoEntity = new ConsolidadoEntity();
+					
+					if (!"".equals(strNoComodo) && !strNoComodo.equals(componentes.getStrNoComodo())) {
+					   //objConsolidadoEntity.setStrNoPainel("<div class="+"\""+"panel panel-primary"+"\""+">");
+					   objConsolidadoEntity.setStrNoPainel("panel panel-primary");
+					   objConsolidadoEntity.setStrNoComodo(strNoComodo);
+					   objConsolidadoEntity.setLngNuItens(lngNuTotalItensComodos);
+					   lngNuTotalItensComodos = 0L;
+					   strNoComodo = "";
+					   aryConsolidado.add(objConsolidadoEntity);
+					}   
+					else if (lngNuTotalRegistro == aryComponentes.size()){
+							lngNuTotalItensComodos++;
+							objConsolidadoEntity.setStrNoPainel("panel panel-primary");
+							objConsolidadoEntity.setStrNoComodo(strNoComodo);
+							objConsolidadoEntity.setLngNuItens(lngNuTotalItensComodos);
+							aryConsolidado.add(objConsolidadoEntity);
+					}
+					strNoComodo = componentes.getStrNoComodo();
+					lngNuTotalItensComodos++;
+					lngNuTotalRegistro++;
+				}
+				
 				retorno.setData(aryComponentes);
-				msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+				retorno.setTotal(aryConsolidado);
+				msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
 				retorno.setTemErro(Boolean.FALSE);
 				retorno.setMsgsErro(msgsErro);
 			}
 			else {
-				msgsErro.add("Não foram encontrado registros para está consulta.");
+				msgsErro.add(MensagensAplicacao.CONSULTA_ERRO);
 				retorno.setTemErro(Boolean.FALSE);
 				retorno.setMsgsErro(msgsErro);
 			}
@@ -63,7 +102,7 @@ public class ComponentesService  implements Serializable{
 			return  retorno;
 	  } catch (Exception e) {
 		LOGGER.error("#SIAUT ERRO AO LOGAR", e);
-		msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+		msgsErro.add(MensagensAplicacao.PROBLEMA_ACESSO);
 		retorno.setTemErro(Boolean.TRUE);
 		retorno.setMsgsErro(msgsErro);
 		return retorno;

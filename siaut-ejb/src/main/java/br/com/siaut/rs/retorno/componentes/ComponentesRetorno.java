@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.siaut.rs.entity.setup.ComponentesEntity;
+import br.com.siaut.rs.entity.setup.ConsolidadoEntity;
 import br.com.siaut.rs.retorno.Retorno;
 /**
  * 
@@ -20,14 +21,15 @@ import br.com.siaut.rs.retorno.Retorno;
 public class  ComponentesRetorno extends Retorno {
 	@XmlElementWrapper(name="tipos")
 	@XmlElement(name="tipo")
-	//private Long lngNuId;
+	private Long lngNuId;
 	private List<ComponentesEntity> data;
-//	public Long getLngNuId() {
-//		return lngNuId;
-//	}
-//	public void setLngNuId(Long lngNuId) {
-//		this.lngNuId = lngNuId;
-//	}
+	private List<ConsolidadoEntity> total;
+	public Long getLngNuId() {
+		return lngNuId;
+	}
+	public void setLngNuId(Long lngNuId) {
+		this.lngNuId = lngNuId;
+	}
 	public ComponentesRetorno() {
 		data = new ArrayList<ComponentesEntity>();		
 	}
@@ -37,5 +39,12 @@ public class  ComponentesRetorno extends Retorno {
 	public void setData(List<ComponentesEntity> data) {
 		this.data = data;
 	}
+	public List<ConsolidadoEntity> getTotal() {
+		return total;
+	}
+	public void setTotal(List<ConsolidadoEntity> total) {
+		this.total = total;
+	}
+	
 }
 
