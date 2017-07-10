@@ -6,76 +6,83 @@ import javax.persistence.Id;
 
 @Entity
 public class ComponentesEntity {
-
+	
 	@Id
-	@Column(name="nu_aut003")
-	private Long lngNuAut003;
-	
-	@Column(name="nu_aut001")
-	private Long lngNuAut001;
-	
-	@Column(name="no_comodo")
-	private String strNoComodo;
+	@Column(name="row_number")
+	private Long lngNuNumber;
 	
 	@Column(name="nu_aut002")
 	private Long lngNuAut002;
 	
-	@Column(name="no_dispositivo")
-	private String strNoDispositivo;
-	
+	@Column(name="no_comodo")
+	private String strNoComodo;
+		
 	@Column(name="ic_ligado")
 	private String strIcLigado;
 	
+	@Column(name="no_dispositivo")
+	private String strNoDispositivo;
 	
-	public Long getLngNuAut003() {
-		return lngNuAut003;
+	@Column(name="no_cor_painel")
+	private String strNoCorPainel;
+
+	@Column(name="no_icone")
+	private String strNoIcone;
+
+	public Long getLngNuNumber() {
+		return lngNuNumber;
 	}
-	public void setLngNuAut003(Long lngNuAut003) {
-		this.lngNuAut003 = lngNuAut003;
+
+	public void setLngNuNumber(Long lngNuNumber) {
+		this.lngNuNumber = lngNuNumber;
 	}
-	public Long getLngNuAut001() {
-		return lngNuAut001;
-	}
-	public void setLngNuAut001(Long lngNuAut001) {
-		this.lngNuAut001 = lngNuAut001;
-	}	
-	public String getStrNoComodo() {
-		return strNoComodo;
-	}
-	public void setStrNoComodo(String strNoComodo) {
-		this.strNoComodo = strNoComodo;
-	}
+
 	public Long getLngNuAut002() {
 		return lngNuAut002;
 	}
+
 	public void setLngNuAut002(Long lngNuAut002) {
 		this.lngNuAut002 = lngNuAut002;
 	}
-	public String getStrNoDispositivo() {
-		return strNoDispositivo;
+
+	public String getStrNoComodo() {
+		return strNoComodo;
 	}
-	public void setStrNoDispositivo(String strNoDispositivo) {
-		this.strNoDispositivo = strNoDispositivo;
+
+	public void setStrNoComodo(String strNoComodo) {
+		this.strNoComodo = strNoComodo;
 	}
+
 	public String getStrIcLigado() {
 		return strIcLigado;
 	}
+
 	public void setStrIcLigado(String strIcLigado) {
 		this.strIcLigado = strIcLigado;
 	}
+
+	public String getStrNoDispositivo() {
+		return strNoDispositivo;
+	}
+
+	public void setStrNoDispositivo(String strNoDispositivo) {
+		this.strNoDispositivo = strNoDispositivo;
+	}
+
+	public String getStrNoCorPainel() {
+		return strNoCorPainel;
+	}
+
+	public void setStrNoCorPainel(String strNoCorPainel) {
+		this.strNoCorPainel = strNoCorPainel;
+	}
+
+	public String getStrNoIcone() {
+		return strNoIcone;
+	}
+
+	public void setStrNoIcone(String strNoIcone) {
+		this.strNoIcone = strNoIcone;
+	}
 	
-	
-//	public Long getLngId() {
-//		return lngId;
-//	}
-//	public void setLngId(Long lngId) {
-//		this.lngId = lngId;
-//	}
-//	public Long getLngSituacao() {
-//		return lngSituacao;
-//	}
-//	public void setLngSituacao(Long lngSituacao) {
-//		this.lngSituacao = lngSituacao;
-//	}
-		
 }
