@@ -53,7 +53,7 @@ public class SocketCliente {
 			Integer intTeste = 20;
 
 			LOGGER.info("#SIAUT Arduino execute o comando abaixo");
-
+			out.write(10);
 			if (strSituacao.equals(WebResources.LIGAR_LUZ)) {
 				// enviando uma string para ligar lâmpada.
 				out.writeBytes("r" + intRele + "=on\n");
@@ -64,9 +64,17 @@ public class SocketCliente {
 				out.writeBytes("r" + intRele + "=off\n");
 				LOGGER.info("#SIAUT Comando: r" + intRele + "=off\n");
 
+			} else if (strSituacao.equals(WebResources.LIGAR_TUDO)) {
+				// enviando uma string para ligar lâmpada.
+				out.writeBytes("Ligar Tudo\n");
+				LOGGER.info("#SIAUT Comando: ligar tudo\n");
+			} else if (strSituacao.equals(WebResources.DESLIGAR_TUDO)) {
+				// enviando uma string para ligar lâmpada.
+				out.writeBytes("Desligar Tudo\n");
+				LOGGER.info("#SIAUT Comando: desligar tudo\n");
 			}
-			out.write(3);
-			LOGGER.info("#SIAUT Comando: " + 3);
+			
+			LOGGER.info("#SIAUT Comando: " + 10);
 
 			switch (intTeste) {
 			case 1:
