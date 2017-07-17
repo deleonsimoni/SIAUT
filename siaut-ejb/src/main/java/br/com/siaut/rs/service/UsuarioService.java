@@ -144,7 +144,7 @@ public class UsuarioService {
 					"ed_eletronico, " +
 					"ts_cadastro) " +
 					"VALUES( " +
-					" nextval('autsq001_usuario'), " +
+					" nextval('auttb001_usuario_nu_aut001_seq'), " +
 					":noUser, " +
 					":nuDocumento, " +
 					":nuTelefone, " +

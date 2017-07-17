@@ -129,6 +129,29 @@ angular.module("webApp", ["ui.router", "ui.mask", "starter.controllers", "starte
             		  
 					  			
             $stateProvider.state('sobre',state);
+            
+
+			var state = {
+                url: '/listarDispositivos',
+                views: {
+                	'header-container': {
+                        templateUrl: 'pages/header.html'
+                    },
+                    'page-container': {
+                        templateUrl: 'pages/dispositivo/listarDispositivos.html'
+                    },
+                    
+                    'menu-container': {
+                        templateUrl: 'pages/menu.html'
+                    },
+                    'footer-container': {
+                        templateUrl: 'pages/footer.html'
+                    }
+                }                
+            };
+            		  
+					  			
+            $stateProvider.state('listarDispositivos',state);
             		
 			var state = {
                 url: '/cadastroteste',

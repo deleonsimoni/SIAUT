@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.siaut.comunicacao.SocketCliente;
-import br.com.siaut.rs.dto.Componentesdto;
+import br.com.siaut.rs.dto.sensores.Componentesdto;
 import br.com.siaut.util.MensagensAplicacao;
 import br.com.siaut.util.WebResources;
 

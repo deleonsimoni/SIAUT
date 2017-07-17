@@ -73,13 +73,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a ng-click="openView('principal')"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Gráficos</a>
+                        <a ng-click="openView('principal')"><i class="fa fa-fw fa-bar-chart-o"></i> Gráficos</a>
                     </li>
                     <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Cameras</a>
+                        <a ng-click="openView('principal')"><i class="fa fa-fw fa-desktop"></i> Cameras</a>
+                    </li>
+                    <li>
+                        <a ng-click="openView('cadastrarDispositivos')" href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Dispositivos</a>
                     </li>
                     <!-- <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tableas</a>
