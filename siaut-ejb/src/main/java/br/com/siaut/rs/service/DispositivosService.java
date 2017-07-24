@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.inject.Named;
@@ -13,10 +14,12 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
+import br.com.siaut.comunicacao.SocketCliente;
 import br.com.siaut.rs.requisicao.dispositivos.DispositivosRequisicao;
 import br.com.siaut.rs.requisicao.usuario.UsuarioRequisicao;
 import br.com.siaut.rs.retorno.dispositivos.DispositivosRetorno;
 import br.com.siaut.util.MensagensAplicacao;
+import br.com.siaut.util.WebResources;
 import br.gov.caixa.entity.dispositivos.ComodosEntity;
 import br.gov.caixa.entity.dispositivos.DispositivosEntity;
 import br.gov.caixa.entity.dispositivos.ImovelEntity;
@@ -31,8 +34,11 @@ public class DispositivosService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@PersistenceContext
 	private EntityManager em;
+	
+	@EJB
+	private SocketCliente serviceSocket;
 
-	public DispositivosRetorno listarCasasUsuario(UsuarioRequisicao requisicao) {
+	public DispositivosRetorno listarCasasUsuario(DispositivosRequisicao requisicao) {
 		LOGGER.info("Chamando o metodo: listarCasasUsuario");
 		DispositivosRetorno retorno = new DispositivosRetorno();
 		List<String> msgsErro = new ArrayList<String>();
@@ -138,6 +144,92 @@ public class DispositivosService implements Serializable {
 					.setParameter("comodo", requisicao.getNuComodo());
 
 			dispositivos = query.getResultList();
+
+			msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			retorno.setDispositivos(dispositivos);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+
+		}
+
+	
+
+	}
+	
+	public DispositivosRetorno ligarTodosDispositivosComodo(DispositivosRequisicao requisicao) {
+
+		LOGGER.info("Chamando o metodo: ligarTodosDispositivosComodo - Comodo (" + requisicao.getNuComodo() + ")");
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+		List<DispositivosEntity> dispositivos = new ArrayList<DispositivosEntity>();
+		StringBuilder comandoArduino = new StringBuilder();
+		try {
+
+			Query query = em
+					.createNativeQuery("SELECT d.nu_aut003, d.no_dispositivo, d.nu_aut002, d.ic_ligado,  "
+							+ " t.no_dispositivo as tipo_dispositivo "
+							+ " FROM auttb003_dispositivo d "
+							+ " INNER JOIN auttb008_tipo_dispositivo t " 
+							+ " ON d.nu_aut008_dispositivo = t.nu_dispositivo "
+							+ " INNER JOIN auttb002_comodo c " 
+							+ " ON d.nu_aut002 = c.nu_aut002 "
+							+ " INNER JOIN auttb011_imovel_usuario imo " 
+							+ " ON c.nu_aut011 = imo.nu_aut011 "
+							+ " INNER JOIN auttb004_usuario_token u " 
+							+ " ON imo.nu_aut001 = u.nu_aut001 "
+							+ " WHERE u.no_token = :token "
+							+ " AND d.nu_aut002 = :comodo", DispositivosEntity.class)
+					.setParameter("token", requisicao.getToken())
+					.setParameter("comodo", requisicao.getNuComodo());
+
+			dispositivos = query.getResultList();
+			
+			for (DispositivosEntity dispositivosEntity : dispositivos) {
+				comandoArduino.append("r" + dispositivosEntity.getNuDispositivo() + "=on\n");
+			}
+			
+			serviceSocket.ligarTodosDispositivosComodo(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), comandoArduino);
+			
+			msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			retorno.setDispositivos(dispositivos);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+
+		}
+
+	
+
+	}
+	
+	public DispositivosRetorno ligarTodosDispositivosImovel(DispositivosRequisicao requisicao) {
+
+		LOGGER.info("Chamando o metodo: ligarTodosDispositivosImovel - Imovel (" + requisicao.getNuImovel() + ")");
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+		List<DispositivosEntity> dispositivos = new ArrayList<DispositivosEntity>();
+		DispositivosRequisicao dispositivo = new DispositivosRequisicao();
+		try {
+			
+			DispositivosRetorno comodos = listarComodos(requisicao);
+			for (ComodosEntity comodosEntity : comodos.getComodos()) {
+				dispositivo.setToken(requisicao.getToken());
+				dispositivo.setNuComodo(comodosEntity.getNuComodo().intValue());
+				ligarTodosDispositivosComodo(dispositivo);
+			}
 
 			msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
 			retorno.setTemErro(Boolean.FALSE);

@@ -206,4 +206,9 @@ public class SocketCliente {
 		return in.readLine();
 	}
 
+	public void ligarTodosDispositivosComodo(String ipArduino, int parseInt, StringBuilder comandoArduino) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

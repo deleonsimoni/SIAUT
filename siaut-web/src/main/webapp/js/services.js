@@ -61,6 +61,82 @@
 
         }
     })//v1.0.0
+    
+     .factory('UsuarioSIAUT', function (WebServiceX) {
+
+    	 function listarComodos(usuario) {
+          	WebServiceX.create("ws/dispositivos/listarComodos", JSON.stringify(usuario))
+          	.then(function(res) {
+          		return res;
+          	}, function(xhr, status, err) {
+        		
+        		//Erro Inesperado
+      				var message = "Falha ao executar ação";
+      				if (xhr && xhr.responseText) {
+        				try {
+        					var response = JSON.parse(xhr.responseText);
+          					if (response && response.msgsErro && response.msgsErro.length > 0) {
+          						message = response.msgsErro[0];
+          					}	        					        					
+        				} catch(ignore) {
+        				}
+      				}
+      				Error.handler(message, err);
+            		if (err == UNAUTH) {
+            				$rootScope.goAuth();
+            		}
+        	});
+          }; 
+          
+          function listarImoveis(usuario) {
+          	return WebServiceX.create("ws/dispositivos/listarImoveis", JSON.stringify(usuario));
+          }; 
+          
+          function ligarTodosDispositivosImovel(usuario){
+          	WebServiceX.create("ws/dispositivos/ligarTodosDispositivosImovel", JSON.stringify(usuario))
+          	.then(function(res) {
+          		return res;
+          	}, function(xhr, status, err) {
+        		
+        		//Erro Inesperado
+      				var message = "Falha ao executar ação";
+      				if (xhr && xhr.responseText) {
+        				try {
+        					var response = JSON.parse(xhr.responseText);
+          					if (response && response.msgsErro && response.msgsErro.length > 0) {
+          						message = response.msgsErro[0];
+          					}	        					        					
+        				} catch(ignore) {
+        				}
+      				}
+      				Error.handler(message, err);
+            		if (err == UNAUTH) {
+            				$rootScope.goAuth();
+            		}
+        	});
+          };
+
+        return {
+            version: function() {
+                return VERSION;
+            },
+            hasSupport: function() {
+                return hasSupport();
+            },
+            ligarTodosDispositivosImovel: function(usuario) {
+            	return ligarTodosDispositivosImovel(usuario);
+            },
+            listarComodos: function(usuario) {
+            	return listarComodos(usuario);
+            },
+            listarImoveis: function(usuario) {
+            	return listarImoveis(usuario);
+            }
+        }
+    })
+    
+    
+    
     .factory('Log', function ($log, NativeInterface) {
         var VERSION = '1.0.2';
         var data = [];

@@ -58,7 +58,7 @@ angular.module('webApp').controller('CountdownController', function($scope, $tim
 });
 
 
-angular.module('webApp').controller('PrincipalController', function ($http, $scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert) {
+angular.module('webApp').controller('PrincipalController', function ($http, $scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert, UsuarioSIAUT) {
         Log.debug("PrincipalController()");
         
         $scope.ligarBotao = function(componentes) {
@@ -147,7 +147,10 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
         	
         }; 
         
-        $scope.listarComodos = function() {
+        
+        
+        
+       /* $scope.listarComodos = function() {
         	WebServiceX.create("ws/dispositivos/listarComodos", JSON.stringify($rootScope.headers))
         	.then(function(res) {
         		if (res.temErro){
@@ -211,22 +214,135 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
         	
         }; 
         
+        $scope.ligarTodosDispositivosImovel = function(){
+        	WebServiceX.create("ws/dispositivos/ligarTodosDispositivosImovel", JSON.stringify($rootScope.headers))
+        	.then(function(res) {
+        		if (res.temErro){
+        			Alert.showMessage("Atenção",res.msgsErro[0]);
+        		} else {
+        			$scope.dispositivos = res.dispositivos;
+        		}
+        		$scope.$apply();
+        		
+        	}, function(xhr, status, err) {
+        		
+        		//Erro Inesperado
+      				var message = "Falha ao executar ação";
+      				if (xhr && xhr.responseText) {
+        				try {
+        					var response = JSON.parse(xhr.responseText);
+          					if (response && response.msgsErro && response.msgsErro.length > 0) {
+          						message = response.msgsErro[0];
+          					}	        					        					
+        				} catch(ignore) {
+        				}
+      				}
+      				Error.handler(message, err);
+            		if (err == UNAUTH) {
+            				$rootScope.goAuth();
+            		}
+        	});
+    	}*/
+        
+        $scope.ligarTodosDispositivosImovel = function(){
+        	var res = UsuarioSIAUT.ligarTodosDispositivosImovel($rootScope.headers);
+    		if (res.temErro){
+    			Alert.showMessage("Atenção",res.msgsErro[0]);
+    		} else {
+    			$scope.dispositivos = res.dispositivos;
+    		}
+    		$scope.$apply();
+        };
+        
+        $scope.listarImoveis = function() {
+        	UsuarioSIAUT.listarImoveis($rootScope.headers).then(function(res) {
+        			if (res.temErro){
+            			Alert.showMessage("Atenção",res.msgsErro[0]);
+            		} else {
+            			$scope.imoveis = res.imoveis;
+            			if($scope.imoveis.length == 1){
+            				$rootScope.headers.nuImovel = $scope.imoveis[0].nuImovel;
+            				$scope.listarComodos();
+            			}
+            		}
+              	}, function(xhr, status, err) {
+            		
+            		//Erro Inesperado
+          				var message = "Falha ao executar ação";
+          				if (xhr && xhr.responseText) {
+            				try {
+            					var response = JSON.parse(xhr.responseText);
+              					if (response && response.msgsErro && response.msgsErro.length > 0) {
+              						message = response.msgsErro[0];
+              					}	        					        					
+            				} catch(ignore) {
+            				}
+          				}
+          				Error.handler(message, err);
+                		if (err == UNAUTH) {
+                				$rootScope.goAuth();
+                		}
+            	});
+        		$scope.$apply()
+        };
+        
+        $scope.listarComodos = function() {
+        	var res =  UsuarioSIAUT.listarComodos($rootScope.headers);
+        		if (res.temErro){
+        			Alert.showMessage("Atenção",res.msgsErro[0]);
+        		} else {
+        			$scope.comodos = res.comodos;
+        		}
+        		$scope.$apply();
+        };
+        
+
+        
         
         $scope.irParaDispositivos = function(nuComodo) {
         	$rootScope.headers.nuComodo = nuComodo;
         	$scope.openView('listarDispositivos');
-    };
+        };
     
-    $scope.listarImoveis();
-    $scope.carregarConfiguracoes();
+        $scope.listarImoveis();
+        $scope.carregarConfiguracoes();
 });
 
 angular.module('webApp').controller('ListarDispositivosController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert) {
     Log.debug("DispositivosController()");
     
-    $scope.listarDispositivos = function() {
-    	
-    	WebServiceX.create("ws/dispositivos/listarDispositivos", JSON.stringify($rootScope.headers))
+    $scope.ligarTodosDispositivosComodo = function(){
+    	WebServiceX.create("ws/dispositivos/ligarTodosDispositivosComodo", JSON.stringify($rootScope.headers))
+    	.then(function(res) {
+    		if (res.temErro){
+    			Alert.showMessage("Atenção",res.msgsErro[0]);
+    		} else {
+    			$scope.dispositivos = res.dispositivos;
+    		}
+    		$scope.$apply();
+    		
+    	}, function(xhr, status, err) {
+    		
+    		//Erro Inesperado
+  				var message = "Falha ao executar ação";
+  				if (xhr && xhr.responseText) {
+    				try {
+    					var response = JSON.parse(xhr.responseText);
+      					if (response && response.msgsErro && response.msgsErro.length > 0) {
+      						message = response.msgsErro[0];
+      					}	        					        					
+    				} catch(ignore) {
+    				}
+  				}
+  				Error.handler(message, err);
+        		if (err == UNAUTH) {
+        				$rootScope.goAuth();
+        		}
+    	});
+	}
+    
+    $scope.listarDispositivosComodo = function() {
+    	WebServiceX.create("ws/dispositivos/listarDispositivosComodo", JSON.stringify($rootScope.headers))
     	.then(function(res) {
     		if (res.temErro){
     			Alert.showMessage("Atenção",res.msgsErro[0]);
@@ -320,7 +436,42 @@ angular.module('webApp').controller('ListarDispositivosController', function ($s
     	
     }; 
     
-    $scope.listarDispositivos();
+    $scope.listarDispositivosComodo();
+    
+});
+
+angular.module('webApp').controller('GerenciarDispositivoController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert) {
+    Log.debug("GerenciarDispositivoController()");
+    
+    $scope.ligarTodosDispositivosComodo = function(){
+    	WebServiceX.create("ws/dispositivos/ligarTodosDispositivosComodo", JSON.stringify($rootScope.headers))
+    	.then(function(res) {
+    		if (res.temErro){
+    			Alert.showMessage("Atenção",res.msgsErro[0]);
+    		} else {
+    			$scope.dispositivos = res.dispositivos;
+    		}
+    		$scope.$apply();
+    		
+    	}, function(xhr, status, err) {
+    		
+    		//Erro Inesperado
+  				var message = "Falha ao executar ação";
+  				if (xhr && xhr.responseText) {
+    				try {
+    					var response = JSON.parse(xhr.responseText);
+      					if (response && response.msgsErro && response.msgsErro.length > 0) {
+      						message = response.msgsErro[0];
+      					}	        					        					
+    				} catch(ignore) {
+    				}
+  				}
+  				Error.handler(message, err);
+        		if (err == UNAUTH) {
+        				$rootScope.goAuth();
+        		}
+    	});
+	}
     
 });
 

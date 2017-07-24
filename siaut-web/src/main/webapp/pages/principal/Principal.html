@@ -1,4 +1,4 @@
-<div class="count" ng-controller="CountdownController">
+<!-- <div class="count" ng-controller="CountdownController">
   <h1 ng-show="count < 100">{{count}}</h1>
   <ul>
 	 <li ng-repeat="objsensoresresource in sensoresresource" ng-bind-html-unsafe="objsensoresresource.lngNuId">
@@ -9,11 +9,10 @@
 	   
 	 </li>
   </ul>
-</div>
-
+</div>-->
             <div class="container-fluid" ng-controller="PrincipalController" >
-
-				 <ul>
+            
+            	<!--  <ul>
 					 <li ng-repeat="objcomponentesresource in componentesresource" ng-bind-html-unsafe="objcomponentesresource.lngNuAut003">
 					   {{objcomponentesresource.lngNuAut003}} + ' '+
 					   {{objcomponentesresource.lngNuAut001}} + ' '+
@@ -21,7 +20,7 @@
 					   {{objcomponentesresource.lngNuAut002}}
 					   
 					 </li>
-				  </ul>
+				  </ul> -->
 
                 <!-- Page Heading -->
                 <div class="row">
@@ -37,7 +36,9 @@
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>Tudo em ordem!</strong> Parece que sua <a href="#" class="alert-link">casa</a> está ok!
+                            <i class="fa fa-info-circle"></i>  <strong>Tudo em ordem!</strong> Parece que sua <a href="#" class="alert-link">casa</a> está ok!<br/>
+                            <i class="fa fa-power-off"></i>  <strong>Deseja ligar todos dispositivos da {{imoveis[0].noImovel}} casa?</strong><a ng-click="ligarTodosDispositivosImovel()" style="color:red" class="alert-link"> Se sim, clique aqui!</a>
+                            
                         </div>
                     </div>
                 </div>

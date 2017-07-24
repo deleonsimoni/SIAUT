@@ -27,7 +27,7 @@ public class DispositivosResource extends Resource {
 	private DispositivosService dispositivosService;
 	
 	@POST @Path("/listarImoveis")
-	public Response listarImoveis(UsuarioRequisicao requisicao) {
+	public Response listarImoveis(DispositivosRequisicao requisicao) {
 		Response response = null;
 		DispositivosRetorno retorno = null;
 		final List<String> msgsErro = new ArrayList<String>();
@@ -77,7 +77,7 @@ public class DispositivosResource extends Resource {
 		}
 		return response;
 	}
-	@POST @Path("/listarDispositivos")
+	@POST @Path("/listarDispositivosComodo")
 	public Response listarDispositivos(DispositivosRequisicao requisicao) {
 		Response response = null;
 		DispositivosRetorno retorno = null;
@@ -85,6 +85,57 @@ public class DispositivosResource extends Resource {
 
 		try {
 			retorno  = dispositivosService.listarDispositivos(requisicao);
+			msgsErro.add(MensagensAplicacao.SUCESSO_CONFIGURACOES);			
+			retorno.setMsgsErro(msgsErro);	
+	        Status status = Status.OK;    
+	        retorno.setTemErro(Boolean.FALSE);
+			response = build(status, retorno);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			msgsErro.add(MensagensAplicacao.CARREGADAS_NAO_SUCESSO);			
+			retorno.setMsgsErro(msgsErro);	
+	        Status status = Status.OK;    
+	        retorno.setTemErro(Boolean.TRUE);
+	        response = build(status, retorno);
+			//return response;
+		}
+		return response;
+	}
+	@POST @Path("/ligarTodosDispositivosComodo")
+	public Response ligarTodosDispositivosComodo(DispositivosRequisicao requisicao) {
+		Response response = null;
+		DispositivosRetorno retorno = null;
+		final List<String> msgsErro = new ArrayList<String>();
+
+		try {
+			retorno  = dispositivosService.ligarTodosDispositivosComodo(requisicao);
+			msgsErro.add(MensagensAplicacao.SUCESSO_CONFIGURACOES);			
+			retorno.setMsgsErro(msgsErro);	
+	        Status status = Status.OK;    
+	        retorno.setTemErro(Boolean.FALSE);
+			response = build(status, retorno);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			msgsErro.add(MensagensAplicacao.CARREGADAS_NAO_SUCESSO);			
+			retorno.setMsgsErro(msgsErro);	
+	        Status status = Status.OK;    
+	        retorno.setTemErro(Boolean.TRUE);
+	        response = build(status, retorno);
+			//return response;
+		}
+		return response;
+	}
+	
+	@POST @Path("/ligarTodosDispositivosImovel")
+	public Response ligarTodosDispositivosImovel(DispositivosRequisicao requisicao) {
+		Response response = null;
+		DispositivosRetorno retorno = null;
+		final List<String> msgsErro = new ArrayList<String>();
+
+		try {
+			retorno  = dispositivosService.ligarTodosDispositivosImovel(requisicao);
 			msgsErro.add(MensagensAplicacao.SUCESSO_CONFIGURACOES);			
 			retorno.setMsgsErro(msgsErro);	
 	        Status status = Status.OK;    
