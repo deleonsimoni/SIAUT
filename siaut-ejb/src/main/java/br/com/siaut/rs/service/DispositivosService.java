@@ -125,9 +125,9 @@ public class DispositivosService implements Serializable {
 		List<String> msgsErro = new ArrayList<String>();
 		List<DispositivosEntity> dispositivos = new ArrayList<DispositivosEntity>();
 		try {
-
+//d.no_dispositivo,    + " t.no_dispositivo as tipo_dispositivo "
 			Query query = em
-					.createNativeQuery("SELECT d.nu_aut003, d.no_dispositivo, d.nu_aut002, d.ic_ligado,  "
+					.createNativeQuery("SELECT d.nu_aut003, t.no_dispositivo,  d.nu_aut002, d.ic_ligado,  "
 							+ " t.no_dispositivo as tipo_dispositivo "
 							+ " FROM auttb003_dispositivo d "
 							+ " INNER JOIN auttb008_tipo_dispositivo t " 
