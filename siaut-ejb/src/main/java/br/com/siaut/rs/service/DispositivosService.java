@@ -15,8 +15,10 @@ import javax.persistence.Query;
 import org.apache.log4j.Logger;
 
 import br.com.siaut.comunicacao.SocketCliente;
+import br.com.siaut.rs.requisicao.dispositivos.CadastrarComodoRequisicao;
+import br.com.siaut.rs.requisicao.dispositivos.CadastrarDispositivoRequisicao;
+import br.com.siaut.rs.requisicao.dispositivos.CadastrarImovelRequisicao;
 import br.com.siaut.rs.requisicao.dispositivos.DispositivosRequisicao;
-import br.com.siaut.rs.requisicao.usuario.UsuarioRequisicao;
 import br.com.siaut.rs.retorno.dispositivos.DispositivosRetorno;
 import br.com.siaut.util.MensagensAplicacao;
 import br.com.siaut.util.WebResources;
@@ -37,6 +39,9 @@ public class DispositivosService implements Serializable {
 	
 	@EJB
 	private SocketCliente serviceSocket;
+	
+	@EJB
+	private UsuarioService usuarioService;
 
 	public DispositivosRetorno listarCasasUsuario(DispositivosRequisicao requisicao) {
 		LOGGER.info("Chamando o metodo: listarCasasUsuario");
@@ -249,19 +254,244 @@ public class DispositivosService implements Serializable {
 
 	}
 
-	public void cadastrarComodo() {
+	public DispositivosRetorno cadastrarComodo(CadastrarComodoRequisicao requisicao) {
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+
+		LOGGER.info("Chamando o metodo: cadastrarComodo - Comodo (" + requisicao.getToken() + ")");
+		try {
+
+			Query query = em
+					.createNativeQuery("INSERT INTO auttb002_comodo( "
+							+ " nu_aut002, "
+							+ " nu_aut011, "
+							+ " no_comodo, " 
+							+ " im_comodo, "
+							+ " ts_cadastro,  " 
+							+ " nu_aut007_cor_painel, "
+							+ " nu_aut009_icone) " 
+							+ " VALUES ( "
+							+ " auttb002_comodo_nu_aut002_seq.nextval, " 
+							+ " :idImovel, "
+							+ " :nomeComodo, "
+							+ " :imagemComodo, "
+							+ " current_date, "
+							+ " :nuCorPainel, "
+							+ " :nuIconeImovel ) ")
+					.setParameter("idImovel", requisicao.getNuImovel())
+					.setParameter("nomeComodo", requisicao.getNomeComodo())
+					.setParameter("imagemComodo", requisicao.getImagemComodo())
+					.setParameter("nuCorPainel", requisicao.getNuCorPainel())
+					.setParameter("nuIconeImovel", requisicao.getNuIconeImovel());
+			
+			query.executeUpdate();
+			
+			msgsErro.add(MensagensAplicacao.COMODO_CADASTRADO_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		}
+
+	
+
+	}
+	
+	public DispositivosRetorno cadastrarImovel(CadastrarImovelRequisicao requisicao) {
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+
+		LOGGER.info("Chamando o metodo: cadastrarImovel - usuario (" + requisicao.getToken() + ")");
+		try {
+			Long idUser = usuarioService.validarTokenUsuario(requisicao.getToken());
+
+			Query query = em
+					.createNativeQuery("INSERT INTO auttb011_imovel_usuario( "
+							+ " nu_aut011, "
+							+ " nu_aut001, "
+							+ " nu_imovel, "
+							+ " no_imovel ) " 
+							+ " VALUES ( "
+							+ " sq_auttb011_imovel_usuario.nextval, " 
+							+ " :nuUser, "
+							+ " :nuTipoImovel, "
+							+ " :nomeImovel ) ")
+					.setParameter("nuUser", idUser)
+					.setParameter("nuTipoImovel", requisicao.getTipoImovel())
+					.setParameter("nomeImovel", requisicao.getNomeImovel());
+			
+			query.executeUpdate();
+			
+			msgsErro.add(MensagensAplicacao.IMOVE_CADASTRADO_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		}
+
+	
 
 	}
 
-	public void cadastrarDispositivo() {
+	public DispositivosRetorno cadastrarDispositivo(CadastrarDispositivoRequisicao requisicao) {
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+
+		LOGGER.info("Chamando o metodo: cadastrarDispositivo - cadastrarDispositivo (" + requisicao.getToken() + ")");
+		try {
+
+			Query query = em
+					.createNativeQuery("INSERT INTO auttb003_dispositivo( "
+							+ " nu_aut003, "
+							+ " nu_aut002, "
+							+ " ic_ligado, " 
+							+ " ts_cadastro, "
+							+ " nu_aut008_dispositivo,  " 
+							+ " no_dispositivo) " 
+							+ " VALUES ( "
+							+ " auttb003_dispositivo_nu_aut003_seq.nextval, " 
+							+ " :nuComodo, "
+							+ " '0', "
+							+ " current_date, "
+							+ " :tipoDispositivo, "
+							+ " :nomeDispositivo) ")
+					.setParameter("nuComodo", requisicao.getNuComodo())
+					.setParameter("tipoDispositivo", requisicao.getNuTipoDispositivo())
+					.setParameter("nomeDispositivo", requisicao.getNoDispositivo());
+			
+			query.executeUpdate();
+			
+			msgsErro.add(MensagensAplicacao.DISPOSITIVO_CADASTRADO_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		}
+
+	
 
 	}
 
-	public void alterarComodo() {
+	public DispositivosRetorno alterarImovel(CadastrarImovelRequisicao requisicao) {
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+
+		LOGGER.info("Chamando o metodo: alterarImovel (" + requisicao.getNuImovel() + ")");
+		try {
+
+			Query query = em
+					.createNativeQuery("UPDATE auttb011_imovel_usuario SET "
+							+ " nu_imovel = :nuTipoImovel, "
+							+ " no_imovel = :noImovel " 
+							+ " WHERE "
+							+ " nu_aut011 = :nuImovel ")
+					.setParameter("nuTipoImovel", requisicao.getTipoImovel())
+					.setParameter("noImovel", requisicao.getNomeImovel())
+					.setParameter("nuImovel", requisicao.getNuImovel());
+			
+			query.executeUpdate();
+			
+			msgsErro.add(MensagensAplicacao.IMOVE_ALTERADO_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		}
+
+	
+
+	}
+	
+	public DispositivosRetorno alterarComodo(CadastrarComodoRequisicao requisicao) {
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+
+		LOGGER.info("Chamando o metodo: alterarComodo (" + requisicao.getNuComodo() + ")");
+		try {
+
+			Query query = em
+					.createNativeQuery("UPDATE auttb002_comodo SET "
+							+ " no_comodo = :noComodo, "
+							+ " im_comodo = :imComodo, "
+							+ " nu_aut007_cor_painel = :nuCorPainel, "
+							+ " nu_aut009_icone = :nuIcone "
+							+ " WHERE "
+							+ " nu_aut002 = :nuComodo ")
+					.setParameter("noComodo", requisicao.getNomeComodo())
+					.setParameter("imComodo", requisicao.getImagemComodo())
+					.setParameter("nuIcone", requisicao.getNuIconeImovel())
+					.setParameter("nuCorPainel", requisicao.getNuCorPainel());
+			
+			query.executeUpdate();
+			
+			msgsErro.add(MensagensAplicacao.COMODO_ALTERADO_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		}
+
+	
 
 	}
 
-	public void alterarDispositivo() {
+	public DispositivosRetorno alterarDispositivo(CadastrarDispositivoRequisicao requisicao) {
+		DispositivosRetorno retorno = new DispositivosRetorno();
+		List<String> msgsErro = new ArrayList<String>();
+
+		LOGGER.info("Chamando o metodo: alterarDispositivo (" + requisicao.getNoDispositivo() + ")");
+		try {
+
+			Query query = em
+					.createNativeQuery("UPDATE auttb002_comodo SET "
+							+ " nu_aut008_dispositivo = :nuTipoDispositivo, "
+							+ " no_dispositivo = :noDispositivo"
+							+ " WHERE "
+							+ " nu_aut003 = :nuDispositivo ")
+					.setParameter("nuTipoDispositivo", requisicao.getNuTipoDispositivo())
+					.setParameter("noDispositivo", requisicao.getNoDispositivo())
+					.setParameter("nuDispositivo", requisicao.getNuDispositivo());
+			
+			query.executeUpdate();
+			
+			msgsErro.add(MensagensAplicacao.DISPOSITIVO_ALTERADO_SUCESSO);
+			retorno.setTemErro(Boolean.FALSE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		} catch (Exception e) {
+			LOGGER.error("#SIAUT ERRO LISTAR DISPOSITIVOS", e);
+			msgsErro.add("Encontramos um problema, já estamos realizando os ajustes. Tente de novo.");
+			retorno.setTemErro(Boolean.TRUE);
+			retorno.setMsgsErro(msgsErro);
+			return retorno;
+		}
+
+	
 
 	}
 

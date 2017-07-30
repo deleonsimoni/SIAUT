@@ -27,6 +27,12 @@ public final class MensagensAplicacao implements Serializable{
 	public static final String INCLUSAO_SUCESSO = "Inclusão realizada com sucesso. ";
 	public static final String LISTAGEM_SUCESSO = "Listagem realizada com sucesso. ";
 	public static final String CONSULTA_SUCESSO =  "Consulta realizada com sucesso. ";
+	public static final String IMOVE_ALTERADO_SUCESSO =  "Imóvel alterado com sucesso. ";
+	public static final String COMODO_ALTERADO_SUCESSO =  "Comôdo alterado com sucesso. ";
+	public static final String DISPOSITIVO_ALTERADO_SUCESSO =  "Dipositivo alterado com sucesso. ";
+	public static final String IMOVE_CADASTRADO_SUCESSO =  "Imóvel cadastrado com sucesso. ";
+	public static final String COMODO_CADASTRADO_SUCESSO =  "Comôdo cadastrado com sucesso. ";
+	public static final String DISPOSITIVO_CADASTRADO_SUCESSO =  "Dispositivo cadastrado com sucesso. ";
 	public static final String CONSULTA_ERRO = "Não foram encotrado registros para esta consulta";
 	public static final String ALTERACAO_SUCESSO =  "Alteração feita com sucesso. ";
 	public static final String EXCLUSAO_SUCESSO = "Exclusão feita com sucesso. ";

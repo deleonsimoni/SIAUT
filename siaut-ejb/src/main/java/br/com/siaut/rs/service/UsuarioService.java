@@ -127,6 +127,21 @@ public class UsuarioService {
 		return token;
 	}
 	
+	public Long validarTokenUsuario(String token) throws Exception{
+		LOGGER.info("Chamando o metodo: validarTokenUsuario()");
+		
+		
+		Query query  = em.createNativeQuery("SELECT nu_aut001 FROM auttb004_usuario_token " +
+				"WHERE no_token = :token ");
+		
+		query.setParameter("token", token);
+		
+		Long idUser = (Long) query.getSingleResult();
+		
+		LOGGER.info("#SIAUT Token verificado, usuario: " + idUser);
+		return idUser;
+	}
+	
 	public LoginRetorno cadastrar(CadastroRequisicao requisicao) {
 		LOGGER.info("Chamando o metodo: cadastrar("+requisicao.getEmail()+")");
 		LoginRetorno retorno = new LoginRetorno();
