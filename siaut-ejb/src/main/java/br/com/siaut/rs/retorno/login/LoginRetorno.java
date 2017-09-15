@@ -18,6 +18,7 @@ public class  LoginRetorno extends Retorno {
 	@XmlElement(name="tipo")
 	private String usuario;
 	private String token;
+	private Integer nuImovel;
 	
 	public String getToken() {
 		return token;
@@ -33,4 +34,17 @@ public class  LoginRetorno extends Retorno {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+
+	public Integer getNuImovel() {
+		return nuImovel;
+	}
+
+	public void setNuImovel(Integer nuImovel) {
+		this.nuImovel = nuImovel;
+	}
+
+
+
+		
+	
 }

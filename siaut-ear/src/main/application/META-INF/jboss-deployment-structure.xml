@@ -5,14 +5,15 @@
 		<dependencies>
 		    <module name="org.json" />
 		    <module name="javax.ws.rs" />
-		    <!-- <module name="br.gov.caixa.analytics" /> -->
+		    <!-- <module name="br.com.siaut.analytics" /> -->
 		</dependencies>
 	</sub-deployment>	
 	<sub-deployment name="siaut-web.war">
 		<dependencies>
 			<module name="org.json" />
 			<module name="javax.ws.rs" />
-			<!-- <module name="br.gov.caixa.analytics" /> -->
+			<module name="io.swagger.swagger-jaxrs" slot="1.5.13" />
+			<!-- <module name="br.com.siaut.analytics" /> -->
 		</dependencies>
 	</sub-deployment>
 </jboss-deployment-structure>

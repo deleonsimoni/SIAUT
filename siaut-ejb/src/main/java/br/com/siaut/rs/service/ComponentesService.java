@@ -40,31 +40,36 @@ public class ComponentesService  implements Serializable{
 		List<String> msgsErro = new ArrayList<String>();
 		ComponentesRetorno retorno = new ComponentesRetorno();
 		SocketCliente socketCliente = new SocketCliente();
-		Long lngNuTotalItensComodos = 0L;
-		Long lngNuTotalRegistro = 1L;
-		String strNoComodo = "";
-		String strNoCorPainel = "";
-		String strNoIcone = "";
 		try{
 			Query query  = em.createNativeQuery(
-					" SELECT (row_number() over (order by b.nu_aut002)), " +
-					" b.nu_aut002, b.no_comodo, c.ic_ligado, d.no_dispositivo, "+
-					" e.no_cor_painel, g.no_icone "+					
-					" FROM auttb004_usuario_token a "+
-					" INNER JOIN auttb002_comodo b "+
-					" ON a.nu_aut001 = b.nu_aut011 "+
-					" INNER JOIN auttb003_dispositivo c "+
-					" ON c.nu_aut002 = b.nu_aut002 "+
-					" INNER JOIN auttb008_tipo_dispositivo d "+
-					" ON c.nu_aut008_dispositivo = d.nu_dispositivo "+
-					" INNER JOIN auttb007_cor_painel e "+
-					" ON b.nu_aut007_cor_painel = e.nu_cor_painel "+
-					" INNER JOIN auttb011_imovel_usuario f "+
-					" ON b.nu_aut011 = f.nu_aut011 "+
-					"INNER JOIN auttb009_tipo_icone g "+
-					" ON  b.nu_aut009_icone = g.nu_icone " +
-					" WHERE a.no_token = :token ", ComponentesEntity.class)
-						.setParameter("token", requisicao.getToken());
+					" SELECT (row_number() over (order by com.nu_aut002)), " +
+							" com.no_comodo, dis.ic_ligado "+					
+							" FROM auttb011_imovel_usuario imo "+
+							" INNER JOIN auttb002_comodo com "+
+							" ON com.nu_aut011 = imo.nu_aut011 "+
+							" INNER JOIN auttb003_dispositivo dis "+
+							" ON dis.nu_aut002 = com.nu_aut002 "+
+							" WHERE imo.nu_imovel = :imovel ", ComponentesEntity.class)
+							.setParameter("imovel", requisicao.getNuImovel());
+
+//					" SELECT (row_number() over (order by b.nu_aut002)), " +
+//					" b.nu_aut002, b.no_comodo, c.ic_ligado, d.no_dispositivo, "+
+//					" e.no_cor_painel, g.no_icone "+					
+//					" FROM auttb004_usuario_token a "+
+//					" INNER JOIN auttb002_comodo b "+
+//					" ON a.nu_aut001 = b.nu_aut011 "+
+//					" INNER JOIN auttb003_dispositivo c "+
+//					" ON c.nu_aut002 = b.nu_aut002 "+
+//					" INNER JOIN auttb008_tipo_dispositivo d "+
+//					" ON c.nu_aut008_dispositivo = d.nu_dispositivo "+
+//					" INNER JOIN auttb007_cor_painel e "+
+//					" ON b.nu_aut007_cor_painel = e.nu_cor_painel "+
+//					" INNER JOIN auttb011_imovel_usuario f "+
+//					" ON b.nu_aut011 = f.nu_aut011 "+
+//					"INNER JOIN auttb009_tipo_icone g "+
+//					" ON  b.nu_aut009_icone = g.nu_icone " +
+//					" WHERE a.no_token = :token ", ComponentesEntity.class)
+//						.setParameter("token", requisicao.getToken());
 					//.setParameter("email", requisicao.getLogin())
 					//.setParameter("senha", requisicao.getPwd());
 		
@@ -75,33 +80,33 @@ public class ComponentesService  implements Serializable{
 				//
 				socketCliente.listarComponentes(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), aryComponentes);
 				
-				for (ComponentesEntity componentes  : aryComponentes) {
-					ConsolidadoEntity objConsolidadoEntity = new ConsolidadoEntity();
-					
-					if (!"".equals(strNoComodo) && !strNoComodo.equals(componentes.getStrNoComodo())) {
-					   objConsolidadoEntity.setStrNoPainel(componentes.getStrNoCorPainel());
-					   objConsolidadoEntity.setStrNoComodo(strNoComodo);
-					   objConsolidadoEntity.setLngNuItens(lngNuTotalItensComodos);
-					   objConsolidadoEntity.setStrNoPainel(strNoCorPainel);
-					   objConsolidadoEntity.setStrAut009Icone(strNoIcone);
-					   lngNuTotalItensComodos = 0L;
-					   aryConsolidado.add(objConsolidadoEntity);
-					}   
-					else if (lngNuTotalRegistro == aryComponentes.size()){
-							lngNuTotalItensComodos++;
-							objConsolidadoEntity.setStrNoPainel(componentes.getStrNoCorPainel());
-							objConsolidadoEntity.setStrNoComodo(strNoComodo);
-							objConsolidadoEntity.setLngNuItens(lngNuTotalItensComodos);
-							objConsolidadoEntity.setStrNoPainel(strNoCorPainel);
-							objConsolidadoEntity.setStrAut009Icone(strNoIcone);
-							aryConsolidado.add(objConsolidadoEntity);
-					}
-					strNoComodo = componentes.getStrNoComodo();
-					strNoCorPainel = componentes.getStrNoCorPainel();
-					strNoIcone = componentes.getStrNoIcone();
-					lngNuTotalItensComodos++;
-					lngNuTotalRegistro++;
-				}
+//				for (ComponentesEntity componentes  : aryComponentes) {
+//					ConsolidadoEntity objConsolidadoEntity = new ConsolidadoEntity();
+//					
+//					if (!"".equals(strNoComodo) && !strNoComodo.equals(componentes.getStrNoComodo())) {
+//					  // objConsolidadoEntity.setStrNoPainel(componentes.getStrNoCorPainel());
+//					   objConsolidadoEntity.setStrNoComodo(strNoComodo);
+//					   objConsolidadoEntity.setLngNuItens(lngNuTotalItensComodos);
+//					   objConsolidadoEntity.setStrNoPainel(strNoCorPainel);
+//					   objConsolidadoEntity.setStrAut009Icone(strNoIcone);
+//					   lngNuTotalItensComodos = 0L;
+//					   aryConsolidado.add(objConsolidadoEntity);
+//					}   
+//					else if (lngNuTotalRegistro == aryComponentes.size()){
+//							lngNuTotalItensComodos++;
+//						//	objConsolidadoEntity.setStrNoPainel(componentes.getStrNoCorPainel());
+//							objConsolidadoEntity.setStrNoComodo(strNoComodo);
+//							objConsolidadoEntity.setLngNuItens(lngNuTotalItensComodos);
+//							objConsolidadoEntity.setStrNoPainel(strNoCorPainel);
+//							objConsolidadoEntity.setStrAut009Icone(strNoIcone);
+//							aryConsolidado.add(objConsolidadoEntity);
+//					}
+//					strNoComodo = componentes.getStrNoComodo();
+//				//	strNoCorPainel = componentes.getStrNoCorPainel();
+//				//	strNoIcone = componentes.getStrNoIcone();
+//					lngNuTotalItensComodos++;
+//					lngNuTotalRegistro++;
+//				}
 				
 				retorno.setData(aryComponentes);
 				retorno.setTotal(aryConsolidado);

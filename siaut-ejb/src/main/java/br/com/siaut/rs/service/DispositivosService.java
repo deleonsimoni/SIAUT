@@ -15,6 +15,7 @@ import javax.persistence.Query;
 import org.apache.log4j.Logger;
 
 import br.com.siaut.comunicacao.SocketCliente;
+import br.com.siaut.rs.entity.setup.ComponentesEntity;
 import br.com.siaut.rs.requisicao.dispositivos.CadastrarComodoRequisicao;
 import br.com.siaut.rs.requisicao.dispositivos.CadastrarDispositivoRequisicao;
 import br.com.siaut.rs.requisicao.dispositivos.CadastrarImovelRequisicao;
@@ -79,6 +80,8 @@ public class DispositivosService implements Serializable {
 		DispositivosRetorno retorno = new DispositivosRetorno();
 		List<String> msgsErro = new ArrayList<String>();
 		List<ComodosEntity> comodos = new ArrayList<ComodosEntity>();
+		SocketCliente socketCliente = new SocketCliente();
+		//StringBuilder comandoArduino = new StringBuilder();
 		try {
 
 			Query query = em
@@ -103,8 +106,8 @@ public class DispositivosService implements Serializable {
 					.setParameter("token", requisicao.getToken())
 					.setParameter("imovel", requisicao.getNuImovel());
 
-			comodos = query.getResultList();
-
+			comodos = query.getResultList();			
+			listaComponentes(requisicao);
 			msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
 			retorno.setTemErro(Boolean.FALSE);
 			retorno.setMsgsErro(msgsErro);
@@ -178,7 +181,8 @@ public class DispositivosService implements Serializable {
 		try {
 
 			Query query = em
-					.createNativeQuery("SELECT d.nu_aut003, d.no_dispositivo, d.nu_aut002, d.ic_ligado,  "
+					.createNativeQuery(
+							"SELECT d.nu_aut003, d.no_dispositivo, d.nu_aut002, d.ic_ligado,  "
 							+ " t.no_dispositivo as tipo_dispositivo "
 							+ " FROM auttb003_dispositivo d "
 							+ " INNER JOIN auttb008_tipo_dispositivo t " 
@@ -200,7 +204,8 @@ public class DispositivosService implements Serializable {
 				comandoArduino.append("r" + dispositivosEntity.getNuDispositivo() + "=on\n");
 			}
 			
-			serviceSocket.ligarTodosDispositivosComodo(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), comandoArduino);
+			
+			//serviceSocket.ligarTodosDispositivosComodo(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), comandoArduino);
 			
 			msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
 			retorno.setTemErro(Boolean.FALSE);
@@ -227,15 +232,29 @@ public class DispositivosService implements Serializable {
 		List<String> msgsErro = new ArrayList<String>();
 		List<DispositivosEntity> dispositivos = new ArrayList<DispositivosEntity>();
 		DispositivosRequisicao dispositivo = new DispositivosRequisicao();
+		List<ComponentesEntity> aryComponentes;
+	
 		try {
 			
-			DispositivosRetorno comodos = listarComodos(requisicao);
-			for (ComodosEntity comodosEntity : comodos.getComodos()) {
-				dispositivo.setToken(requisicao.getToken());
-				dispositivo.setNuComodo(comodosEntity.getNuComodo().intValue());
-				ligarTodosDispositivosComodo(dispositivo);
-			}
-
+//			DispositivosRetorno comodos = listarComodos(requisicao);
+//			for (ComodosEntity comodosEntity : comodos.getComodos()) {
+//				dispositivo.setToken(requisicao.getToken());
+//				dispositivo.setNuComodo(comodosEntity.getNuComodo().intValue());
+//				ligarTodosDispositivosComodo(dispositivo);
+//			}
+			Query query  = em.createNativeQuery(
+					" SELECT (row_number() over (order by com.nu_aut002)), " +
+					" com.no_comodo, dis.ic_ligado "+					
+					" FROM auttb011_imovel_usuario imo "+
+					" INNER JOIN auttb002_comodo com "+
+					" ON com.nu_aut011 = imo.nu_aut011 "+
+					" INNER JOIN auttb003_dispositivo dis "+
+					" ON dis.nu_aut002 = com.nu_aut002 "+
+					" WHERE imo.nu_imovel = :imovel ", ComponentesEntity.class)
+					.setParameter("imovel", requisicao.getNuImovel());
+		
+			aryComponentes = query.getResultList();
+			
 			msgsErro.add(MensagensAplicacao.CONSULTA_SUCESSO);
 			retorno.setTemErro(Boolean.FALSE);
 			retorno.setMsgsErro(msgsErro);
@@ -494,5 +513,32 @@ public class DispositivosService implements Serializable {
 	
 
 	}
+	
+	public void listaComponentes(DispositivosRequisicao requisicao){
+		//Integer intNuTeste = 1;		
+		List<ComponentesEntity> aryComponentes = null;
+		List<String> msgsErro = new ArrayList<String>();
+		SocketCliente socketCliente = new SocketCliente();
+		try{
+			Query query  = em.createNativeQuery(			
+					" SELECT (row_number() over (order by com.nu_aut002)), " +
+					" com.no_comodo, dis.ic_ligado "+					
+					" FROM auttb011_imovel_usuario imo "+
+					" INNER JOIN auttb002_comodo com "+
+					" ON com.nu_aut011 = imo.nu_aut011 "+
+					" INNER JOIN auttb003_dispositivo dis "+
+					" ON dis.nu_aut002 = com.nu_aut002 "+
+					" WHERE imo.nu_imovel = :imovel ", ComponentesEntity.class)
+					.setParameter("imovel", requisicao.getNuImovel());
+			
+			aryComponentes = query.getResultList();
+			socketCliente.listarComponentes(WebResources.IP_ARDUINO, Integer.parseInt(WebResources.PORTA_ARDUINO), aryComponentes);
+			
+	  } catch (Exception e) {
+		LOGGER.error("#SIAUT ERRO AO LOGAR", e);
+		msgsErro.add(MensagensAplicacao.PROBLEMA_ACESSO);
+	  }
+		
+    }
 
 }

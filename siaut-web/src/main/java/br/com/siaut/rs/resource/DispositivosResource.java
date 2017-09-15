@@ -1,3 +1,6 @@
+
+
+
 package br.com.siaut.rs.resource;
 
 import javax.ejb.EJB;
@@ -15,7 +18,14 @@ import br.com.siaut.rs.requisicao.dispositivos.CadastrarImovelRequisicao;
 import br.com.siaut.rs.requisicao.dispositivos.DispositivosRequisicao;
 import br.com.siaut.rs.retorno.dispositivos.DispositivosRetorno;
 import br.com.siaut.rs.service.DispositivosService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.Authorization;
+import io.swagger.annotations.ResponseHeader;
 
+@Api(value = "/dispositivos") //, basePath = "/sisit/ws/auth", consumes = "application/json", produces = "application/json", protocols = "https")
 @Path("/dispositivos")
 @Consumes({ MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_JSON })
@@ -23,6 +33,7 @@ public class DispositivosResource extends Resource {
 	
 	@EJB 
 	private DispositivosService dispositivosService;
+	
 	
 	@POST @Path("/listarImoveis")
 	public Response listarImoveis(DispositivosRequisicao requisicao) {
@@ -72,7 +83,37 @@ public class DispositivosResource extends Resource {
 		return response;
 	}
 	
+	@ApiOperation(httpMethod = "post",
+			value = "Criar novo imóvel.",
+		    notes = "Esta API criará novo imóvel na base de dados.",
+		    response = DispositivosResource.class,
+		    responseContainer = "Incluir",
+		    authorizations = { @Authorization(value = "keycloak", scopes = {}) },
+
+		    produces = MediaType.APPLICATION_JSON)
+	@ApiResponses(value={
+		@ApiResponse(
+				code = 201, message = "Imóvel criado com sucesso.", 
+				response = DispositivosResource.class, 
+				responseHeaders = @ResponseHeader(
+						name = "Location", 
+						description = "uri do novo imóvel", 
+						response = Response.class)
+			
+				),
+		@ApiResponse(code = 200, message = "Requisição realizada com sucesso."),
+		@ApiResponse(code = 400, message = "Requisição inválida"),
+        @ApiResponse(code = 401, message = "Não autorizado."),
+        @ApiResponse(code = 403, message = "Acesso negado."),
+        @ApiResponse(code = 404, message = "Não encontrado."),
+        @ApiResponse(code = 405, message = "Método não permitido."),
+        @ApiResponse(code = 500, message = "Erro interno do servidor."),
+        @ApiResponse(code = 501, message = "Não implementado.")}
+    )
 	@POST @Path("/cadastrarImovel")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	//@RolesAllowed({ "GERENTE", "ANALISTA" })
 	public Response cadastrarImovel(CadastrarImovelRequisicao requisicao) {
 		Response response = null;
 		DispositivosRetorno retorno = null;

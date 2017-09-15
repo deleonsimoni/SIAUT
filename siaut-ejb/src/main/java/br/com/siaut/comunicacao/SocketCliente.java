@@ -124,7 +124,8 @@ public class SocketCliente {
 		}
 		return stbLista;
 	}
-
+    
+	
 	public StringBuilder listarComponentes(final String serverIP, final Integer serverPort, final List<ComponentesEntity> lstComponentes) throws IOException {
 		/*
 		 * criando uma conecxao para o servidor localizado em 192.169.1.201
@@ -156,17 +157,17 @@ public class SocketCliente {
 				out.write(330);
 				LOGGER.info("#SIAUT Comando: " + componentes.getLngNuNumber());
 
-			    System.out.println("Lista  "
-			            + componentes.getLngNuAut002()
-			            + " "
-			            + componentes.getStrNoComodo()
-			            + " "
-			            + componentes.getStrNoDispositivo()
-			            + " "
-			            + componentes.getStrIcLigado()
-			    		+ " "
-			    		+ componentes.getStrNoCorPainel());
-			    
+//			    System.out.println("Lista  "
+//			            + componentes.getLngNuAut002()
+//			            + " "
+//			            + componentes.getStrNoComodo()
+//			            + " "
+//			            + componentes.getStrNoDispositivo()
+//			            + " "
+//			            + componentes.getStrIcLigado()
+//			    		+ " "
+//			    		+ componentes.getStrNoCorPainel());
+//			    
 			    if (componentes.getStrIcLigado().equals("0")) {
 					// enviando uma string para ligar lâmpada.
 					out.writeBytes("r" + componentes.getLngNuNumber() + "=off\n");
@@ -206,9 +207,69 @@ public class SocketCliente {
 		return in.readLine();
 	}
 
-	public void ligarTodosDispositivosComodo(String ipArduino, int parseInt, StringBuilder comandoArduino) {
-		// TODO Auto-generated method stub
+	public StringBuilder ligarTodosDispositivosComodo(String serverIP, int serverPort, final List<ComponentesEntity> lstComponentes) {
+		/*
+		 * criando uma conecxao para o servidor localizado em 192.169.1.201
+		 * porta 80
+		 */
+		StringBuilder stbLista = new StringBuilder();
+		List<ComponentesEntity> objLstComponentes = lstComponentes;
 		
+		try {
+			LOGGER.info("#SIAUT Preparar para chamar do Arduino");
+			LOGGER.info("#SIAUT Tentando estabelecer conexão com arduino em IP: " + serverIP + " PORTA: " + serverPort);
+
+		
+			for (ComponentesEntity componentes  : objLstComponentes) {
+				String strAux = "";
+				Socket client = new Socket(serverIP, serverPort);
+				LOGGER.info("#SIAUT Sucesso na conexão");
+
+				// Cria um canal para receber dados.
+				DataInputStream in = new DataInputStream(client.getInputStream());
+				LOGGER.info("#SIAUT Sucesso ao criar canal para receber dados");
+
+				// Cria um canal para enviar dados.
+				DataOutputStream out = new DataOutputStream(client.getOutputStream());
+				LOGGER.info("#SIAUT Sucesso ao criar canal para enviar dados");
+
+				LOGGER.info("#SIAUT Sucesso ao criar canal para enviar dados");
+				LOGGER.info("#SIAUT Arduino execute o comando abaixo");
+				out.write(330);
+				LOGGER.info("#SIAUT Comando: " + componentes.getLngNuNumber());
+		    
+			    if (componentes.getStrIcLigado().equals("0")) {
+					// enviando uma string para ligar lâmpada.
+					out.writeBytes("r" + componentes.getLngNuNumber() + "=off\n");
+			    	LOGGER.debug("r" + componentes.getLngNuNumber() + "=off\n");
+					LOGGER.info("#SIAUT Comando: r" + componentes.getLngNuNumber() + "=off\n");					
+
+				} else if (componentes.getStrIcLigado().equals("1")) {
+					// enviando uma string para ligar lâmpada.
+					out.writeBytes("r" + componentes.getLngNuNumber() + "=on\n");
+					LOGGER.debug("r" + componentes.getLngNuNumber() + "=on\n");
+					LOGGER.info("#SIAUT Comando: r" + componentes.getLngNuNumber() + "=on\n");
+				}
+				//out.write(componentes.getLngNuAut003().longValue());
+				LOGGER.debug(componentes.getLngNuNumber().longValue()+"");
+				LOGGER.info("#SIAUT Comando: " + componentes.getLngNuNumber().longValue());
+				while ((strAux = extracted(in)) != null) {
+					LOGGER.info("#SIAUT RESPOSTA DO ARDUINO: " + strAux);
+					stbLista.append(strAux);
+				}
+				out.writeBytes("Obrigado!"); // enviando uma string
+				in.close();
+				out.close();
+				LOGGER.info("#SIAUT CANAIS FECHADOS COM SUCESSO");
+				// Fecha o socket.
+				client.close();
+			}
+			
+		} catch (Exception e) {
+			LOGGER.info("#SIAUT ERRO NA COMUNICAÇÃO COM O ARDUINO!!!!!!");
+			LOGGER.error("#SIAUT ERRO: " + e);
+		}
+		return stbLista;
 	}
 
 }

@@ -21,8 +21,9 @@ public final class WebResources implements Serializable {
 	
 	//public static final String IP_ARDUINO = "192.168.1.7 ";
 	//public static final int PORTA_ARDUINO = 80;
-	//public static final String IP_ARDUINO = "192.168.25.41";
-	public static final String IP_ARDUINO = "192.168.1.4";
+	public static final String IP_ARDUINO = "192.168.25.41";
+	//192.168.1.2 do roteador
+	//public static final String IP_ARDUINO = "192.168.1.4";
 	public static final String PORTA_ARDUINO = "7077";
 	public static final int DESLIGADA = 0;
 	public static final int LIGADA = 1;		

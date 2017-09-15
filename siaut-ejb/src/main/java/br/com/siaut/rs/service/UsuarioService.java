@@ -51,9 +51,12 @@ public class UsuarioService {
 
 		try {
 
-			Query query  = em.createNativeQuery("SELECT nu_aut001,  no_usuario " +
-					"FROM    auttb001_usuario " + 
-					"where ed_eletronico = :email and no_senha = :senha ", LoginEntity.class)
+			Query query  = em.createNativeQuery(
+					"SELECT a.nu_aut001,  a.no_usuario, b.nu_imovel " +
+					"FROM    auttb001_usuario a " + 
+					" INNER JOIN auttb011_imovel_usuario b" +
+					" ON b.nu_aut011 = a.nu_aut001 " +
+					" where a.ed_eletronico = :email and a.no_senha = :senha ", LoginEntity.class)
 					//"where ed_eletronico = :email ", LoginEntity.class)
 					.setParameter("email", requisicao.getLogin())
 					.setParameter("senha", requisicao.getPwd());
@@ -64,7 +67,9 @@ public class UsuarioService {
 			  retorno.setTemErro(Boolean.FALSE);
 			  retorno.setMsgsErro(msgsErro);
 			  retorno.setUsuario(usuario.getNoUser().toString());
+			  retorno.setNuImovel(usuario.getNuImovel());
 			  retorno.setToken(gerarToken(usuario));
+			  
 			return retorno;
 		} catch(NoResultException e) {
 			msgsErro.add(MensagensAplicacao.ACESSO_ERRO);

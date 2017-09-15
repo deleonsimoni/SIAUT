@@ -66,6 +66,13 @@
       	<version>20140107</version>
       	<scope>provided</scope>
       </dependency>
+       <!-- Swagger Jaxrs to API documentation -->
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-jaxrs</artifactId>
+			<version>1.5.13</version>
+			<scope>provided</scope>
+	  </dependency>
       <dependency>
       	<groupId>javax.ws.rs</groupId>
       	<artifactId>javax.ws.rs-api</artifactId>
@@ -143,8 +150,28 @@
 							</property>						
 						</properties>
 					</configuration>
-				</plugin>         
-         
+				</plugin> 
+				<!-- plugin>
+			    	<groupId>com.sebastian-daschner</groupId>
+			    		<artifactId>jaxrs-analyzer-maven-plugin</artifactId>
+			    		<version>0.15</version>
+			    		<executions>
+			        		<execution>
+			            		<goals>
+			               			<goal>analyze-jaxrs</goal>
+			            		</goals>
+			            		<configuration>
+			               			<backend>swagger</backend>
+			               			<deployedDomain>localhost:8089</deployedDomain>
+			               			<swaggerSchemes>http</swaggerSchemes>
+			               			<renderSwaggerTags>true</renderSwaggerTags>
+			               			< 
+			               			<resourcesDir>../src/main/webapp/doc</resourcesDir>
+			               			 >
+			            		</configuration>
+			        		</execution>
+			    		</executions>
+				</plugin-->          
       </plugins>
    </build>
 

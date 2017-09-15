@@ -114,8 +114,8 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
         $scope.getUserInfo();
 
         
-        $scope.carregarConfiguracoes = function() {
-        	WebServiceX.create("ws/componentesresource/setup", JSON.stringify($rootScope.headers))
+        $scope.carregarConfiguracoesImovel = function() {
+        	WebServiceX.create("ws/componentesresource/setup", JSON.stringify($rootScope.usuario.nuImovel),  JSON.stringify($rootScope.headers))
         	.then(function(res) {
         		//webstorm
         		if (res.temErro){
@@ -150,14 +150,15 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
         
         
         
-       /* $scope.listarComodos = function() {
+        $scope.listarComodos = function() {
         	WebServiceX.create("ws/dispositivos/listarComodos", JSON.stringify($rootScope.headers))
         	.then(function(res) {
         		if (res.temErro){
         			Alert.showMessage("Atenção",res.msgsErro[0]);
         		} else {
+        		   			  
         			$scope.comodos = res.comodos;
-        		}
+           		}
         		$scope.$apply();
         		
         	}, function(xhr, status, err) {
@@ -242,9 +243,9 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
             				$rootScope.goAuth();
             		}
         	});
-    	}*/
+    	}
         
-        $scope.ligarTodosDispositivosImovel = function(){
+       /* $scope.ligarTodosDispositivosImovel = function(){
         	var res = UsuarioSIAUT.ligarTodosDispositivosImovel($rootScope.headers);
     		if (res.temErro){
     			Alert.showMessage("Atenção",res.msgsErro[0]);
@@ -283,7 +284,7 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
                 				$rootScope.goAuth();
                 		}
             	});
-        		$scope.$apply()
+        		//$scope.$apply()
         };
         
         $scope.listarComodos = function() {
@@ -294,7 +295,7 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
         			$scope.comodos = res.comodos;
         		}
         		$scope.$apply();
-        };
+        };*/
         
 
         
@@ -305,7 +306,8 @@ angular.module('webApp').controller('PrincipalController', function ($http, $sco
         };
     
         $scope.listarImoveis();
-        $scope.carregarConfiguracoes();
+    	//$scope.carregarConfiguracoesImovel();
+        
 });
 
 angular.module('webApp').controller('ListarDispositivosController', function ($scope, $rootScope, Log, WebServiceX, Analytics, Error, Utils, Alert) {
@@ -495,7 +497,7 @@ angular.module('webApp').controller('LoginController', function ($scope, $rootSc
         	.then(function(res) {
           		if(!res.temErro) {
           			$rootScope.headers = {token: res.token};
-          			$rootScope.usuario = {nome: res.usuario};
+        			$rootScope.usuario = {nome: res.usuario, nuImovel: res.nuImovel};
           			$rootScope.go("principal");
         			$scope.$apply();
         		} else if(res.temErro) {

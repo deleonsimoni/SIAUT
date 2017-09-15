@@ -13,6 +13,9 @@ public class LoginEntity {
 	
 	@Column(name="no_usuario")
 	private String noUser;
+	
+	@Column(name="nu_imovel")
+	private Integer nuImovel;
 
 //	@Column(name="nu_documento")
 //	private Long nuDocumento;
@@ -48,6 +51,17 @@ public class LoginEntity {
 		return nuUser;
 	}
 
+	public Integer getNuImovel() {
+		return nuImovel;
+	}
+
+	public void setNuImovel(Integer nuImovel) {
+		this.nuImovel = nuImovel;
+	}
+
+
+
+	
 //	public Long getNuDocumento() {
 //		return nuDocumento;
 //	}
