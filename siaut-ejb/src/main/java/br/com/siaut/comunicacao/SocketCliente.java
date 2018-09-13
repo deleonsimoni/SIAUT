@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.siaut.rs.entity.setup.ComponentesEntity;
 import br.com.siaut.util.WebResources;
+import br.gov.caixa.entity.dispositivos.DispositivosEntity;
 /**
 *
 * @author SIAUT
@@ -207,20 +208,20 @@ public class SocketCliente {
 		return in.readLine();
 	}
 
-	public StringBuilder ligarTodosDispositivosComodo(String serverIP, int serverPort, final List<ComponentesEntity> lstComponentes) {
+	public StringBuilder ligarTodosDispositivosComodo(String serverIP, int serverPort, final List<DispositivosEntity> lstComponentes) {
 		/*
 		 * criando uma conecxao para o servidor localizado em 192.169.1.201
 		 * porta 80
 		 */
 		StringBuilder stbLista = new StringBuilder();
-		List<ComponentesEntity> objLstComponentes = lstComponentes;
+		List<DispositivosEntity> objLstComponentes = lstComponentes;
 		
 		try {
 			LOGGER.info("#SIAUT Preparar para chamar do Arduino");
 			LOGGER.info("#SIAUT Tentando estabelecer conexão com arduino em IP: " + serverIP + " PORTA: " + serverPort);
 
 		
-			for (ComponentesEntity componentes  : objLstComponentes) {
+			for (DispositivosEntity componentes  : objLstComponentes) {
 				String strAux = "";
 				Socket client = new Socket(serverIP, serverPort);
 				LOGGER.info("#SIAUT Sucesso na conexão");
@@ -236,23 +237,23 @@ public class SocketCliente {
 				LOGGER.info("#SIAUT Sucesso ao criar canal para enviar dados");
 				LOGGER.info("#SIAUT Arduino execute o comando abaixo");
 				out.write(330);
-				LOGGER.info("#SIAUT Comando: " + componentes.getLngNuNumber());
+				LOGGER.info("#SIAUT Comando: " + componentes.getNuDispositivo());
 		    
-			    if (componentes.getStrIcLigado().equals("0")) {
+			    if (componentes.getIcLigado().equals("0")) {
 					// enviando uma string para ligar lâmpada.
-					out.writeBytes("r" + componentes.getLngNuNumber() + "=off\n");
-			    	LOGGER.debug("r" + componentes.getLngNuNumber() + "=off\n");
-					LOGGER.info("#SIAUT Comando: r" + componentes.getLngNuNumber() + "=off\n");					
+					out.writeBytes("r" + componentes.getNuDispositivo() + "=on\n");
+			    	LOGGER.debug("r" + componentes.getNuDispositivo() + "=on\n");
+					LOGGER.info("#SIAUT Comando: r" + componentes.getNuDispositivo() + "=on\n");					
 
-				} else if (componentes.getStrIcLigado().equals("1")) {
+				} else if (componentes.getIcLigado().equals("1")) {
 					// enviando uma string para ligar lâmpada.
-					out.writeBytes("r" + componentes.getLngNuNumber() + "=on\n");
-					LOGGER.debug("r" + componentes.getLngNuNumber() + "=on\n");
-					LOGGER.info("#SIAUT Comando: r" + componentes.getLngNuNumber() + "=on\n");
+					out.writeBytes("r" + componentes.getNuDispositivo() + "=off\n");
+					LOGGER.debug("r" + componentes.getNuDispositivo() + "=off\n");
+					LOGGER.info("#SIAUT Comando: r" + componentes.getNuDispositivo() + "=off\n");
 				}
 				//out.write(componentes.getLngNuAut003().longValue());
-				LOGGER.debug(componentes.getLngNuNumber().longValue()+"");
-				LOGGER.info("#SIAUT Comando: " + componentes.getLngNuNumber().longValue());
+				LOGGER.debug(componentes.getIcLigado());
+				LOGGER.info("#SIAUT Comando: " + componentes.getNuDispositivo().longValue());
 				while ((strAux = extracted(in)) != null) {
 					LOGGER.info("#SIAUT RESPOSTA DO ARDUINO: " + strAux);
 					stbLista.append(strAux);
