@@ -9,25 +9,27 @@ import { TooltipComponent } from '@angular/material';
 @Injectable()
 export class AuthService {
 
-  constructor(private http : HttpClient, private token: TokenStorage) {}
+  constructor(
+    private http: HttpClient,
+    private token: TokenStorage
+  ) {}
 
   public $userSource = new Subject<any>();
 
-  login(email : string, password : string) : Observable <any> {
+  login(form: any): Observable <any> {
     return Observable.create(observer => {
-      this.http.post('/api/auth/login', {
-        email,
-        password
-      }).subscribe((data : any) => {
+      this.http.post('/api/auth/login', form)
+        .subscribe((data: any) => {
+          console.log(data);
           observer.next({user: data.user});
           this.setUser(data.user);
           this.token.saveToken(data.token);
           observer.complete();
-      })
+        }, err => console.log(err));
     });
   }
 
-  register(fullname : string, email : string, password : string, repeatPassword : string) : Observable <any> {
+  register(fullname: string, email: string, password: string, repeatPassword: string): Observable <any> {
     return Observable.create(observer => {
       this.http.post('/api/auth/register', {
         fullname,
@@ -39,7 +41,7 @@ export class AuthService {
         this.setUser(data.user);
         this.token.saveToken(data.token);
         observer.complete();
-      })
+      });
     });
   }
 
