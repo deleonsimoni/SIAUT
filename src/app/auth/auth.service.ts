@@ -67,6 +67,21 @@ export class AuthService {
     });
   }
 
+  meLocal(): Observable<any> {
+    return Observable.create(observer => {
+      const tokenVal = this.token.getToken();
+      if (!tokenVal) {
+        return  observer.complete();
+      } else {
+
+
+        //observer.next({user: data.user});
+        //this.setUser(data.user);
+        observer.complete();
+      }
+    });
+  }
+
   signOut(): void {
     this.token.signOut();
     this.setUser(null);

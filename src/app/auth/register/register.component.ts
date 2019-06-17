@@ -23,6 +23,9 @@ export class RegisterComponent implements OnInit {
       repeatPassword: new FormControl('', [Validators.required, this.passwordsMatchValidator])
     });
 
+    this.userForm.valueChanges.subscribe(data => {
+      console.log(this.userForm);
+    })
   }
 
   ngOnInit() {
@@ -41,6 +44,11 @@ export class RegisterComponent implements OnInit {
   get repeatPassword(): any { return this.userForm.get('repeatPassword'); }
 
   register() {
+    console.log('****** userFormValue ********');
+    console.log(this.userForm.value);
+
+    console.log('****** getRawValue ********');
+    console.log(this.userForm.getRawValue());
 
     if (!this.userForm.valid) return;
 
