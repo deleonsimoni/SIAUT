@@ -3,14 +3,16 @@
 
   <div id="page-top">
     <div id="wrapper">
-      <app-menu></app-menu>
+      <app-menu (room)="selectedRoom($event)"></app-menu>
   
       <div id="content-wrapper" class="d-flex flex-column">
   
-        <!-- Main Content -->
+        <!-- Main Content --> 
         <div id="content">
           <app-header></app-header>
+          <app-dashboard [comodo]="comodo"></app-dashboard>
         </div>
+
   
         <app-footer></app-footer>
   

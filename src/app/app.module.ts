@@ -18,12 +18,16 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { UtilBootstrapModule } from './util-bootstrap/util-bootstrap.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
     MenuComponent,
+    DashboardComponent,
     FooterComponent
   ],
   imports: [
@@ -35,6 +39,7 @@ import { FooterComponent } from './footer/footer.component';
     AuthModule,
     AdminModule,
     AppRoutingModule,
+    UtilBootstrapModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

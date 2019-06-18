@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public comodo = {
+    name: 'Sala',
+    list: [
+      'Sky',
+      'Televisão',
+      'Ventilador'
+    ];
+  };
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectedRoom(event) {
+    this.comodo = event;
   }
 
 }
