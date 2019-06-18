@@ -11,16 +11,16 @@ export class AuthGuard implements CanActivate {
   constructor(public router: Router
               ,public authService: AuthService) {}
 
- /* canActivate() {
+  canActivate() {
     const user = (<any>window).user;
     if (user) return true;
 
     // not logged in so redirect to login page with the return url
     this.router.navigate(['/auth/login']);
     return false;
-  }*/
+  }
 
-  canActivate() {
+ /* canActivate() {
     return new Observable<boolean>(observer => {
       this.authService.me().subscribe(data => {
         this.user = data.user;
@@ -32,6 +32,6 @@ export class AuthGuard implements CanActivate {
         }
       })
     });
-  }
+  }*/
 
 } 

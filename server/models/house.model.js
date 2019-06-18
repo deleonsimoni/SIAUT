@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Housechema = new mongoose.Schema({
+const HouseSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -8,6 +8,9 @@ const Housechema = new mongoose.Schema({
   icon: {
     type: String
   },
+  rooms:[
+    {type: mongoose.Schema.Types.ObjectId, ref: 'Room'}
+  ],
   createdAt: {
     type: Date,
     default: Date.now

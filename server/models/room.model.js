@@ -11,6 +11,9 @@ const RoomSchema = new mongoose.Schema({
   icon: {
     type: String
   },
+  devices:[
+    {type: mongoose.Schema.Types.ObjectId, ref: 'Device'}
+  ],
   createdAt: {
     type: Date,
     default: Date.now

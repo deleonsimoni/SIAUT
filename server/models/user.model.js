@@ -20,6 +20,9 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  houses:[
+    {type: mongoose.Schema.Types.ObjectId, ref: 'House'}
+  ],
   roles: [{
     type: String,
   }]
