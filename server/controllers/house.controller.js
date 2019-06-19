@@ -17,8 +17,17 @@ async function insertRoom(room) {
   return await new Room(room).save();
 }
 
-async function insertDevice(device) {
-  return await new Device(device).save();
+async function insertDevice(devices) {
+
+  Device.collection.insert(devices, function (err, docs) {
+    if (err){ 
+        return console.error(err);
+    } else {
+      console.log("Multiple documents inserted to devices");
+    }
+  });
+
+  //return await new Device(device).save();
 }
 
 async function insertHouse(house) {
