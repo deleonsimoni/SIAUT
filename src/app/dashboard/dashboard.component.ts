@@ -22,7 +22,15 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class DashboardComponent implements OnInit {
 
-  @Input() comodo: any[];
+  // @Input() comodo: any[];
+  public comodo = {
+    name: 'Sala',
+    list: [
+      'Sky',
+      'Televisão',
+      'Ventilador'
+    ]
+  };
 
   constructor() {}
 

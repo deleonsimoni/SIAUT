@@ -13,22 +13,12 @@ import { AuthHeaderInterceptor } from './interceptors/header.interceptor';
 import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
 
 import { UtilBootstrapModule } from './util-bootstrap/util-bootstrap.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    MenuComponent,
-    DashboardComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
       'Sky',
       'Televisão',
       'Ventilador'
-    ];
+    ]
   };
 
   constructor() { }

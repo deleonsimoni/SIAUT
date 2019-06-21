@@ -29,12 +29,12 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link collapsed" (click)="select('Sala')">
+    <a class="nav-link collapsed" (click)="select('Sala')" [routerLink]="['dashboard']">
         <!-- (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" -->
       <i class="fas fa-fw fa-cog"></i>
       <span>Sala</span>
     </a>
-    <a class="nav-link collapsed" (click)="select('Quarto')">
+    <a class="nav-link collapsed" (click)="select('Quarto')" [routerLink]="['chart']">
         <!-- (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" -->
       <i class="fas fa-fw fa-cog"></i>
       <span>Quarto</span>
