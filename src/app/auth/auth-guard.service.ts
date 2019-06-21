@@ -12,7 +12,13 @@ export class AuthGuard implements CanActivate {
               ,public authService: AuthService) {}
 
   canActivate() {
+
+    console.log('Chamei AuthGuard');
+
     const user = (<any>window).user;
+
+    console.log('Validando rota no guard: Usuario > ' + user);
+
     if (user) return true;
 
     // not logged in so redirect to login page with the return url

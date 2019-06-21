@@ -20,7 +20,6 @@ export class AuthService {
     return Observable.create(observer => {
       this.http.post('/api/auth/login', form)
         .subscribe((data: any) => {
-          console.log(data);
           observer.next({user: data.user});
           this.setUser(data.user);
           this.token.saveToken(data.token);
@@ -57,13 +56,14 @@ export class AuthService {
 
   me(): Observable<any> {
     return Observable.create(observer => {
-      const tokenVal = this.token.getToken();
-      if (!tokenVal) return  observer.complete();
-      this.http.get('/api/auth/me').subscribe((data : any) => {
-        observer.next({user: data.user});
-        this.setUser(data.user);
-        observer.complete();
-      })
+        console.log('Chamando metodo authService.me()');
+        const tokenVal = this.token.getToken();
+        if (!tokenVal) return  observer.complete();
+        this.http.get('/api/auth/me').subscribe((data : any) => {
+          observer.next({user: data.user});
+          this.setUser(data.user);
+          observer.complete();
+        })
     });
   }
 

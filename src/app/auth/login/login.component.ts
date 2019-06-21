@@ -31,9 +31,16 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.authService.login(this.formLogin.value)
-      .subscribe(data => {
+      .subscribe((data: any) => {
         console.log(data);
-        this.router.navigate(['']);
+
+        if(data.user.houses.length > 0){
+          console.log('Usuario com casa');
+          this.router.navigate(['']);
+        } else {
+          console.log('Usuario sem casa');
+          this.router.navigate(['']);
+        }
       });
   }
 

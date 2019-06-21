@@ -18,10 +18,13 @@ module.exports = {
 }
 
 async function insert(user) {
+  console.log('Usuario recebido');
   user = await Joi.validate(user, userSchema, { abortEarly: false });
+  console.log('Usuario validado pelo JOI');
+
   user.hashedPassword = bcrypt.hashSync(user.password, 10);
   delete user.password;
-
+  
   if(!user.houses){
     console.log('Usuario sem casa definida');
     house = {
@@ -29,7 +32,7 @@ async function insert(user) {
     }
     user.houses = await new House(house).save();
     console.log('Casa principal criada para o usuario');
-  }
+    }
 
   console.log('Inserindo usuário no banco');
   return await new User(user).save();

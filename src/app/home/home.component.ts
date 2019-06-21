@@ -27,12 +27,13 @@ export class HomeComponent implements OnInit {
 
     // init this.user on startup
     this.authService.me().subscribe(data => {
+      console.log('Home.Component.Ts');
       this.user = data.user;
     });
 
     // update this.user after login/register/logout
     this.userSubscription = this.authService.$userSource.subscribe((user) => {
-      this.user = user;
+        this.user = user;
     });
   }
 
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate([link]);
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }

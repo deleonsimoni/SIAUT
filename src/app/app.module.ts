@@ -13,20 +13,11 @@ import { AuthHeaderInterceptor } from './interceptors/header.interceptor';
 import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
-import { WizardComponent } from './wizard/wizard.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    MenuComponent,
-    FooterComponent,
-    WizardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +27,7 @@ import { WizardComponent } from './wizard/wizard.component';
     SharedModule,
     AuthModule,
     AdminModule,
+    HomeModule,
     AppRoutingModule,
   ],
   providers: [{
