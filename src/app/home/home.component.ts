@@ -10,47 +10,23 @@ import { Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  
   private userSubscription: Subscription;
   public user: any;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private domSanitizer: DomSanitizer,
-    private matIconRegistry: MatIconRegistry
-  ) {
-    this.registerSvgIcons()
-  }
+  public comodo = {
+    name: 'Sala',
+    list: [
+      'Sky',
+      'Televisão',
+      'Ventilador'
+    ]
+  };
+  matIconRegistry: any;
+  domSanitizer: any;
 
-  public ngOnInit() {
-
-    // init this.user on startup
-    this.authService.me().subscribe(data => {
-      console.log('Home.Component.Ts');
-      this.user = data.user;
-    });
-
-    // update this.user after login/register/logout
-    this.userSubscription = this.authService.$userSource.subscribe((user) => {
-        this.user = user;
-    });
-  }
-
-  logout(): void {
-    this.authService.signOut();
-    this.navigate('');
-  }
-
-  navigate(link): void {
-    this.router.navigate([link]);
-  }
-
-  ngOnDestroy() {
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
-    }
-  }
+  constructor() { }
 
   registerSvgIcons() {
     [
@@ -89,6 +65,10 @@ export class HomeComponent implements OnInit {
     ].forEach((icon) => {
       this.matIconRegistry.addSvgIcon(icon, this.domSanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${icon}.svg`))
     });
+  }
+
+  selectedRoom(event) {
+    this.comodo = event;
   }
 
 }

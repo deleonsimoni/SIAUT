@@ -13,7 +13,8 @@ import { AuthHeaderInterceptor } from './interceptors/header.interceptor';
 import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { HomeModule } from './home/home.module';
+
+import { UtilBootstrapModule } from './util-bootstrap/util-bootstrap.module';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,8 @@ import { HomeModule } from './home/home.module';
     SharedModule,
     AuthModule,
     AdminModule,
-    HomeModule,
     AppRoutingModule,
+    UtilBootstrapModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
