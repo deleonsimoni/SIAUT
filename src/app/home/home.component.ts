@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  
+
   private userSubscription: Subscription;
   public user: any;
 
@@ -63,7 +63,7 @@ export class HomeComponent {
       'trolleybus',
       'water-transportation',
     ].forEach((icon) => {
-      this.matIconRegistry.addSvgIcon(icon, this.domSanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${icon}.svg`))
+      this.matIconRegistry.addSvgIcon(icon, this.domSanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${icon}.svg`));
     });
   }
 

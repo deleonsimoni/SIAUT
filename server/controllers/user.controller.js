@@ -14,7 +14,9 @@ const userSchema = Joi.object({
 
 
 module.exports = {
-  insert
+  insert,
+  getUserById,
+  insertUser
 }
 
 async function insert(user) {
@@ -34,6 +36,16 @@ async function insert(user) {
     console.log('Casa principal criada para o usuario');
     }
 
+  console.log('Inserindo usuário no banco');
+  return await new User(user).save();
+}
+
+async function getUserById(userId) {
+  console.log('getUserById: ' + userId);
+  return await User.findById(userId);
+}
+
+async function insertUser(user) {
   console.log('Inserindo usuário no banco');
   return await new User(user).save();
 }

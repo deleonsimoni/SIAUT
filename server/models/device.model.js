@@ -5,6 +5,9 @@ const DeviceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  icon: {
+    type: String
+  },
   itsOn: {
     type: Boolean,
     default: false

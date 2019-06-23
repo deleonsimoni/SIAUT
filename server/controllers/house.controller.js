@@ -13,21 +13,34 @@ module.exports = {
   getRoom
 }
 
-async function insertRoom(room) {
-  return await new Room(room).save();
+async function insertRoom(rooms, house) {
+
+  await Room.collection.insert(rooms, function (err, docs) {
+    if (err){ 
+        return console.error(err);
+    } else {
+      house.rooms.push.apply(house.rooms, docs.ops);
+      new House(house).save();
+      console.log("Todos os Comodos cadastrados com sucesso");
+    }
+  });
+
+  return await house.rooms;
 }
 
-async function insertDevice(devices) {
+async function insertDevice(devices, rooms) {
 
   Device.collection.insert(devices, function (err, docs) {
     if (err){ 
         return console.error(err);
     } else {
-      console.log("Multiple documents inserted to devices");
+      rooms.devices.push.apply(docs.ops);
+      new Room(rooms).save();
+      console.log("Todos devices cadastrados com sucesso");
     }
   });
 
-  //return await new Device(device).save();
+  return await devicesReturn;
 }
 
 async function insertHouse(house) {
@@ -35,16 +48,17 @@ async function insertHouse(house) {
 }
 
 async function getRoom(id) {
-  Room.findById(id, function(err, room) {  
+  return await Room.findById(id, function(err, room) {  
     if (err) {  
       console.error('Erro de busca do cômodo ' + err);  
     }
     return room;  
   })  
-}
+} 
 
 async function getDevice(id) {
-  Device.findById(id, function(err, device) {  
+  console.log('Buscando Casa por Id: ' + id);
+  return await Device.findById(id, function(err, device) {  
     if (err) {  
       console.error('Erro de busca do device ' + err);  
     }
@@ -53,7 +67,8 @@ async function getDevice(id) {
 }
 
 async function getHouse(id) {
-  House.findById(id, function(err, house) {  
+  console.log('Buscando Casa por Id: ' + id);
+  return await House.findById(id, function(err, house) {  
     if (err) {  
       console.error('Erro de busca da house ' + err);  
     }
