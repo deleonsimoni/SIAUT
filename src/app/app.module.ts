@@ -15,10 +15,14 @@ import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { UtilBootstrapModule } from './util-bootstrap/util-bootstrap.module';
+import { SplashComponent } from './splash/splash.component';
+import { WizardComponent } from './wizard/wizard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WizardComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
