@@ -15,17 +15,30 @@ module.exports = {
 
 async function insertRoom(rooms, house) {
 
-  await Room.collection.insert(rooms, function (err, docs) {
+  /*let oi = await Room.collection.insert(rooms, function (err, docs) {
     if (err){ 
         return console.error(err);
     } else {
       house.rooms.push.apply(house.rooms, docs.ops);
-      new House(house).save();
       console.log("Todos os Comodos cadastrados com sucesso");
+      return new House(house).save();
+      
     }
   });
 
-  return await house.rooms;
+  return await oi;*/
+
+  return await Room.insertMany(rooms)
+  .then(result => {
+    console.log(`Successfully inserted ${result} items!`);
+    console.log('aaa' + result);
+    house.rooms.push(result);
+    console.log('bbbb' + house);
+
+    return new House(house).save();
+  })
+  .catch(err => console.error(`Failed to insert documents: ${err}`))
+
 }
 
 async function insertDevice(devices, rooms) {
