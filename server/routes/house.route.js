@@ -22,7 +22,7 @@ router.get('/getRoom', passport.authenticate('jwt', { session: false }), getRoom
 router.post('/registerDevices', passport.authenticate('jwt', { session: false }), registerDevice);
 router.get('/getDevice', passport.authenticate('jwt', { session: false }), getDevice);
 // INICIO - Rotas para os devices da casa
-  
+   
 async function registerHouse(req, res, next) {
   console.log('Recuperando Usuario');
   let user = await userCtrl.getUserById(req.body.userId);
