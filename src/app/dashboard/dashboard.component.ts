@@ -26,9 +26,18 @@ export class DashboardComponent implements OnInit {
   public comodo = {
     name: 'Sala',
     list: [
-      'Sky',
-      'Televisão',
-      'Ventilador'
+      {
+        'title': 'Sky',
+        'icon': 'fa-digital-tachograph'
+      },
+      {
+        'title': 'Televisão',
+        'icon': 'fa-tv'
+      },
+      {
+        'title': 'Ventilador',
+        'icon': 'fa-wind'
+      }
     ]
   };
 

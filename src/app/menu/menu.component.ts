@@ -11,6 +11,60 @@ export class MenuComponent implements OnInit {
   public isCollapsed = false;
   @Output() room = new EventEmitter;
 
+  casas = [
+    {
+      'name': 'Principal',
+      'rooms': [
+        {
+          'name': 'Sala'
+        },
+        {
+          'name': 'Quarto'
+        },
+        {
+          'name': 'Cozinha'
+        },
+        {
+          'name': 'Banheiro'
+        }
+      ]
+    },
+    {
+      'name': 'Casa de praia',
+      'rooms': [
+        {
+          'name': 'Sala'
+        },
+        {
+          'name': 'Quarto'
+        },
+        {
+          'name': 'Varanda'
+        },
+        {
+          'name': 'Área'
+        }
+      ]
+    },
+    {
+      'name': 'Casa do sítio',
+      'rooms': [
+        {
+          'name': 'Sala'
+        },
+        {
+          'name': 'Garagem'
+        },
+        {
+          'name': 'Cozinha'
+        },
+        {
+          'name': 'Banheiro'
+        }
+      ]
+    }
+  ];
+
   constructor() { }
 
   ngOnInit() {

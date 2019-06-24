@@ -7,6 +7,7 @@ import { MenuComponent } from '../menu/menu.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ChartsComponent } from '../charts/charts.component';
+import { UtilBootstrapModule } from '../util-bootstrap/util-bootstrap.module';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    UtilBootstrapModule
   ],
   exports: [
     RouterModule
