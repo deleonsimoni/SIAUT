@@ -12,7 +12,7 @@ module.exports = router;
 router.post('/registerHouse', passport.authenticate('jwt', { session: false }), registerHouse);
 router.get('/getHouse', passport.authenticate('jwt', { session: false }), getHouse);
 // FIM - Rotas para a casa do usuario
-
+ 
 // INICIO - Rotas para os comodos da casa
 router.post('/registerRooms', passport.authenticate('jwt', { session: false }), asyncHandler(registerRoom));
 router.get('/getRoom', passport.authenticate('jwt', { session: false }), getRoom);
