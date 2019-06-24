@@ -9,25 +9,26 @@ import { TooltipComponent } from '@angular/material';
 @Injectable()
 export class AuthService {
 
-  constructor(private http : HttpClient, private token: TokenStorage) {}
+  constructor(
+    private http: HttpClient,
+    private token: TokenStorage
+  ) {}
 
   public $userSource = new Subject<any>();
 
-  login(email : string, password : string) : Observable <any> {
+  login(form: any): Observable <any> {
     return Observable.create(observer => {
-      this.http.post('/api/auth/login', {
-        email,
-        password
-      }).subscribe((data : any) => {
+      this.http.post('/api/auth/login', form)
+        .subscribe((data: any) => {
           observer.next({user: data.user});
           this.setUser(data.user);
           this.token.saveToken(data.token);
           observer.complete();
-      })
+        }, err => console.log(err));
     });
   }
 
-  register(fullname : string, email : string, password : string, repeatPassword : string) : Observable <any> {
+  register(fullname: string, email: string, password: string, repeatPassword: string): Observable <any> {
     return Observable.create(observer => {
       this.http.post('/api/auth/register', {
         fullname,
@@ -39,7 +40,7 @@ export class AuthService {
         this.setUser(data.user);
         this.token.saveToken(data.token);
         observer.complete();
-      })
+      });
     });
   }
 
@@ -55,13 +56,29 @@ export class AuthService {
 
   me(): Observable<any> {
     return Observable.create(observer => {
+        console.log('Chamando metodo authService.me()');
+        const tokenVal = this.token.getToken();
+        if (!tokenVal) return  observer.complete();
+        this.http.get('/api/auth/me').subscribe((data : any) => {
+          observer.next({user: data.user});
+          this.setUser(data.user);
+          observer.complete();
+        })
+    });
+  }
+
+  meLocal(): Observable<any> {
+    return Observable.create(observer => {
       const tokenVal = this.token.getToken();
-      if (!tokenVal) return  observer.complete();
-      this.http.get('/api/auth/me').subscribe((data : any) => {
-        observer.next({user: data.user});
-        this.setUser(data.user);
+      if (!tokenVal) {
+        return  observer.complete();
+      } else {
+
+
+        //observer.next({user: data.user});
+        //this.setUser(data.user);
         observer.complete();
-      })
+      }
     });
   }
 

@@ -13,18 +13,16 @@ import { AuthHeaderInterceptor } from './interceptors/header.interceptor';
 import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
+
+import { UtilBootstrapModule } from './util-bootstrap/util-bootstrap.module';
+import { SplashComponent } from './splash/splash.component';
+import { WizardComponent } from './wizard/wizard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    MenuComponent,
-    FooterComponent
+    WizardComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +33,7 @@ import { FooterComponent } from './footer/footer.component';
     AuthModule,
     AdminModule,
     AppRoutingModule,
+    UtilBootstrapModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

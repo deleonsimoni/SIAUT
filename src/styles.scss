@@ -17,3 +17,9 @@ body {
     font-family: 'Exo', sans-serif;
   }
 }
+
+html, body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+}

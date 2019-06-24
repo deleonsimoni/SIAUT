@@ -1,6 +1,7 @@
-(function($) {
-  "use strict"; // Start of use strict
+$.noConflict(); jQuery( document ).ready(function( $ ) { 
 
+  "use strict"; // Start of use strict
+  
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");
@@ -9,14 +10,14 @@
       $('.sidebar .collapse').collapse('hide');
     };
   });
-
+  
   // Close any open menu accordions when window is resized below 768px
   $(window).resize(function() {
     if ($(window).width() < 768) {
       $('.sidebar .collapse').collapse('hide');
     };
   });
-
+  
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {
     if ($(window).width() > 768) {
@@ -26,7 +27,7 @@
       e.preventDefault();
     }
   });
-
+  
   // Scroll to top button appear
   $(document).on('scroll', function() {
     var scrollDistance = $(this).scrollTop();
@@ -36,7 +37,7 @@
       $('.scroll-to-top').fadeOut();
     }
   });
-
+  
   // Smooth scrolling using jQuery easing
   $(document).on('click', 'a.scroll-to-top', function(e) {
     var $anchor = $(this);
@@ -45,5 +46,8 @@
     }, 1000, 'easeInOutExpo');
     e.preventDefault();
   });
+});
 
-})(jQuery); // End of use strict
+// (function($) {
+
+// })(jQuery); // End of use strict

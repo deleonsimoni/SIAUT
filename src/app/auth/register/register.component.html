@@ -1,45 +1,58 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Register</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="example-form">
-      <table cellspacing="0" [formGroup]="userForm">
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Fullname" formControlName="fullname" name="fullname" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Email" formControlName="email" name="email" required>
-              <mat-error *ngIf="email.invalid && email.errors.email">Invalid email address</mat-error>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Reapet Password" formControlName="repeatPassword" type="password" name="repeatPassword" required>
-              <mat-error *ngIf="repeatPassword.invalid && repeatPassword.errors.passwordMatch">Password mismatch</mat-error>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="register()" color="primary">Register</button>
-    <span>Allrady have an account ? <a [routerLink]="['/auth/login']">login</a> here</span>
-  </mat-card-actions>
-</mat-card>
+<div class="container">
+
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Crie seu cadastro :)</h1>
+                </div>
+                <form class="user" [formGroup]="userForm">
+                  <div class="form-group">
+                    <input name="email" type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="Email" formControlName="email" required>
+                    <mat-error *ngIf="email.invalid && email.errors.email">Email Inválido!</mat-error>
+                  </div>
+                  <div class="form-group">
+                    <input name="name" class="form-control form-control-user" id="nome" aria-describedby="emailHelp" placeholder="Nome" formControlName="fullname" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" class="form-control form-control-user" id="senha" placeholder="Senha" formControlName="password" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="rPassword" class="form-control form-control-user" id="repitaSenha" placeholder="Repita Senha" formControlName="repeatPassword" required>
+                    <mat-error *ngIf="repeatPassword.invalid && repeatPassword.errors.passwordMatch">Senhas Diferentes!</mat-error>
+                  </div>
+                  
+                 
+                  <button (click)="register()" class="btn btn-primary btn-user btn-block">
+                    Cadastrar
+                  </button>
+                  <hr>
+                  
+                </form>
+                <hr>
+                <!-- <div class="text-center">
+                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                </div> -->
+                <div class="text-center">
+                  <a class="small" [routerLink]="['/auth/login']">Login!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
